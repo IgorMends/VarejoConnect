@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35122.118
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VarejoConnect", "VarejoConnect\VarejoConnect.csproj", "{091E8EA8-461A-4B3B-89C1-9C59936D090C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{091E8EA8-461A-4B3B-89C1-9C59936D090C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{091E8EA8-461A-4B3B-89C1-9C59936D090C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{091E8EA8-461A-4B3B-89C1-9C59936D090C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{091E8EA8-461A-4B3B-89C1-9C59936D090C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {17DF7857-E6D1-4184-A4FC-EF684F85C946}
+	EndGlobalSection
+EndGlobal

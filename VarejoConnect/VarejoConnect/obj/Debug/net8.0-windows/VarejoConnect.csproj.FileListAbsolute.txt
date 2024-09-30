@@ -1,0 +1,17 @@
+C:\Users\Rede Mincoff\Desktop\ㅤ\Tcc\VarejoConnect\VarejoConnect\bin\Debug\net8.0-windows\VarejoConnect.exe
+C:\Users\Rede Mincoff\Desktop\ㅤ\Tcc\VarejoConnect\VarejoConnect\bin\Debug\net8.0-windows\VarejoConnect.deps.json
+C:\Users\Rede Mincoff\Desktop\ㅤ\Tcc\VarejoConnect\VarejoConnect\bin\Debug\net8.0-windows\VarejoConnect.runtimeconfig.json
+C:\Users\Rede Mincoff\Desktop\ㅤ\Tcc\VarejoConnect\VarejoConnect\bin\Debug\net8.0-windows\VarejoConnect.dll
+C:\Users\Rede Mincoff\Desktop\ㅤ\Tcc\VarejoConnect\VarejoConnect\bin\Debug\net8.0-windows\VarejoConnect.pdb
+C:\Users\Rede Mincoff\Desktop\ㅤ\Tcc\VarejoConnect\VarejoConnect\obj\Debug\net8.0-windows\VarejoConnect.Form1.resources
+C:\Users\Rede Mincoff\Desktop\ㅤ\Tcc\VarejoConnect\VarejoConnect\obj\Debug\net8.0-windows\VarejoConnect.Properties.Resources.resources
+C:\Users\Rede Mincoff\Desktop\ㅤ\Tcc\VarejoConnect\VarejoConnect\obj\Debug\net8.0-windows\VarejoConnect.csproj.GenerateResource.cache
+C:\Users\Rede Mincoff\Desktop\ㅤ\Tcc\VarejoConnect\VarejoConnect\obj\Debug\net8.0-windows\VarejoConnect.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Rede Mincoff\Desktop\ㅤ\Tcc\VarejoConnect\VarejoConnect\obj\Debug\net8.0-windows\VarejoConnect.AssemblyInfoInputs.cache
+C:\Users\Rede Mincoff\Desktop\ㅤ\Tcc\VarejoConnect\VarejoConnect\obj\Debug\net8.0-windows\VarejoConnect.AssemblyInfo.cs
+C:\Users\Rede Mincoff\Desktop\ㅤ\Tcc\VarejoConnect\VarejoConnect\obj\Debug\net8.0-windows\VarejoConnect.csproj.CoreCompileInputs.cache
+C:\Users\Rede Mincoff\Desktop\ㅤ\Tcc\VarejoConnect\VarejoConnect\obj\Debug\net8.0-windows\VarejoConnect.dll
+C:\Users\Rede Mincoff\Desktop\ㅤ\Tcc\VarejoConnect\VarejoConnect\obj\Debug\net8.0-windows\refint\VarejoConnect.dll
+C:\Users\Rede Mincoff\Desktop\ㅤ\Tcc\VarejoConnect\VarejoConnect\obj\Debug\net8.0-windows\VarejoConnect.pdb
+C:\Users\Rede Mincoff\Desktop\ㅤ\Tcc\VarejoConnect\VarejoConnect\obj\Debug\net8.0-windows\VarejoConnect.genruntimeconfig.cache
+C:\Users\Rede Mincoff\Desktop\ㅤ\Tcc\VarejoConnect\VarejoConnect\obj\Debug\net8.0-windows\ref\VarejoConnect.dll
