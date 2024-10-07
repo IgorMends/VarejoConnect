@@ -11,18 +11,24 @@ using VarejoConnect.Controller;
 
 namespace VarejoConnect.View
 {
-    public partial class HomePage : Form
+    public partial class CaixaPage : Form
     {
 
         Actions actions = new Actions();
-        public HomePage()
+
+        public CaixaPage()
         {
             InitializeComponent();
         }
 
-        private void AdminHomePage_Load(object sender, EventArgs e)
+        private void label8_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            actions.HomePageBack(this);
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -40,42 +46,16 @@ namespace VarejoConnect.View
             actions.UserChange(this);
         }
 
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             ProdutoPage produtoPage = new ProdutoPage();
             actions.ChangePage(this, produtoPage);
         }
 
-        private void pictureBox3_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            CaixaPage caixaPage = new CaixaPage();
-            actions.ChangePage(this, caixaPage);
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void pictureBox3_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            FuncionarioPage funcionarioPage = new FuncionarioPage();
-            actions.ChangePage(this, funcionarioPage);
+            ClientePage clientePage = new ClientePage();
+            actions.ChangePage(this, clientePage);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -84,10 +64,10 @@ namespace VarejoConnect.View
             actions.ChangePage(this, vendaPage);
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e)
         {
-            ClientePage clientePage = new ClientePage();
-            actions.ChangePage(this, clientePage);
+            FuncionarioPage funcionarioPage = new FuncionarioPage();
+            actions.ChangePage(this, funcionarioPage);
         }
     }
 }

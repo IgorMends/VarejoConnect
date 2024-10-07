@@ -4,7 +4,22 @@
     <Compile Update="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="View\CaixaPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\ClientePage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\FuncionarioPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="View\HomePage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\ProdutoPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\VendaPage.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
