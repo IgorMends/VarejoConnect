@@ -54,21 +54,22 @@
             // pictureBox9
             // 
             pictureBox9.Image = (Image)resources.GetObject("pictureBox9.Image");
-            pictureBox9.Location = new Point(741, 219);
+            pictureBox9.Location = new Point(931, 298);
             pictureBox9.Name = "pictureBox9";
-            pictureBox9.Size = new Size(60, 60);
+            pictureBox9.Size = new Size(80, 80);
             pictureBox9.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox9.TabIndex = 24;
             pictureBox9.TabStop = false;
+            pictureBox9.Click += pictureBox9_Click;
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Font = new Font("Century Gothic", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label8.Font = new Font("Century Gothic", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label8.ForeColor = Color.FromArgb(121, 182, 201);
-            label8.Location = new Point(490, 227);
+            label8.Location = new Point(495, 299);
             label8.Name = "label8";
-            label8.Size = new Size(250, 44);
+            label8.Size = new Size(431, 77);
             label8.TabIndex = 23;
             label8.Text = "ProdutoPage";
             // 
@@ -76,7 +77,7 @@
             // 
             pictureBox2.Cursor = Cursors.Hand;
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(904, -1);
+            pictureBox2.Location = new Point(1225, -1);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(20, 38);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -99,14 +100,14 @@
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(248, 520);
+            panel1.Size = new Size(248, 680);
             panel1.TabIndex = 21;
             // 
             // pictureBox3
             // 
             pictureBox3.Cursor = Cursors.Hand;
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(206, 477);
+            pictureBox3.Location = new Point(207, 641);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(30, 30);
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -125,7 +126,7 @@
             button5.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button5.ForeColor = Color.White;
             button5.Image = (Image)resources.GetObject("button5.Image");
-            button5.Location = new Point(0, 371);
+            button5.Location = new Point(0, 521);
             button5.Name = "button5";
             button5.Size = new Size(248, 51);
             button5.TabIndex = 15;
@@ -145,7 +146,7 @@
             button4.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button4.ForeColor = Color.White;
             button4.Image = (Image)resources.GetObject("button4.Image");
-            button4.Location = new Point(0, 304);
+            button4.Location = new Point(0, 421);
             button4.Name = "button4";
             button4.Size = new Size(248, 51);
             button4.TabIndex = 14;
@@ -165,7 +166,7 @@
             button3.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button3.ForeColor = Color.White;
             button3.Image = (Image)resources.GetObject("button3.Image");
-            button3.Location = new Point(0, 236);
+            button3.Location = new Point(0, 321);
             button3.Name = "button3";
             button3.Size = new Size(248, 51);
             button3.TabIndex = 13;
@@ -185,7 +186,7 @@
             button2.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button2.ForeColor = Color.White;
             button2.Image = (Image)resources.GetObject("button2.Image");
-            button2.Location = new Point(0, 168);
+            button2.Location = new Point(0, 221);
             button2.Name = "button2";
             button2.Size = new Size(248, 51);
             button2.TabIndex = 12;
@@ -221,7 +222,7 @@
             label1.Cursor = Cursors.Hand;
             label1.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(14, 484);
+            label1.Location = new Point(9, 648);
             label1.Name = "label1";
             label1.Size = new Size(44, 23);
             label1.TabIndex = 0;
@@ -239,7 +240,7 @@
             button1.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.ForeColor = Color.White;
             button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.Location = new Point(0, 101);
+            button1.Location = new Point(0, 121);
             button1.Name = "button1";
             button1.Size = new Size(248, 51);
             button1.TabIndex = 11;
@@ -252,7 +253,7 @@
             // 
             pictureBox1.Cursor = Cursors.Hand;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(932, 7);
+            pictureBox1.Location = new Point(1252, 7);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(20, 20);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -264,13 +265,14 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(960, 520);
+            ClientSize = new Size(1280, 680);
             Controls.Add(pictureBox9);
             Controls.Add(label8);
             Controls.Add(pictureBox2);
             Controls.Add(panel1);
             Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "ProdutoPage";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ProdutoPage";

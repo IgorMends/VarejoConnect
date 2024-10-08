@@ -63,5 +63,15 @@ namespace VarejoConnect.View
             CaixaPage caixaPage = new CaixaPage();
             actions.ChangePage(this, caixaPage);
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox9_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
