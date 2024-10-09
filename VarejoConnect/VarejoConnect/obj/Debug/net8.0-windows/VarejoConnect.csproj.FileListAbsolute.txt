@@ -19,5 +19,5 @@ C:\Users\Rede Mincoff\Desktop\ㅤ\Tcc\VarejoConnect\VarejoConnect\obj\Debug\net8
 C:\Users\Rede Mincoff\Desktop\ㅤ\Tcc\VarejoConnect\VarejoConnect\obj\Debug\net8.0-windows\VarejoConnect.View.CaixaPage.resources
 C:\Users\Rede Mincoff\Desktop\ㅤ\Tcc\VarejoConnect\VarejoConnect\obj\Debug\net8.0-windows\VarejoConnect.View.ClientePage.resources
 C:\Users\Rede Mincoff\Desktop\ㅤ\Tcc\VarejoConnect\VarejoConnect\obj\Debug\net8.0-windows\VarejoConnect.View.FuncionarioPage.resources
-C:\Users\Rede Mincoff\Desktop\ㅤ\Tcc\VarejoConnect\VarejoConnect\obj\Debug\net8.0-windows\VarejoConnect.View.VendaPage.resources
 C:\Users\Rede Mincoff\Desktop\ㅤ\Tcc\VarejoConnect\VarejoConnect\obj\Debug\net8.0-windows\VarejoConnect.View.ProdutoPage.resources
+C:\Users\Rede Mincoff\Desktop\ㅤ\Tcc\VarejoConnect\VarejoConnect\obj\Debug\net8.0-windows\VarejoConnect.View.VendaPage.resources

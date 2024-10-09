@@ -41,22 +41,13 @@ namespace VarejoConnect.Controller
             }
         }
 
-        public void ChangePage(Form actualPage, Form nextPage)
+        public void ChangePage(Panel panel, Form nextPage)
         {
-            actualPage.Hide();
+            nextPage.TopLevel = false;
+            panel.Controls.Add(nextPage);  
+            nextPage.BringToFront();
             nextPage.Show();
-        }
 
-        public void HomePageBack(Form form)
-        {
-            DialogResult resultado = MessageBox.Show("Você deseja voltar a página inicial? Ao confirmar você perderá o dados desta página caso não tenha salvo!", "Confirmação"
-                , MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (resultado == DialogResult.Yes)
-            {
-                form.Hide();
-                HomePage homePage = new HomePage();
-                homePage.Show();
-            }
         }
     }
 }

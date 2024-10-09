@@ -48,7 +48,7 @@ namespace VarejoConnect.View
         private void button1_Click(object sender, EventArgs e)
         {
             ProdutoPage produtoPage = new ProdutoPage();
-            actions.ChangePage(this, produtoPage);
+            actions.ChangePage(panel2, produtoPage);
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
@@ -59,7 +59,7 @@ namespace VarejoConnect.View
         private void button5_Click(object sender, EventArgs e)
         {
             CaixaPage caixaPage = new CaixaPage();
-            actions.ChangePage(this, caixaPage);
+            actions.ChangePage(panel2, caixaPage);
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -75,19 +75,19 @@ namespace VarejoConnect.View
         private void button4_Click(object sender, EventArgs e)
         {
             FuncionarioPage funcionarioPage = new FuncionarioPage();
-            actions.ChangePage(this, funcionarioPage);
+            actions.ChangePage(panel2, funcionarioPage);    
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             VendaPage vendaPage = new VendaPage();
-            actions.ChangePage(this, vendaPage);
+            actions.ChangePage(panel2, vendaPage);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             ClientePage clientePage = new ClientePage();
-            actions.ChangePage(this, clientePage);
+            actions.ChangePage(panel2, clientePage);
         }
     }
 }

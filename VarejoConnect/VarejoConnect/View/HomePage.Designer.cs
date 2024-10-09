@@ -40,12 +40,14 @@
             label1 = new Label();
             button1 = new Button();
             pictureBox2 = new PictureBox();
+            panel2 = new Panel();
             pictureBox9 = new PictureBox();
             label8 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
             SuspendLayout();
             // 
@@ -225,14 +227,24 @@
             pictureBox2.TabStop = false;
             pictureBox2.Click += pictureBox2_Click;
             // 
+            // panel2
+            // 
+            panel2.Controls.Add(pictureBox9);
+            panel2.Controls.Add(label8);
+            panel2.Dock = DockStyle.Bottom;
+            panel2.Location = new Point(248, 33);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(1032, 647);
+            panel2.TabIndex = 3;
+            // 
             // pictureBox9
             // 
             pictureBox9.Image = (Image)resources.GetObject("pictureBox9.Image");
-            pictureBox9.Location = new Point(991, 299);
+            pictureBox9.Location = new Point(742, 283);
             pictureBox9.Name = "pictureBox9";
             pictureBox9.Size = new Size(80, 80);
             pictureBox9.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox9.TabIndex = 9;
+            pictureBox9.TabIndex = 11;
             pictureBox9.TabStop = false;
             // 
             // label8
@@ -240,10 +252,10 @@
             label8.AutoSize = true;
             label8.Font = new Font("Century Gothic", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label8.ForeColor = Color.FromArgb(121, 182, 201);
-            label8.Location = new Point(460, 299);
+            label8.Location = new Point(211, 283);
             label8.Name = "label8";
             label8.Size = new Size(525, 77);
-            label8.TabIndex = 8;
+            label8.TabIndex = 10;
             label8.Text = "Varejo Connect";
             // 
             // HomePage
@@ -251,8 +263,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1280, 680);
-            Controls.Add(pictureBox9);
-            Controls.Add(label8);
+            Controls.Add(panel2);
             Controls.Add(pictureBox2);
             Controls.Add(panel1);
             Controls.Add(pictureBox1);
@@ -266,9 +277,10 @@
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -279,12 +291,13 @@
         private Label label1;
         private PictureBox pictureBox4;
         private Label label2;
-        private PictureBox pictureBox9;
-        private Label label8;
         private Button button1;
         private Button button5;
         private Button button4;
         private Button button3;
         private Button button2;
+        private Panel panel2;
+        private PictureBox pictureBox9;
+        private Label label8;
     }
 }
