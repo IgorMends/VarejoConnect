@@ -18,6 +18,11 @@ namespace VarejoConnect.View
         public HomePage()
         {
             InitializeComponent();
+            DateTime dataAtual = DateTime.Today;
+            string dataFormatada = dataAtual.ToString("dd/MM/yyyy");
+
+            label3.Text = dataFormatada;
+            label4.Text = "User: admin";
         }
 
         private void AdminHomePage_Load(object sender, EventArgs e)
@@ -75,7 +80,7 @@ namespace VarejoConnect.View
         private void button4_Click(object sender, EventArgs e)
         {
             FuncionarioPage funcionarioPage = new FuncionarioPage();
-            actions.ChangePage(panel2, funcionarioPage);    
+            actions.ChangePage(panel2, funcionarioPage);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -88,6 +93,16 @@ namespace VarejoConnect.View
         {
             ClientePage clientePage = new ClientePage();
             actions.ChangePage(panel2, clientePage);
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

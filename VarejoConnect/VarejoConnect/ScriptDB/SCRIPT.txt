@@ -3,6 +3,7 @@ CREATE DATABASE "VarejoDB";
 create table funcionarios(
 	id serial primary key,
 	nome varchar(200) not null,
+	senha varchar(200) not null,
 	cargo varchar(200) not null,
 	salario double precision not null,
 	funcionario_alteracao int not null,

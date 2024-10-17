@@ -32,6 +32,7 @@
             pictureBox1 = new PictureBox();
             panel1 = new Panel();
             button5 = new Button();
+            label3 = new Label();
             button4 = new Button();
             button3 = new Button();
             button2 = new Button();
@@ -43,6 +44,7 @@
             panel2 = new Panel();
             pictureBox9 = new PictureBox();
             label8 = new Label();
+            label4 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
@@ -67,6 +69,7 @@
             // 
             panel1.BackColor = Color.FromArgb(121, 182, 201);
             panel1.Controls.Add(button5);
+            panel1.Controls.Add(label3);
             panel1.Controls.Add(button4);
             panel1.Controls.Add(button3);
             panel1.Controls.Add(button2);
@@ -100,6 +103,18 @@
             button5.TextImageRelation = TextImageRelation.ImageBeforeText;
             button5.UseVisualStyleBackColor = false;
             button5.Click += button5_Click;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(167, 654);
+            label3.Name = "label3";
+            label3.Size = new Size(48, 16);
+            label3.TabIndex = 4;
+            label3.Text = "label3";
+            label3.Click += label3_Click;
             // 
             // button4
             // 
@@ -229,6 +244,7 @@
             // 
             // panel2
             // 
+            panel2.BorderStyle = BorderStyle.Fixed3D;
             panel2.Controls.Add(pictureBox9);
             panel2.Controls.Add(label8);
             panel2.Dock = DockStyle.Bottom;
@@ -258,11 +274,24 @@
             label8.TabIndex = 10;
             label8.Text = "Varejo Connect";
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.FromArgb(121, 182, 201);
+            label4.Location = new Point(254, 9);
+            label4.Name = "label4";
+            label4.Size = new Size(48, 16);
+            label4.TabIndex = 5;
+            label4.Text = "label4";
+            label4.Click += label4_Click;
+            // 
             // HomePage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1280, 680);
+            Controls.Add(label4);
             Controls.Add(panel2);
             Controls.Add(pictureBox2);
             Controls.Add(panel1);
@@ -281,6 +310,7 @@
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -299,5 +329,7 @@
         private Panel panel2;
         private PictureBox pictureBox9;
         private Label label8;
+        private Label label3;
+        private Label label4;
     }
 }

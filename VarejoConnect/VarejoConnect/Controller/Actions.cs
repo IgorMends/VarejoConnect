@@ -36,7 +36,7 @@ namespace VarejoConnect.Controller
             if (resultado == DialogResult.Yes)
             {
                 form.Hide();
-                Form1 form1 = new Form1();
+                LoginPage form1 = new LoginPage();
                 form1.Show();
             }
         }
@@ -48,6 +48,18 @@ namespace VarejoConnect.Controller
             nextPage.BringToFront();
             nextPage.Show();
 
+        }
+
+        public void verifyBlanksTextboxes(List<string> textBoxes)
+        {
+            foreach (var text in textBoxes)
+            {
+                if (string.IsNullOrWhiteSpace(text))
+                {
+                    MessageBox.Show("Nenhum campo pode estar vazio.", "Erro", MessageBoxButtons.OK);
+                    return;
+                }
+            }
         }
     }
 }
