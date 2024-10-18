@@ -1,0 +1,60 @@
+CREATE DATABASE "VarejoDB";
+
+create table funcionarios(
+	id serial primary key,
+	nome varchar(200) not null,
+	senha varchar(200) not null,
+	cargo varchar(200) not null,
+	salario double precision not null,
+	funcionario_alteracao int not null,
+	data_alteracao date not null,
+	data_criacao date not null
+);
+
+create table clientes(
+	id serial primary key,
+	nome varchar(200) not null,
+	email varchar(250) not null UNIQUE,
+	telefone varchar(13) not null,
+	funcionario_fk int not null,
+	data_alteracao date not null,
+	data_criacao date not null,
+	FOREIGN KEY (funcionario_fk) REFERENCES funcionarios(id)
+);
+
+create table vendas(
+	id serial primary key,
+	funcionario_fk int not null,
+	cliente_fk int not null,
+	data_venda date not null,
+	valor_total double precision not null,
+	forma_pagamento varchar(100),
+	FOREIGN KEY (funcionario_fk) REFERENCES funcionarios(id),
+	FOREIGN KEY (cliente_fk) REFERENCES clientes(id)
+);
+
+create table produtos(
+	id serial primary key,
+	nome varchar(200) not null,
+	preco double precision not null,
+	marca varchar(200) not null,
+	data_alteracao date not null,
+	data_criacao date not null,
+	funcionario_fk int not null,
+	FOREIGN KEY (funcionario_fk) REFERENCES funcionarios(id)
+);
+
+create table produto_venda(
+	venda_fk int,
+	produto_fk int,
+	quantidade int not null,
+	PRIMARY KEY (venda_fk, produto_fk),
+	FOREIGN KEY (venda_fk) REFERENCES vendas(id),
+	FOREIGN KEY (produto_fk) REFERENCES produtos(id)
+);
+
+create table caixa(
+	saldo double precision not null,
+	funcionario_fk int not null,
+	FOREIGN KEY (funcionario_fk) REFERENCES funcionarios(id)
+);
