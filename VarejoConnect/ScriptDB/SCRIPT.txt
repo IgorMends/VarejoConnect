@@ -58,3 +58,6 @@ create table caixa(
 	funcionario_fk int not null,
 	FOREIGN KEY (funcionario_fk) REFERENCES funcionarios(id)
 );
+
+INSERT INTO public.funcionarios(id, nome, senha, cargo, salario, funcionario_alteracao, data_alteracao, data_criacao)
+	VALUES (0, 'admin', 'admin', 'admin', 0, 0, CURRENT_DATE, CURRENT_DATE);

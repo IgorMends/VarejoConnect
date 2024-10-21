@@ -1,12 +1,24 @@
+using VarejoConnect.Model;
+using VarejoConnect.Model.Repositorios;
 using VarejoConnect.View;
 
 namespace VarejoConnect
 {
     public partial class LoginPage : Form
     {
+
+        public List<Funcionario> funcionarios;
+
         public LoginPage()
         {
             InitializeComponent();
+            ObterFuncionarios();
+        }
+
+        private void ObterFuncionarios()
+        {
+            var repository = new FuncionarioRepositorio();
+            funcionarios = repository.GetAll();
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -26,11 +38,23 @@ namespace VarejoConnect
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(textBox1.Text.Equals("admin") && textBox2.Text.Equals("admin"))
+            bool funcExiste = false;
+            
+            foreach(var funcionario in funcionarios)
             {
-                this.Hide();
-                HomePage adminHomePage = new HomePage();
-                adminHomePage.Show();
+                if (funcionario.nome.Equals(textBox1.Text) && funcionario.senha.Equals(textBox2.Text))
+                {
+                    funcExiste = true;
+                    this.Hide();
+                    HomePage adminHomePage = new HomePage();
+                    adminHomePage.Show();
+                    break;
+                }
+            }
+
+            if(!funcExiste)
+            {
+                MessageBox.Show("Usuário não cadastrado!", "Error", MessageBoxButtons.OK);
             }
         }
     }
