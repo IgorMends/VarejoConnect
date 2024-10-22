@@ -15,12 +15,12 @@ namespace VarejoConnect.Model
         public double salario { get; set; }
         public DateTime dataCriacao { get; set; }
         public DateTime dataAlteracao { get; set; }
-        public string funcionarioAlteracao { get; set; }
+        public int funcionarioAlteracao { get; set; }
 
 
         public Funcionario() { }
 
-        public Funcionario(int id, string nome, string senha, string cargo, double salario, DateTime dataCriacao, DateTime dataAlteracao, string funcionarioAlteracao)
+        public Funcionario(int id, string nome, string senha, string cargo, double salario, DateTime dataCriacao, DateTime dataAlteracao, int funcionarioAlteracao)
         {
             this.id = id;
             this.nome = nome;

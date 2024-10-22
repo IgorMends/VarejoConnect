@@ -1,3 +1,4 @@
+using VarejoConnect.Controller;
 using VarejoConnect.Model;
 using VarejoConnect.Model.Repositorios;
 using VarejoConnect.View;
@@ -45,6 +46,7 @@ namespace VarejoConnect
                 if (funcionario.nome.Equals(textBox1.Text) && funcionario.senha.Equals(textBox2.Text))
                 {
                     funcExiste = true;
+                    Global.funcionarioLogado = funcionario.id;
                     this.Hide();
                     HomePage adminHomePage = new HomePage();
                     adminHomePage.Show();

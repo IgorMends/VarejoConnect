@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using VarejoConnect.Controller;
 using VarejoConnect.Model;
+using VarejoConnect.Model.Repositorios;
 using VarejoConnect.View.EditPage;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -17,19 +18,29 @@ namespace VarejoConnect.View
     public partial class FuncionarioPage : Form
     {
 
+        FuncionarioRepositorio repository = new FuncionarioRepositorio();
         Actions actions = new Actions();
         BindingList<Funcionario> buscaFuncionarios = new BindingList<Funcionario>();
-        BindingList<Funcionario> funcionarios = new BindingList<Funcionario>();
+        BindingList<Funcionario> funcionarios;
         List<string> textBoxes = new List<string>();
         DateTime dataAtual = DateTime.Today;
-        int id = 0;
+        int id;
 
         public FuncionarioPage()
         {
             InitializeComponent();
+            ObterDados();
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = funcionarios;
+            dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Format = "dd/MM/yyyy";
+            dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns["senha"].Visible = false;
+        }
+
+        public void ObterDados()
+        {
+            funcionarios = new BindingList<Funcionario>(repository.GetAll());
+            id = repository.getHighestId() + 1;
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -77,8 +88,9 @@ namespace VarejoConnect.View
                     return;
                 }
 
-                Funcionario funcionario = new Funcionario(id, NomeTextBox.Text.Trim(), SenhaTextBox.Text.Trim(), CargoTextBox.Text.Trim(), numSalario, dataAtual, dataAtual, "Admin");
+                Funcionario funcionario = new Funcionario(id, NomeTextBox.Text.Trim(), SenhaTextBox.Text.Trim(), CargoTextBox.Text.Trim(), numSalario, dataAtual, dataAtual, Global.funcionarioLogado);
                 funcionarios.Add(funcionario);
+                repository.Add(funcionario);
 
                 id++;
 
@@ -114,6 +126,7 @@ namespace VarejoConnect.View
                     {
                         funcionarios.Remove(funcionarioSelecionado);
                         buscaFuncionarios.Remove(funcionarioSelecionado);
+                        repository.RemoveFuncionario(funcionarioSelecionado);
                     }
                 }
 
@@ -140,7 +153,6 @@ namespace VarejoConnect.View
                 if (editPage.DialogResult == DialogResult.OK)
                 {
                     funcionarios[index] = editPage.funcionario;
-
                 }
 
                 dataGridView1.Refresh();

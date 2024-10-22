@@ -9,12 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using VarejoConnect.Controller;
 using VarejoConnect.Model;
+using VarejoConnect.Model.Repositorios;
 
 namespace VarejoConnect.View.EditPage
 {
     public partial class FuncionarioEditPage : Form
     {
 
+        FuncionarioRepositorio repository = new FuncionarioRepositorio();
         public Funcionario funcionario { get; set; }
         Actions actions = new Actions();
 
@@ -34,6 +36,9 @@ namespace VarejoConnect.View.EditPage
                 this.funcionario.nome = textBox1.Text;
                 this.funcionario.salario = double.Parse(textBox2.Text);
                 this.funcionario.cargo = textBox3.Text;
+                this.funcionario.dataAlteracao = DateTime.Today;
+                this.funcionario.funcionarioAlteracao = Global.funcionarioLogado;
+                repository.UpdateFuncionario(funcionario);
                 this.Close();
             }
             else
@@ -45,6 +50,11 @@ namespace VarejoConnect.View.EditPage
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void FuncionarioEditPage_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

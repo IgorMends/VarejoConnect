@@ -187,6 +187,7 @@
             Name = "FuncionarioEditPage";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FuncionarioEditPage";
+            Load += FuncionarioEditPage_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();

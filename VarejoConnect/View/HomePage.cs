@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VarejoConnect.Controller;
+using VarejoConnect.Model.Repositorios;
 
 namespace VarejoConnect.View
 {
@@ -15,6 +16,8 @@ namespace VarejoConnect.View
     {
 
         Actions actions = new Actions();
+        FuncionarioRepositorio repositoryFuncionario = new FuncionarioRepositorio();    
+
         public HomePage()
         {
             InitializeComponent();
@@ -22,7 +25,7 @@ namespace VarejoConnect.View
             string dataFormatada = dataAtual.ToString("dd/MM/yyyy");
 
             label3.Text = dataFormatada;
-            label4.Text = "User: admin";
+            label4.Text = repositoryFuncionario.getNameById(Global.funcionarioLogado);
         }
 
         private void AdminHomePage_Load(object sender, EventArgs e)
