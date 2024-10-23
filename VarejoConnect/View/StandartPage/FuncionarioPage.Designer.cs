@@ -50,9 +50,10 @@
             CargoRadio = new RadioButton();
             NomeRadio = new RadioButton();
             groupBox2 = new GroupBox();
+            TodosRadio = new RadioButton();
             label7 = new Label();
             BtnEditar = new Button();
-            TodosRadio = new RadioButton();
+            label9 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -304,6 +305,17 @@
             groupBox2.Text = "Pesquisa";
             groupBox2.Enter += groupBox2_Enter;
             // 
+            // TodosRadio
+            // 
+            TodosRadio.AutoSize = true;
+            TodosRadio.Location = new Point(251, 83);
+            TodosRadio.Name = "TodosRadio";
+            TodosRadio.Size = new Size(56, 19);
+            TodosRadio.TabIndex = 20;
+            TodosRadio.TabStop = true;
+            TodosRadio.Text = "Todos";
+            TodosRadio.UseVisualStyleBackColor = true;
+            // 
             // label7
             // 
             label7.AutoSize = true;
@@ -329,22 +341,21 @@
             BtnEditar.UseVisualStyleBackColor = false;
             BtnEditar.Click += BtnEditar_Click;
             // 
-            // TodosRadio
+            // label9
             // 
-            TodosRadio.AutoSize = true;
-            TodosRadio.Location = new Point(251, 83);
-            TodosRadio.Name = "TodosRadio";
-            TodosRadio.Size = new Size(56, 19);
-            TodosRadio.TabIndex = 20;
-            TodosRadio.TabStop = true;
-            TodosRadio.Text = "Todos";
-            TodosRadio.UseVisualStyleBackColor = true;
+            label9.AutoSize = true;
+            label9.Location = new Point(399, 14);
+            label9.Name = "label9";
+            label9.Size = new Size(38, 15);
+            label9.TabIndex = 21;
+            label9.Text = "label9";
             // 
             // FuncionarioPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1032, 647);
+            Controls.Add(label9);
             Controls.Add(BtnEditar);
             Controls.Add(groupBox2);
             Controls.Add(BtnPesquisar);
@@ -401,5 +412,6 @@
         private DataGridViewTextBoxColumn dataAlteracao;
         private DataGridViewTextBoxColumn FuncAlterado;
         private RadioButton TodosRadio;
+        private Label label9;
     }
 }

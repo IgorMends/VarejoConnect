@@ -35,6 +35,8 @@ namespace VarejoConnect.View
             dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns["senha"].Visible = false;
+            string dataFormatada = funcionarios[1].dataCriacao.ToString("dd/MM/yyyy");
+            label9.Text = dataFormatada;
         }
 
         public void ObterDados()
