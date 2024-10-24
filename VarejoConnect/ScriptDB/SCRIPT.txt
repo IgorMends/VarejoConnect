@@ -6,9 +6,9 @@ create table funcionarios(
 	senha varchar(200) not null,
 	cargo varchar(200) not null,
 	salario double precision not null,
-	funcionario_alteracao int not null,
-	data_alteracao date not null,
-	data_criacao date not null
+	funcionarioalteracao int not null,
+	dataalteracao date not null,
+	datacriacao date not null
 );
 
 create table clientes(
@@ -38,9 +38,10 @@ create table produtos(
 	nome varchar(200) not null,
 	preco double precision not null,
 	marca varchar(200) not null,
-	data_alteracao date not null,
-	data_criacao date not null,
+	descricao varchar(200) not null,
 	funcionario_fk int not null,
+	dataalteracao date not null,
+	dataariacao date not null,
 	FOREIGN KEY (funcionario_fk) REFERENCES funcionarios(id)
 );
 
@@ -59,5 +60,5 @@ create table caixa(
 	FOREIGN KEY (funcionario_fk) REFERENCES funcionarios(id)
 );
 
-INSERT INTO public.funcionarios(id, nome, senha, cargo, salario, funcionario_alteracao, data_alteracao, data_criacao)
+INSERT INTO public.funcionarios(id, nome, senha, cargo, salario, funcionarioalteracao, dataalteracao, datacriacao)
 	VALUES (0, 'admin', 'admin', 'admin', 0, 0, CURRENT_DATE, CURRENT_DATE);

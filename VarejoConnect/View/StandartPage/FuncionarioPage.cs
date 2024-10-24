@@ -35,8 +35,6 @@ namespace VarejoConnect.View
             dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns["senha"].Visible = false;
-            string dataFormatada = funcionarios[1].dataCriacao.ToString("dd/MM/yyyy");
-            label9.Text = dataFormatada;
         }
 
         public void ObterDados()
@@ -90,7 +88,7 @@ namespace VarejoConnect.View
                     return;
                 }
 
-                Funcionario funcionario = new Funcionario(id, NomeTextBox.Text.Trim(), SenhaTextBox.Text.Trim(), CargoTextBox.Text.Trim(), numSalario, dataAtual, dataAtual, Global.funcionarioLogado);
+                Funcionario funcionario = new Funcionario(id, NomeTextBox.Text.Trim(), SenhaTextBox.Text.Trim(), CargoTextBox.Text.Trim().ToUpper(), numSalario, dataAtual, dataAtual, Global.funcionarioLogado);
                 funcionarios.Add(funcionario);
                 repository.Add(funcionario);
 

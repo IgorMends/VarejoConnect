@@ -35,7 +35,7 @@ namespace VarejoConnect.View.EditPage
             {
                 this.funcionario.nome = textBox1.Text.Trim();
                 this.funcionario.salario = double.Parse(textBox2.Text.Trim());
-                this.funcionario.cargo = textBox3.Text.Trim();
+                this.funcionario.cargo = textBox3.Text.Trim().ToUpper();
                 this.funcionario.dataAlteracao = DateTime.Today;
                 this.funcionario.funcionarioAlteracao = Global.funcionarioLogado;
                 repository.UpdateFuncionario(funcionario);

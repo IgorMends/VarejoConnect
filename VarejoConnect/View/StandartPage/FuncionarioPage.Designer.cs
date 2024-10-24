@@ -53,7 +53,7 @@
             TodosRadio = new RadioButton();
             label7 = new Label();
             BtnEditar = new Button();
-            label9 = new Label();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -63,9 +63,9 @@
             // 
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(42, 48);
+            dataGridView1.Location = new Point(47, 66);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(947, 356);
+            dataGridView1.Size = new Size(947, 321);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -92,9 +92,9 @@
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(NomeTextBox);
             groupBox1.Controls.Add(label1);
-            groupBox1.Location = new Point(10, 419);
+            groupBox1.Location = new Point(10, 404);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(673, 140);
+            groupBox1.Size = new Size(673, 155);
             groupBox1.TabIndex = 10;
             groupBox1.TabStop = false;
             groupBox1.Text = "Cadastro";
@@ -290,6 +290,7 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(button1);
             groupBox2.Controls.Add(TodosRadio);
             groupBox2.Controls.Add(label7);
             groupBox2.Controls.Add(label6);
@@ -297,9 +298,9 @@
             groupBox2.Controls.Add(NomeRadio);
             groupBox2.Controls.Add(IDRadio);
             groupBox2.Controls.Add(PesquisarTextBox);
-            groupBox2.Location = new Point(687, 419);
+            groupBox2.Location = new Point(687, 404);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(334, 119);
+            groupBox2.Size = new Size(334, 155);
             groupBox2.TabIndex = 19;
             groupBox2.TabStop = false;
             groupBox2.Text = "Pesquisa";
@@ -341,21 +342,25 @@
             BtnEditar.UseVisualStyleBackColor = false;
             BtnEditar.Click += BtnEditar_Click;
             // 
-            // label9
+            // button1
             // 
-            label9.AutoSize = true;
-            label9.Location = new Point(399, 14);
-            label9.Name = "label9";
-            label9.Size = new Size(38, 15);
-            label9.TabIndex = 21;
-            label9.Text = "label9";
+            button1.BackColor = Color.FromArgb(121, 182, 201);
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Popup;
+            button1.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(110, 109);
+            button1.Name = "button1";
+            button1.Size = new Size(128, 34);
+            button1.TabIndex = 30;
+            button1.Text = "Gerar Relatorio";
+            button1.UseVisualStyleBackColor = false;
             // 
             // FuncionarioPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1032, 647);
-            Controls.Add(label9);
             Controls.Add(BtnEditar);
             Controls.Add(groupBox2);
             Controls.Add(BtnPesquisar);
@@ -412,6 +417,6 @@
         private DataGridViewTextBoxColumn dataAlteracao;
         private DataGridViewTextBoxColumn FuncAlterado;
         private RadioButton TodosRadio;
-        private Label label9;
+        private Button button1;
     }
 }
