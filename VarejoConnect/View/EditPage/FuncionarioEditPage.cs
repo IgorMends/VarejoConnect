@@ -19,10 +19,12 @@ namespace VarejoConnect.View.EditPage
         FuncionarioRepositorio repository = new FuncionarioRepositorio();
         public Funcionario funcionario { get; set; }
         Actions actions = new Actions();
+        private Funcionario funcionarioLogado;
 
         public FuncionarioEditPage(Funcionario funcionario)
         {
             InitializeComponent();
+            funcionarioLogado = repository.getById(Global.funcionarioLogado);
             this.funcionario = funcionario;
             textBox1.Text = funcionario.nome.Trim();
             textBox2.Text = funcionario.salario.ToString().Trim();
@@ -31,7 +33,7 @@ namespace VarejoConnect.View.EditPage
 
         private void BtnSalvar_Click(object sender, EventArgs e)
         {
-            if (textBox4.Text.Equals(funcionario.senha))
+            if (textBox4.Text.Equals(funcionarioLogado.senha))
             {
                 this.funcionario.nome = textBox1.Text.Trim();
                 this.funcionario.salario = double.Parse(textBox2.Text.Trim());

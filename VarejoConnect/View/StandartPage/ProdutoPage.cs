@@ -32,6 +32,14 @@ namespace VarejoConnect.View
             dataGridView1.DataSource = produtos;
             dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Format = "dd/MM/yyyy";
+            dataGridView1.Columns["id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["preco"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["funcionarioAlteracao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridView1.Columns["preco"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridView1.Columns["preco"].DefaultCellStyle.Format = "N2";
         }
 
         public void ObterDados()
@@ -151,105 +159,123 @@ namespace VarejoConnect.View
             buscaProdutos.Clear();
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = buscaProdutos;
+            dataGridView1.Columns["id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["preco"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["funcionarioAlteracao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridView1.Columns["preco"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridView1.Columns["preco"].DefaultCellStyle.Format = "N2";
 
-            if (TodosRadio.Checked)
+
+            string criterioBusca = SearchOptions.SelectedItem?.ToString();
+            if (criterioBusca == null)
             {
-                dataGridView1.DataSource = null;
-                dataGridView1.DataSource = produtos;
+                MessageBox.Show("Você precisa selecionar um método de busca!", "Error", MessageBoxButtons.OK);
             }
             else
             {
-                if (!(string.IsNullOrWhiteSpace(PesquisarTextBox.Text)))
+
+                if (criterioBusca.Equals("TODOS"))
                 {
-                    if (NomeRadio.Checked)
+                    dataGridView1.DataSource = null;
+                    dataGridView1.DataSource = produtos;
+                }
+                else
+                {
+                    if (!(string.IsNullOrWhiteSpace(PesquisarTextBox.Text)))
                     {
-
-                        bool produtoExiste = false;
-
-                        foreach (var produto in produtos)
+                        if (criterioBusca.Equals("NOME"))
                         {
-                            if (produto.nome.Contains(PesquisarTextBox.Text.Trim(), StringComparison.OrdinalIgnoreCase))
-                            {
-                                buscaProdutos.Add(produto);
 
-                                produtoExiste = true;
+                            bool produtoExiste = false;
+
+                            foreach (var produto in produtos)
+                            {
+                                if (produto.nome.Contains(PesquisarTextBox.Text.Trim(), StringComparison.OrdinalIgnoreCase))
+                                {
+                                    buscaProdutos.Add(produto);
+
+                                    produtoExiste = true;
+                                }
+                            }
+
+                            if (!produtoExiste)
+                            {
+                                MessageBox.Show("Produto não está cadastrado", "Error", MessageBoxButtons.OK);
+                            }
+                            else
+                            {
+                                dataGridView1.Refresh();
                             }
                         }
-
-                        if (!produtoExiste)
+                        else if (criterioBusca.Equals("ID"))
                         {
-                            MessageBox.Show("Produto não está cadastrado", "Error", MessageBoxButtons.OK);
+                            bool produtoExiste = false;
+
+                            try
+                            {
+                                int numId = int.Parse(PesquisarTextBox.Text);
+                            }
+                            catch (FormatException ex)
+                            {
+                                MessageBox.Show("Você tem que digitar apenas numeros", "Error", MessageBoxButtons.OK);
+                                return;
+                            }
+
+
+                            foreach (var produto in produtos)
+                            {
+                                if (produto.id == int.Parse(PesquisarTextBox.Text))
+                                {
+                                    buscaProdutos.Add(produto);
+
+                                    produtoExiste = true;
+                                }
+                            }
+
+                            if (!produtoExiste)
+                            {
+                                MessageBox.Show("Produto não está cadastrado", "Error", MessageBoxButtons.OK);
+                            }
+                            else
+                            {
+                                dataGridView1.Refresh();
+                            }
+                        }
+                        else if (criterioBusca.Equals("MARCA"))
+                        {
+                            bool produtoExiste = false;
+
+                            foreach (var produto in produtos)
+                            {
+                                if (produto.marca.Equals(PesquisarTextBox.Text.Trim(), StringComparison.OrdinalIgnoreCase))
+                                {
+                                    buscaProdutos.Add(produto);
+
+                                    produtoExiste = true;
+                                }
+                            }
+
+                            if (!produtoExiste)
+                            {
+                                MessageBox.Show("Não há nenhum produto desta marca, ou marca inexistente!", "Error", MessageBoxButtons.OK);
+                            }
+                            else
+                            {
+                                dataGridView1.Refresh();
+                            }
                         }
                         else
                         {
-                            dataGridView1.Refresh();
-                        }
-                    }
-                    else if (IDRadio.Checked)
-                    {
-                        bool produtoExiste = false;
-
-                        try
-                        {
-                            int numId = int.Parse(PesquisarTextBox.Text);
-                        }
-                        catch (FormatException ex)
-                        {
-                            MessageBox.Show("Você tem que digitar apenas numeros", "Error", MessageBoxButtons.OK);
-                            return;
-                        }
-
-
-                        foreach (var produto in produtos)
-                        {
-                            if (produto.id == int.Parse(PesquisarTextBox.Text))
-                            {
-                                buscaProdutos.Add(produto);
-
-                                produtoExiste = true;
-                            }
-                        }
-
-                        if (!produtoExiste)
-                        {
-                            MessageBox.Show("Produto não está cadastrado", "Error", MessageBoxButtons.OK);
-                        }
-                        else
-                        {
-                            dataGridView1.Refresh();
-                        }
-                    }
-                    else if (MarcaRadio.Checked)
-                    {
-                        bool produtoExiste = false;
-
-                        foreach (var produto in produtos)
-                        {
-                            if (produto.marca.Equals(PesquisarTextBox.Text.Trim(), StringComparison.OrdinalIgnoreCase))
-                            {
-                                buscaProdutos.Add(produto);
-
-                                produtoExiste = true;
-                            }
-                        }
-
-                        if (!produtoExiste)
-                        {
-                            MessageBox.Show("Não há nenhum produto desta marca, ou marca inexistente!", "Error", MessageBoxButtons.OK);
-                        }
-                        else
-                        {
-                            dataGridView1.Refresh();
+                            MessageBox.Show("Marque uma das opções de busca!", "Error", MessageBoxButtons.OK);
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Marque uma das opções de busca!", "Error", MessageBoxButtons.OK);
+                        MessageBox.Show("Você não digitou nenhum termo para ser pesquisado!", "Error", MessageBoxButtons.OK);
                     }
-                }
-                else
-                {
-                    MessageBox.Show("Você não digitou nenhum termo para ser pesquisado!", "Error", MessageBoxButtons.OK);
                 }
             }
             PesquisarTextBox.Clear();

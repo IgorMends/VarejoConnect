@@ -78,5 +78,16 @@ namespace VarejoConnect.Model.Repositorios
 
             return nomeRetornado;
         }
+
+        public Funcionario getById(int id)
+        {
+            using var connection = new ConnectionDb();
+
+            string query = @"SELECT * FROM funcionarios WHERE id = @Id;";
+
+            Funcionario funcionarioRetornado = connection.Connection.QuerySingleOrDefault<Funcionario>(query, new { Id = id });
+
+            return funcionarioRetornado;
+        }
     }
 }

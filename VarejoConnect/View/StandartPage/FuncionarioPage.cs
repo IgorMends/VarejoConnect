@@ -35,6 +35,14 @@ namespace VarejoConnect.View
             dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns["senha"].Visible = false;
+            dataGridView1.Columns["id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["salario"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["funcionarioAlteracao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridView1.Columns["salario"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridView1.Columns["salario"].DefaultCellStyle.Format = "N2";
         }
 
         public void ObterDados()
@@ -58,6 +66,7 @@ namespace VarejoConnect.View
             textBoxes.Add(NomeTextBox.Text);
             textBoxes.Add(SenhaTextBox.Text);
             textBoxes.Add(CargoTextBox.Text);
+            textBoxes.Add(LoginTextBox.Text);
             textBoxes.Add(SalarioTextBox.Text);
             textBoxes.Add(ConfirmarSenhaTextBox.Text);
 
@@ -170,110 +179,132 @@ namespace VarejoConnect.View
 
         private void BtnPesquisar_Click(object sender, EventArgs e)
         {
+            
             buscaFuncionarios.Clear();
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = buscaFuncionarios;
             dataGridView1.Columns["senha"].Visible = false;
+            dataGridView1.Columns["id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["salario"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["funcionarioAlteracao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridView1.Columns["salario"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridView1.Columns["salario"].DefaultCellStyle.Format = "N2";
 
-            if (TodosRadio.Checked)
+
+            string criterioBusca = SearchOptions.SelectedItem?.ToString();
+
+            if (criterioBusca == null)
             {
-                dataGridView1.DataSource = null;
-                dataGridView1.DataSource = funcionarios;
-                dataGridView1.Columns["senha"].Visible = false;
+                MessageBox.Show("Você precisa selecionar um método de busca!", "Error", MessageBoxButtons.OK);
             }
             else
             {
-                if (!(string.IsNullOrWhiteSpace(PesquisarTextBox.Text)))
+
+
+
+                if (criterioBusca.Equals("TODOS"))
                 {
-                    if (NomeRadio.Checked)
+                    dataGridView1.DataSource = null;
+                    dataGridView1.DataSource = funcionarios;
+                    dataGridView1.Columns["senha"].Visible = false;
+                }
+                else
+                {
+                    if (!(string.IsNullOrWhiteSpace(PesquisarTextBox.Text)))
                     {
-
-                        bool funcionarioExiste = false;
-
-                        foreach (var funcionario in funcionarios)
+                        if (criterioBusca.Equals("NOME"))
                         {
-                            if (funcionario.nome.Contains(PesquisarTextBox.Text.Trim(), StringComparison.OrdinalIgnoreCase))
-                            {
-                                buscaFuncionarios.Add(funcionario);
 
-                                funcionarioExiste = true;
+                            bool funcionarioExiste = false;
+
+                            foreach (var funcionario in funcionarios)
+                            {
+                                if (funcionario.nome.Contains(PesquisarTextBox.Text.Trim(), StringComparison.OrdinalIgnoreCase))
+                                {
+                                    buscaFuncionarios.Add(funcionario);
+
+                                    funcionarioExiste = true;
+                                }
+                            }
+
+                            if (!funcionarioExiste)
+                            {
+                                MessageBox.Show("Funcionário não está cadastrado", "Error", MessageBoxButtons.OK);
+                            }
+                            else
+                            {
+                                dataGridView1.Refresh();
                             }
                         }
-
-                        if (!funcionarioExiste)
+                        else if (criterioBusca.Equals("ID"))
                         {
-                            MessageBox.Show("Funcionário não está cadastrado", "Error", MessageBoxButtons.OK);
+                            bool funcionarioExiste = false;
+
+                            try
+                            {
+                                int numId = int.Parse(PesquisarTextBox.Text);
+                            }
+                            catch (FormatException ex)
+                            {
+                                MessageBox.Show("Você tem que digitar apenas numeros", "Error", MessageBoxButtons.OK);
+                                return;
+                            }
+
+
+                            foreach (var funcionario in funcionarios)
+                            {
+                                if (funcionario.id == int.Parse(PesquisarTextBox.Text))
+                                {
+                                    buscaFuncionarios.Add(funcionario);
+
+                                    funcionarioExiste = true;
+                                }
+                            }
+
+                            if (!funcionarioExiste)
+                            {
+                                MessageBox.Show("Funcionário não está cadastrado", "Error", MessageBoxButtons.OK);
+                            }
+                            else
+                            {
+                                dataGridView1.Refresh();
+                            }
+                        }
+                        else if (criterioBusca.Equals("CARGO"))
+                        {
+                            bool funcionarioExiste = false;
+
+                            foreach (var funcionario in funcionarios)
+                            {
+                                if (funcionario.cargo.Equals(PesquisarTextBox.Text.Trim(), StringComparison.OrdinalIgnoreCase))
+                                {
+                                    buscaFuncionarios.Add(funcionario);
+
+                                    funcionarioExiste = true;
+                                }
+                            }
+
+                            if (!funcionarioExiste)
+                            {
+                                MessageBox.Show("Não há nenhum funcionário com este cargo, ou cargo inexistente", "Error", MessageBoxButtons.OK);
+                            }
+                            else
+                            {
+                                dataGridView1.Refresh();
+                            }
                         }
                         else
                         {
-                            dataGridView1.Refresh();
-                        }
-                    }
-                    else if (IDRadio.Checked)
-                    {
-                        bool funcionarioExiste = false;
-
-                        try
-                        {
-                            int numId = int.Parse(PesquisarTextBox.Text);
-                        }
-                        catch(FormatException ex)
-                        {
-                            MessageBox.Show("Você tem que digitar apenas numeros", "Error", MessageBoxButtons.OK);
-                            return;
-                        }
-
-
-                        foreach (var funcionario in funcionarios)
-                        {
-                            if (funcionario.id == int.Parse(PesquisarTextBox.Text))
-                            {
-                                buscaFuncionarios.Add(funcionario);
-
-                                funcionarioExiste = true;
-                            }
-                        }
-
-                        if (!funcionarioExiste)
-                        {
-                            MessageBox.Show("Funcionário não está cadastrado", "Error", MessageBoxButtons.OK);
-                        }
-                        else
-                        {
-                            dataGridView1.Refresh();
-                        }
-                    }
-                    else if (CargoRadio.Checked)
-                    {
-                        bool funcionarioExiste = false;
-
-                        foreach (var funcionario in funcionarios)
-                        {
-                            if (funcionario.cargo.Equals(PesquisarTextBox.Text.Trim(), StringComparison.OrdinalIgnoreCase))
-                            {
-                                buscaFuncionarios.Add(funcionario);
-
-                                funcionarioExiste = true;
-                            }
-                        }
-
-                        if (!funcionarioExiste)
-                        {
-                            MessageBox.Show("Não há nenhum funcionário com este cargo, ou cargo inexistente", "Error", MessageBoxButtons.OK);
-                        }
-                        else
-                        {
-                            dataGridView1.Refresh();
+                            MessageBox.Show("Marque uma das opções de busca!", "Error", MessageBoxButtons.OK);
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Marque uma das opções de busca!", "Error", MessageBoxButtons.OK);
+                        MessageBox.Show("Você não digitou nenhum termo para ser pesquisado!", "Error", MessageBoxButtons.OK);
                     }
-                }
-                else
-                {
-                    MessageBox.Show("Você não digitou nenhum termo para ser pesquisado!", "Error", MessageBoxButtons.OK);
                 }
             }
             PesquisarTextBox.Clear();

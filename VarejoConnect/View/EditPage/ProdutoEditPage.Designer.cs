@@ -49,7 +49,6 @@
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(245, 23);
             textBox4.TabIndex = 33;
-            textBox4.UseSystemPasswordChar = true;
             // 
             // label5
             // 
