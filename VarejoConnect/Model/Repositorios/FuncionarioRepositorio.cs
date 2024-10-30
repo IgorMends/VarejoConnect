@@ -15,8 +15,8 @@ namespace VarejoConnect.Model.Repositorios
             using var connection = new ConnectionDb();
 
             string query = @"INSERT INTO public.funcionarios(
-	                        id, nome, senha, cargo, salario, funcionarioAlteracao, dataAlteracao, dataCriacao)
-	                        VALUES (@id, @nome, @senha, @cargo, @salario, @funcionarioAlteracao, @dataAlteracao, @dataAlteracao);";
+	                        id, login,nome, senha, cargo, salario, funcionarioAlteracao, dataAlteracao, dataCriacao)
+	                        VALUES (@id, @login,@nome, @senha, @cargo, @salario, @funcionarioAlteracao, @dataAlteracao, @dataAlteracao);";
 
             var result = connection.Connection.Execute(sql: query, param: funcionario);
 
@@ -60,7 +60,7 @@ namespace VarejoConnect.Model.Repositorios
         {
             using var connection = new ConnectionDb();
 
-            string query = @"UPDATE public.funcionarios SET nome= @nome, cargo= @cargo, salario= @salario, funcionarioAlteracao= @funcionarioAlteracao, dataAlteracao= @dataAlteracao
+            string query = @"UPDATE public.funcionarios SET login= @login, nome= @nome, cargo= @cargo, salario= @salario, funcionarioAlteracao= @funcionarioAlteracao, dataAlteracao= @dataAlteracao
 	WHERE id = @id;";
 
             var result = connection.Connection.Execute(sql: query, param: funcionario);

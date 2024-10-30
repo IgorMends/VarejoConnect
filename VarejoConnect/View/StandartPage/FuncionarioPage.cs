@@ -64,6 +64,7 @@ namespace VarejoConnect.View
         {
             textBoxes.Clear();
             textBoxes.Add(NomeTextBox.Text);
+            textBoxes.Add(LoginTextBox.Text);
             textBoxes.Add(SenhaTextBox.Text);
             textBoxes.Add(CargoTextBox.Text);
             textBoxes.Add(LoginTextBox.Text);
@@ -97,12 +98,13 @@ namespace VarejoConnect.View
                     return;
                 }
 
-                Funcionario funcionario = new Funcionario(id, NomeTextBox.Text.Trim(), SenhaTextBox.Text.Trim(), CargoTextBox.Text.Trim().ToUpper(), numSalario, dataAtual, dataAtual, Global.funcionarioLogado);
+                Funcionario funcionario = new Funcionario(id, LoginTextBox.Text.Trim(),NomeTextBox.Text.Trim().ToUpper(), SenhaTextBox.Text.Trim(), CargoTextBox.Text.Trim().ToUpper(), numSalario, dataAtual, dataAtual, Global.funcionarioLogado);
                 funcionarios.Add(funcionario);
                 repository.Add(funcionario);
 
                 id++;
 
+                LoginTextBox.Clear();
                 NomeTextBox.Clear();
                 SenhaTextBox.Clear();
                 CargoTextBox.Clear();

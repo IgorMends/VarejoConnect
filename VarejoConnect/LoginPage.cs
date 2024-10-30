@@ -43,7 +43,7 @@ namespace VarejoConnect
             
             foreach(var funcionario in funcionarios)
             {
-                if (funcionario.nome.Equals(textBox1.Text) && funcionario.senha.Equals(textBox2.Text))
+                if (funcionario.login.Equals(textBox1.Text) && funcionario.senha.Equals(textBox2.Text))
                 {
                     funcExiste = true;
                     Global.funcionarioLogado = funcionario.id;

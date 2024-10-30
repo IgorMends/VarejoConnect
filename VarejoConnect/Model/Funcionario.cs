@@ -9,6 +9,7 @@ namespace VarejoConnect.Model
     public class Funcionario
     {
         public int id{ get; set; }
+        public string login { get; set; }
         public string nome { get; set; }
         public string senha { get; set; }
         public string cargo { get; set; }
@@ -20,9 +21,10 @@ namespace VarejoConnect.Model
 
         public Funcionario() { }
 
-        public Funcionario(int id, string nome, string senha, string cargo, double salario, DateTime dataCriacao, DateTime dataAlteracao, int funcionarioAlteracao)
+        public Funcionario(int id, string login,string nome, string senha, string cargo, double salario, DateTime dataCriacao, DateTime dataAlteracao, int funcionarioAlteracao)
         {
             this.id = id;
+            this.login = login;
             this.nome = nome;
             this.senha = senha;
             this.cargo = cargo;

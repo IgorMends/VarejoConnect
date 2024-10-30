@@ -2,6 +2,7 @@ CREATE DATABASE "VarejoDB";
 
 create table funcionarios(
 	id serial primary key,
+	login varchar(200) not null,
 	nome varchar(200) not null,
 	senha varchar(200) not null,
 	cargo varchar(200) not null,
@@ -41,7 +42,7 @@ create table produtos(
 	descricao varchar(200) not null,
 	funcionario_fk int not null,
 	dataalteracao date not null,
-	dataariacao date not null,
+	datacriacao date not null,
 	FOREIGN KEY (funcionario_fk) REFERENCES funcionarios(id)
 );
 
@@ -60,5 +61,5 @@ create table caixa(
 	FOREIGN KEY (funcionario_fk) REFERENCES funcionarios(id)
 );
 
-INSERT INTO public.funcionarios(id, nome, senha, cargo, salario, funcionarioalteracao, dataalteracao, datacriacao)
-	VALUES (0, 'admin', 'admin', 'admin', 0, 0, CURRENT_DATE, CURRENT_DATE);
+INSERT INTO public.funcionarios(id, login,nome, senha, cargo, salario, funcionarioalteracao, dataalteracao, datacriacao)
+	VALUES (0, 'admin','admin', 'admin', 'admin', 0, 0, CURRENT_DATE, CURRENT_DATE);
