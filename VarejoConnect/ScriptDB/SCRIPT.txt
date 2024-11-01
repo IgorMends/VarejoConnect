@@ -15,8 +15,9 @@ create table funcionarios(
 create table clientes(
 	id serial primary key,
 	nome varchar(200) not null,
+	cpf varchar(11) not null,
 	email varchar(250) not null UNIQUE,
-	telefone varchar(13) not null,
+	telefone varchar(11) not null,
 	funcionario_fk int not null,
 	data_alteracao date not null,
 	data_criacao date not null,

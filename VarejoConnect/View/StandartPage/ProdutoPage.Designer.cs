@@ -100,7 +100,7 @@
             PesquisarTextBox.Location = new Point(88, 30);
             PesquisarTextBox.Name = "PesquisarTextBox";
             PesquisarTextBox.Size = new Size(308, 21);
-            PesquisarTextBox.TabIndex = 14;
+            PesquisarTextBox.TabIndex = 4;
             // 
             // BtnPesquisar
             // 
@@ -170,7 +170,7 @@
             PrecoTextBox.Location = new Point(75, 56);
             PrecoTextBox.Name = "PrecoTextBox";
             PrecoTextBox.Size = new Size(237, 21);
-            PrecoTextBox.TabIndex = 7;
+            PrecoTextBox.TabIndex = 1;
             // 
             // label5
             // 
@@ -188,7 +188,7 @@
             MarcaTextBox.Location = new Point(75, 91);
             MarcaTextBox.Name = "MarcaTextBox";
             MarcaTextBox.Size = new Size(237, 21);
-            MarcaTextBox.TabIndex = 5;
+            MarcaTextBox.TabIndex = 2;
             // 
             // label4
             // 
@@ -224,7 +224,7 @@
             NomeTextBox.Location = new Point(76, 24);
             NomeTextBox.Name = "NomeTextBox";
             NomeTextBox.Size = new Size(236, 21);
-            NomeTextBox.TabIndex = 1;
+            NomeTextBox.TabIndex = 0;
             // 
             // label1
             // 
@@ -265,7 +265,7 @@
             SearchOptions.Location = new Point(241, 66);
             SearchOptions.Name = "SearchOptions";
             SearchOptions.Size = new Size(160, 24);
-            SearchOptions.TabIndex = 30;
+            SearchOptions.TabIndex = 5;
             // 
             // label7
             // 

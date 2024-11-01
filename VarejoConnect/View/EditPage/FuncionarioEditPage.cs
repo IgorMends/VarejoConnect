@@ -51,7 +51,7 @@ namespace VarejoConnect.View.EditPage
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            this.Close();
+            actions.CloseApplication();
         }
 
         private void FuncionarioEditPage_Load(object sender, EventArgs e)

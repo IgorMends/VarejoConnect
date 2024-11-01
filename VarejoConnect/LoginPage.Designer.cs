@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginPage));
             panel1 = new Panel();
             pictureBox2 = new PictureBox();
+            pictureBox3 = new PictureBox();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -38,11 +39,10 @@
             button1 = new Button();
             pictureBox1 = new PictureBox();
             textBox2 = new TextBox();
-            pictureBox3 = new PictureBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -67,6 +67,16 @@
             pictureBox2.TabIndex = 0;
             pictureBox2.TabStop = false;
             pictureBox2.Click += pictureBox2_Click;
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
+            pictureBox3.Location = new Point(33, 22);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(350, 350);
+            pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox3.TabIndex = 1;
+            pictureBox3.TabStop = false;
             // 
             // label1
             // 
@@ -109,7 +119,7 @@
             textBox1.Location = new Point(116, 173);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(207, 23);
-            textBox1.TabIndex = 5;
+            textBox1.TabIndex = 0;
             // 
             // button1
             // 
@@ -119,7 +129,7 @@
             button1.Location = new Point(100, 322);
             button1.Name = "button1";
             button1.Size = new Size(155, 35);
-            button1.TabIndex = 6;
+            button1.TabIndex = 2;
             button1.Text = "Entrar";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
@@ -140,20 +150,10 @@
             textBox2.Location = new Point(116, 227);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(207, 23);
-            textBox2.TabIndex = 8;
+            textBox2.TabIndex = 0;
             textBox2.UseSystemPasswordChar = true;
             // 
-            // pictureBox3
-            // 
-            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(33, 22);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(350, 350);
-            pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox3.TabIndex = 1;
-            pictureBox3.TabStop = false;
-            // 
-            // Form1
+            // LoginPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -168,13 +168,13 @@
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Name = "Form1";
+            Name = "LoginPage";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }

@@ -31,6 +31,8 @@
             dataGridView1 = new DataGridView();
             label2 = new Label();
             groupBox1 = new GroupBox();
+            LoginTextBox = new TextBox();
+            label9 = new Label();
             button1 = new Button();
             BtnEditar = new Button();
             ConfirmarSenhaTextBox = new TextBox();
@@ -51,8 +53,6 @@
             groupBox2 = new GroupBox();
             SearchOptions = new ComboBox();
             label7 = new Label();
-            LoginTextBox = new TextBox();
-            label9 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -104,6 +104,24 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Cadastro";
             groupBox1.Enter += groupBox1_Enter;
+            // 
+            // LoginTextBox
+            // 
+            LoginTextBox.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LoginTextBox.Location = new Point(76, 121);
+            LoginTextBox.Name = "LoginTextBox";
+            LoginTextBox.Size = new Size(237, 21);
+            LoginTextBox.TabIndex = 32;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label9.Location = new Point(23, 123);
+            label9.Name = "label9";
+            label9.Size = new Size(43, 17);
+            label9.TabIndex = 31;
+            label9.Text = "Login:";
             // 
             // button1
             // 
@@ -172,7 +190,7 @@
             BtnInativar.Name = "BtnInativar";
             BtnInativar.Size = new Size(208, 57);
             BtnInativar.TabIndex = 12;
-            BtnInativar.Text = "Inativar";
+            BtnInativar.Text = "Excluir";
             BtnInativar.UseVisualStyleBackColor = false;
             BtnInativar.Click += BtnInativar_Click;
             // 
@@ -324,24 +342,6 @@
             label7.Size = new Size(201, 17);
             label7.TabIndex = 19;
             label7.Text = "Selecione um metodo de busca:";
-            // 
-            // LoginTextBox
-            // 
-            LoginTextBox.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LoginTextBox.Location = new Point(76, 121);
-            LoginTextBox.Name = "LoginTextBox";
-            LoginTextBox.Size = new Size(237, 21);
-            LoginTextBox.TabIndex = 32;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label9.Location = new Point(23, 123);
-            label9.Name = "label9";
-            label9.Size = new Size(43, 17);
-            label9.TabIndex = 31;
-            label9.Text = "Login:";
             // 
             // FuncionarioPage
             // 
