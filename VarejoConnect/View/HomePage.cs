@@ -66,8 +66,7 @@ namespace VarejoConnect.View
 
         private void button5_Click(object sender, EventArgs e)
         {
-            CaixaPage caixaPage = new CaixaPage();
-            actions.ChangePage(panel2, caixaPage);
+           
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)

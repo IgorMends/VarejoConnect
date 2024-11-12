@@ -56,11 +56,5 @@ create table produto_venda(
 	FOREIGN KEY (produto_fk) REFERENCES produtos(id)
 );
 
-create table caixa(
-	saldo double precision not null,
-	funcionario_fk int not null,
-	FOREIGN KEY (funcionario_fk) REFERENCES funcionarios(id)
-);
-
 INSERT INTO public.funcionarios(id, login,nome, senha, cargo, salario, funcionarioalteracao, dataalteracao, datacriacao)
 	VALUES (0, 'admin','admin', 'admin', 'admin', 0, 0, CURRENT_DATE, CURRENT_DATE);

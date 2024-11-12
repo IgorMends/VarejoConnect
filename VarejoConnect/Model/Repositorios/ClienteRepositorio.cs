@@ -39,7 +39,16 @@ namespace VarejoConnect.Model.Repositorios
 
             string query = @"SELECT MAX(id) AS maior_id FROM clientes;";
 
-            int id = connection.Connection.QuerySingleOrDefault<int>(query);
+            int id;
+
+            try
+            {
+                id = connection.Connection.QuerySingleOrDefault<int>(query);
+            }
+            catch (System.Data.DataException ex)
+            {
+                return -1;
+            }
 
             return id;
         }

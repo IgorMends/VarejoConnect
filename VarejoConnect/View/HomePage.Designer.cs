@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomePage));
             pictureBox1 = new PictureBox();
             panel1 = new Panel();
-            button5 = new Button();
             label3 = new Label();
             button4 = new Button();
             button3 = new Button();
@@ -68,7 +67,6 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(121, 182, 201);
-            panel1.Controls.Add(button5);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(button4);
             panel1.Controls.Add(button3);
@@ -84,34 +82,14 @@
             panel1.TabIndex = 1;
             panel1.Paint += panel1_Paint;
             // 
-            // button5
-            // 
-            button5.BackColor = Color.Transparent;
-            button5.Cursor = Cursors.Hand;
-            button5.FlatAppearance.BorderSize = 0;
-            button5.FlatAppearance.MouseDownBackColor = Color.FromArgb(82, 168, 191);
-            button5.FlatAppearance.MouseOverBackColor = Color.FromArgb(82, 168, 191);
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button5.ForeColor = Color.White;
-            button5.Image = (Image)resources.GetObject("button5.Image");
-            button5.Location = new Point(0, 521);
-            button5.Name = "button5";
-            button5.Size = new Size(248, 48);
-            button5.TabIndex = 15;
-            button5.Text = "Caixa";
-            button5.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button5.UseVisualStyleBackColor = false;
-            button5.Click += button5_Click;
-            // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.White;
             label3.Location = new Point(167, 654);
             label3.Name = "label3";
-            label3.Size = new Size(48, 16);
+            label3.Size = new Size(50, 16);
             label3.TabIndex = 4;
             label3.Text = "label3";
             label3.Click += label3_Click;
@@ -124,10 +102,10 @@
             button4.FlatAppearance.MouseDownBackColor = Color.FromArgb(82, 168, 191);
             button4.FlatAppearance.MouseOverBackColor = Color.FromArgb(82, 168, 191);
             button4.FlatStyle = FlatStyle.Flat;
-            button4.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button4.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button4.ForeColor = Color.White;
             button4.Image = (Image)resources.GetObject("button4.Image");
-            button4.Location = new Point(0, 421);
+            button4.Location = new Point(0, 456);
             button4.Name = "button4";
             button4.Size = new Size(248, 48);
             button4.TabIndex = 14;
@@ -144,10 +122,10 @@
             button3.FlatAppearance.MouseDownBackColor = Color.FromArgb(82, 168, 191);
             button3.FlatAppearance.MouseOverBackColor = Color.FromArgb(82, 168, 191);
             button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button3.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button3.ForeColor = Color.White;
             button3.Image = (Image)resources.GetObject("button3.Image");
-            button3.Location = new Point(0, 321);
+            button3.Location = new Point(0, 356);
             button3.Name = "button3";
             button3.Size = new Size(248, 48);
             button3.TabIndex = 13;
@@ -164,10 +142,10 @@
             button2.FlatAppearance.MouseDownBackColor = Color.FromArgb(82, 168, 191);
             button2.FlatAppearance.MouseOverBackColor = Color.FromArgb(82, 168, 191);
             button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button2.ForeColor = Color.White;
             button2.Image = (Image)resources.GetObject("button2.Image");
-            button2.Location = new Point(0, 221);
+            button2.Location = new Point(0, 256);
             button2.Name = "button2";
             button2.Size = new Size(248, 48);
             button2.TabIndex = 12;
@@ -189,11 +167,11 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.White;
             label2.Location = new Point(9, 24);
             label2.Name = "label2";
-            label2.Size = new Size(195, 28);
+            label2.Size = new Size(192, 29);
             label2.TabIndex = 8;
             label2.Text = "Varejo Connect";
             // 
@@ -201,11 +179,11 @@
             // 
             label1.AutoSize = true;
             label1.Cursor = Cursors.Hand;
-            label1.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
             label1.Location = new Point(9, 648);
             label1.Name = "label1";
-            label1.Size = new Size(44, 23);
+            label1.Size = new Size(46, 24);
             label1.TabIndex = 0;
             label1.Text = "Sair";
             label1.Click += label1_Click;
@@ -218,10 +196,10 @@
             button1.FlatAppearance.MouseDownBackColor = Color.FromArgb(82, 168, 191);
             button1.FlatAppearance.MouseOverBackColor = Color.FromArgb(82, 168, 191);
             button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.ForeColor = Color.White;
             button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.Location = new Point(0, 121);
+            button1.Location = new Point(0, 156);
             button1.Name = "button1";
             button1.Size = new Size(248, 48);
             button1.TabIndex = 11;
@@ -266,22 +244,22 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Font = new Font("Century Gothic", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label8.Font = new Font("Microsoft Sans Serif", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label8.ForeColor = Color.FromArgb(121, 182, 201);
             label8.Location = new Point(211, 283);
             label8.Name = "label8";
-            label8.Size = new Size(525, 77);
+            label8.Size = new Size(489, 73);
             label8.TabIndex = 10;
             label8.Text = "Varejo Connect";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.FromArgb(121, 182, 201);
             label4.Location = new Point(254, 9);
             label4.Name = "label4";
-            label4.Size = new Size(48, 16);
+            label4.Size = new Size(50, 16);
             label4.TabIndex = 5;
             label4.Text = "label4";
             label4.Click += label4_Click;
@@ -322,7 +300,6 @@
         private PictureBox pictureBox4;
         private Label label2;
         private Button button1;
-        private Button button5;
         private Button button4;
         private Button button3;
         private Button button2;
