@@ -23,12 +23,14 @@ namespace VarejoConnect.View
 		BindingList<Produto> carrinho = new BindingList<Produto>();
 		VendaRepositorio vendaRepositorio = new VendaRepositorio();
         DateTime dataAtual = DateTime.Today;
+		int idVenda;
         double precoTotal;
 
 		public VendaPage()
 		{
 			InitializeComponent();
-			dataGridView1.DataSource = null;
+            idVenda = vendaRepositorio.getHighestId() + 1;
+            dataGridView1.DataSource = null;
 			dataGridView1.DataSource = carrinho;
 			dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 			dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -550,9 +552,6 @@ namespace VarejoConnect.View
                     MessageBox.Show("Selecione uma forma de pagamento!", "Error", MessageBoxButtons.OK);
                     return;
                 }
-
-
-                int idVenda = vendaRepositorio.getHighestId() + 1;
                 
                 Venda venda = new Venda(idVenda, precoTotal, TipoDropBox.Text, dataAtual, clienteSelecionado.id, Global.funcionarioLogado);
                 vendaRepositorio.Add(venda);
@@ -562,6 +561,8 @@ namespace VarejoConnect.View
                     produtoRepositorio.decreaseQuantity(produto, produto.quantidade);
                 }
 
+				idVenda++;
+				precoTotal = 0;
                 carrinho.Clear();
                 TotalLabel.Text = "";
                 subTotalLabel.Text = "";

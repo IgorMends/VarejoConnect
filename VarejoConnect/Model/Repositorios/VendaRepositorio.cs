@@ -1,4 +1,4 @@
-﻿using Dapper;
+﻿ using Dapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +26,7 @@ namespace VarejoConnect.Model.Repositorios
         {
             using var connection = new ConnectionDb();
 
-            string query = @"SELECT MAX(id) AS maior_id FROM produtos;";
+            string query = @"SELECT MAX(id) AS maior_id FROM vendas;";
 
             int id;
 
