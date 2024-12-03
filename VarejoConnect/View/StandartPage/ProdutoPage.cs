@@ -34,6 +34,7 @@ namespace VarejoConnect.View
             dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns["id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridView1.Columns["preco"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["quantidade"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridView1.Columns["funcionarioAlteracao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -86,7 +87,7 @@ namespace VarejoConnect.View
                 return;
             }
 
-            Produto produto = new Produto(id, NomeTextBox.Text.Trim().ToUpper(), MarcaTextBox.Text.Trim().ToUpper(), DescricaoTextBox.Text.Trim().ToUpper(), numPreco, Global.funcionarioLogado, dataAtual, dataAtual);
+            Produto produto = new Produto(id, NomeTextBox.Text.Trim().ToUpper(), MarcaTextBox.Text.Trim().ToUpper(), DescricaoTextBox.Text.Trim().ToUpper(), numPreco, 0, Global.funcionarioLogado, dataAtual, dataAtual);
             produtos.Add(produto);
             repository.Add(produto);
 
@@ -161,6 +162,7 @@ namespace VarejoConnect.View
             dataGridView1.DataSource = buscaProdutos;
             dataGridView1.Columns["id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridView1.Columns["preco"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["quantidade"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridView1.Columns["funcionarioAlteracao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -279,6 +281,37 @@ namespace VarejoConnect.View
                 }
             }
             PesquisarTextBox.Clear();
+        }
+
+        private void btnAtt_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 1)
+            {
+                DataGridViewRow dataGridViewRow = dataGridView1.SelectedRows[0];
+                Produto produtoSelecionado = dataGridViewRow.DataBoundItem as Produto;
+
+                
+
+                try
+                {
+                    int quantidadeAdicional = int.Parse(quantidadeTextBox.Text);
+                    produtoSelecionado.quantidade = produtoSelecionado.quantidade + quantidadeAdicional;
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Você tem que digitar apenas numeros no campo de Quantidade!", "Error", MessageBoxButtons.OK);
+                    return;
+                }
+
+                repository.updateQuantidade(produtoSelecionado);
+                quantidadeTextBox.Clear();
+
+                dataGridView1.Refresh();
+            }
+            else
+            {
+                MessageBox.Show("Selecione UM produto para alterar a quantidade!", "Error", MessageBoxButtons.OK);
+            }
         }
     }
 }

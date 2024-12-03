@@ -43,7 +43,7 @@ namespace VarejoConnect.View.EditPage
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            actions.CloseApplication();
+            this.Close();
         }
     }
 }

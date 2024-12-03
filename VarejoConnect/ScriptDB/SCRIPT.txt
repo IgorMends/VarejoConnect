@@ -39,6 +39,7 @@ create table produtos(
 	id serial primary key,
 	nome varchar(200) not null,
 	preco double precision not null,
+	quantidade int not null,
 	marca varchar(200) not null,
 	descricao varchar(200) not null,
 	funcionario_fk int not null,

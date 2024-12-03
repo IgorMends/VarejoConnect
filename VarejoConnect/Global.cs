@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using VarejoConnect.Model;
 
-namespace VarejoConnect.Controller
+namespace VarejoConnect
 {
     public class Global
     {

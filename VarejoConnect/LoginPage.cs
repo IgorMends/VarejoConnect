@@ -1,4 +1,3 @@
-using VarejoConnect.Controller;
 using VarejoConnect.Model;
 using VarejoConnect.Model.Repositorios;
 using VarejoConnect.View;

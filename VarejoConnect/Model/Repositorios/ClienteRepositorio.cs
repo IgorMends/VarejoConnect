@@ -98,5 +98,16 @@ namespace VarejoConnect.Model.Repositorios
 
             return clienteRetornado;
         }
-    }
+
+		public Cliente getByName(string nome)
+		{
+			using var connection = new ConnectionDb();
+
+			string query = @"SELECT * FROM clientes WHERE nome = @nome;";
+
+			Cliente clienteRetornado = connection.Connection.QuerySingleOrDefault<Cliente>(query, new { nome = nome });
+
+			return clienteRetornado;
+		}
+	}
 }
