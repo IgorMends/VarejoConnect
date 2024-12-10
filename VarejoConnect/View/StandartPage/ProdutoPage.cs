@@ -290,14 +290,14 @@ namespace VarejoConnect.View
                 DataGridViewRow dataGridViewRow = dataGridView1.SelectedRows[0];
                 Produto produtoSelecionado = dataGridViewRow.DataBoundItem as Produto;
 
-                
+
 
                 try
                 {
                     int quantidadeAdicional = int.Parse(quantidadeTextBox.Text);
                     produtoSelecionado.quantidade = produtoSelecionado.quantidade + quantidadeAdicional;
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show("Você tem que digitar apenas numeros no campo de Quantidade!", "Error", MessageBoxButtons.OK);
                     return;
@@ -312,6 +312,11 @@ namespace VarejoConnect.View
             {
                 MessageBox.Show("Selecione UM produto para alterar a quantidade!", "Error", MessageBoxButtons.OK);
             }
+        }
+
+        private void ProdutoPage_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

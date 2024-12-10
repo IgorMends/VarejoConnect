@@ -18,9 +18,9 @@ create table clientes(
 	cpf varchar(11) not null,
 	email varchar(250) not null UNIQUE,
 	telefone varchar(11) not null,
-	funcionario_fk int not null,
-	data_alteracao date not null,
-	data_criacao date not null,
+	funcionarioalteracao int not null,
+	dataalteracao date not null,
+	datacriacao date not null,
 	FOREIGN KEY (funcionario_fk) REFERENCES funcionarios(id)
 );
 
@@ -42,7 +42,7 @@ create table produtos(
 	quantidade int not null,
 	marca varchar(200) not null,
 	descricao varchar(200) not null,
-	funcionario_fk int not null,
+	funcionarioalteracao int not null,
 	dataalteracao date not null,
 	datacriacao date not null,
 	FOREIGN KEY (funcionario_fk) REFERENCES funcionarios(id)

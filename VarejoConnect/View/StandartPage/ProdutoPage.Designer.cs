@@ -370,6 +370,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "ProdutoPage";
             Text = "ProdutoPage";
+            Load += ProdutoPage_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

@@ -49,6 +49,8 @@
             label1 = new Label();
             label2 = new Label();
             dataGridView1 = new DataGridView();
+            RelatorioTextBox = new TextBox();
+            label3 = new Label();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -71,21 +73,21 @@
             // SearchOptions
             // 
             SearchOptions.DropDownStyle = ComboBoxStyle.DropDownList;
-            SearchOptions.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            SearchOptions.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             SearchOptions.FormattingEnabled = true;
             SearchOptions.Items.AddRange(new object[] { "TODOS", "NOME", "ID", "CPF" });
             SearchOptions.Location = new Point(242, 65);
             SearchOptions.Name = "SearchOptions";
-            SearchOptions.Size = new Size(160, 24);
+            SearchOptions.Size = new Size(160, 23);
             SearchOptions.TabIndex = 31;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label7.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label7.Location = new Point(25, 67);
             label7.Name = "label7";
-            label7.Size = new Size(201, 17);
+            label7.Size = new Size(184, 15);
             label7.TabIndex = 19;
             label7.Text = "Selecione um metodo de busca:";
             // 
@@ -94,7 +96,7 @@
             BtnPesquisar.BackColor = Color.FromArgb(121, 182, 201);
             BtnPesquisar.FlatAppearance.BorderSize = 0;
             BtnPesquisar.FlatStyle = FlatStyle.Popup;
-            BtnPesquisar.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnPesquisar.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnPesquisar.ForeColor = Color.White;
             BtnPesquisar.Location = new Point(376, 22);
             BtnPesquisar.Name = "BtnPesquisar";
@@ -107,23 +109,25 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label6.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label6.Location = new Point(25, 32);
             label6.Name = "label6";
-            label6.Size = new Size(66, 17);
+            label6.Size = new Size(65, 15);
             label6.TabIndex = 13;
             label6.Text = "Pesquisar:";
             // 
             // PesquisarTextBox
             // 
-            PesquisarTextBox.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            PesquisarTextBox.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             PesquisarTextBox.Location = new Point(92, 29);
             PesquisarTextBox.Name = "PesquisarTextBox";
-            PesquisarTextBox.Size = new Size(247, 21);
+            PesquisarTextBox.Size = new Size(247, 20);
             PesquisarTextBox.TabIndex = 14;
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(label3);
+            groupBox1.Controls.Add(RelatorioTextBox);
             groupBox1.Controls.Add(CpfTextBox);
             groupBox1.Controls.Add(label9);
             groupBox1.Controls.Add(button1);
@@ -145,19 +149,19 @@
             // 
             // CpfTextBox
             // 
-            CpfTextBox.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            CpfTextBox.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             CpfTextBox.Location = new Point(76, 58);
             CpfTextBox.Name = "CpfTextBox";
-            CpfTextBox.Size = new Size(237, 21);
+            CpfTextBox.Size = new Size(237, 20);
             CpfTextBox.TabIndex = 32;
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label9.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label9.Location = new Point(23, 60);
             label9.Name = "label9";
-            label9.Size = new Size(33, 17);
+            label9.Size = new Size(33, 15);
             label9.TabIndex = 31;
             label9.Text = "CPF:";
             // 
@@ -166,21 +170,22 @@
             button1.BackColor = Color.FromArgb(121, 182, 201);
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Popup;
-            button1.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.ForeColor = Color.White;
-            button1.Location = new Point(65, 452);
+            button1.Location = new Point(91, 523);
             button1.Name = "button1";
-            button1.Size = new Size(208, 57);
+            button1.Size = new Size(149, 33);
             button1.TabIndex = 30;
             button1.Text = "Gerar Relatorio";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // BtnEditar
             // 
             BtnEditar.BackColor = Color.FromArgb(121, 182, 201);
             BtnEditar.FlatAppearance.BorderSize = 0;
             BtnEditar.FlatStyle = FlatStyle.Popup;
-            BtnEditar.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnEditar.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnEditar.ForeColor = Color.White;
             BtnEditar.Location = new Point(65, 372);
             BtnEditar.Name = "BtnEditar";
@@ -192,10 +197,10 @@
             // 
             // EmailTextBox
             // 
-            EmailTextBox.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            EmailTextBox.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             EmailTextBox.Location = new Point(76, 93);
             EmailTextBox.Name = "EmailTextBox";
-            EmailTextBox.Size = new Size(237, 21);
+            EmailTextBox.Size = new Size(237, 20);
             EmailTextBox.TabIndex = 7;
             // 
             // BtnInativar
@@ -203,7 +208,7 @@
             BtnInativar.BackColor = Color.FromArgb(121, 182, 201);
             BtnInativar.FlatAppearance.BorderSize = 0;
             BtnInativar.FlatStyle = FlatStyle.Popup;
-            BtnInativar.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnInativar.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnInativar.ForeColor = Color.White;
             BtnInativar.Location = new Point(65, 291);
             BtnInativar.Name = "BtnInativar";
@@ -216,10 +221,10 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label5.Location = new Point(23, 95);
             label5.Name = "label5";
-            label5.Size = new Size(42, 17);
+            label5.Size = new Size(42, 15);
             label5.TabIndex = 6;
             label5.Text = "Email:";
             // 
@@ -228,7 +233,7 @@
             BtnSalvar.BackColor = Color.FromArgb(121, 182, 201);
             BtnSalvar.FlatAppearance.BorderSize = 0;
             BtnSalvar.FlatStyle = FlatStyle.Popup;
-            BtnSalvar.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnSalvar.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnSalvar.ForeColor = Color.White;
             BtnSalvar.Location = new Point(65, 212);
             BtnSalvar.Name = "BtnSalvar";
@@ -240,50 +245,50 @@
             // 
             // TelefoneTextBox
             // 
-            TelefoneTextBox.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TelefoneTextBox.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             TelefoneTextBox.Location = new Point(91, 128);
             TelefoneTextBox.Name = "TelefoneTextBox";
-            TelefoneTextBox.Size = new Size(221, 21);
+            TelefoneTextBox.Size = new Size(221, 20);
             TelefoneTextBox.TabIndex = 5;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label4.Location = new Point(23, 130);
             label4.Name = "label4";
-            label4.Size = new Size(62, 17);
+            label4.Size = new Size(58, 15);
             label4.TabIndex = 4;
             label4.Text = "Telefone:";
             // 
             // NomeTextBox
             // 
-            NomeTextBox.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            NomeTextBox.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             NomeTextBox.Location = new Point(76, 24);
             NomeTextBox.Name = "NomeTextBox";
-            NomeTextBox.Size = new Size(237, 21);
+            NomeTextBox.Size = new Size(237, 20);
             NomeTextBox.TabIndex = 1;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.Location = new Point(23, 26);
             label1.Name = "label1";
-            label1.Size = new Size(47, 17);
+            label1.Size = new Size(44, 15);
             label1.TabIndex = 0;
             label1.Text = "Nome:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.FromArgb(121, 182, 201);
             label2.Location = new Point(25, 3);
             label2.Name = "label2";
-            label2.Size = new Size(273, 28);
+            label2.Size = new Size(221, 29);
             label2.TabIndex = 21;
-            label2.Text = "Cadastro Funcionários";
+            label2.Text = "Cadastro Clientes";
             // 
             // dataGridView1
             // 
@@ -293,6 +298,24 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(652, 373);
             dataGridView1.TabIndex = 20;
+            // 
+            // RelatorioTextBox
+            // 
+            RelatorioTextBox.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            RelatorioTextBox.Location = new Point(46, 483);
+            RelatorioTextBox.Name = "RelatorioTextBox";
+            RelatorioTextBox.Size = new Size(240, 20);
+            RelatorioTextBox.TabIndex = 32;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Location = new Point(76, 465);
+            label3.Name = "label3";
+            label3.Size = new Size(180, 15);
+            label3.TabIndex = 33;
+            label3.Text = "Gerar Relatorio PDF Por Nome:";
             // 
             // ClientePage
             // 
@@ -338,5 +361,7 @@
         private Label label1;
         private Label label2;
         private DataGridView dataGridView1;
+        private Label label3;
+        private TextBox RelatorioTextBox;
     }
 }

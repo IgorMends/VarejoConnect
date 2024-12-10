@@ -11,6 +11,8 @@ using VarejoConnect.Controller;
 using VarejoConnect.Model.Repositorios;
 using VarejoConnect.Model;
 using VarejoConnect.View.EditPage;
+using QuestPDF.Fluent;
+using System.Globalization;
 
 namespace VarejoConnect.View
 {
@@ -20,7 +22,7 @@ namespace VarejoConnect.View
         ClienteRepositorio repository = new ClienteRepositorio();
         Actions actions = new Actions();
         BindingList<Cliente> buscaClientes = new BindingList<Cliente>();
-        BindingList<Cliente> clientes;
+        BindingList<Cliente> clientes = new BindingList<Cliente>();
         List<string> textBoxes = new List<string>();
         DateTime dataAtual = DateTime.Today;
         int id;
@@ -173,7 +175,7 @@ namespace VarejoConnect.View
         {
             buscaClientes.Clear();
             dataGridView1.DataSource = null;
-            dataGridView1.DataSource = clientes;
+            dataGridView1.DataSource = buscaClientes;
             dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns["id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -200,7 +202,6 @@ namespace VarejoConnect.View
                 {
                     dataGridView1.DataSource = null;
                     dataGridView1.DataSource = clientes;
-                    dataGridView1.Columns["senha"].Visible = false;
                 }
                 else
                 {
@@ -233,10 +234,11 @@ namespace VarejoConnect.View
                         else if (criterioBusca.Equals("ID"))
                         {
                             bool clienteExiste = false;
+                            int numId;
 
                             try
                             {
-                                int numId = int.Parse(PesquisarTextBox.Text);
+                                numId = int.Parse(PesquisarTextBox.Text);
                             }
                             catch (FormatException ex)
                             {
@@ -247,7 +249,7 @@ namespace VarejoConnect.View
 
                             foreach (var cliente in clientes)
                             {
-                                if (cliente.id == int.Parse(PesquisarTextBox.Text))
+                                if (cliente.id == numId)
                                 {
                                     buscaClientes.Add(cliente);
 
@@ -299,6 +301,61 @@ namespace VarejoConnect.View
                 }
             }
             PesquisarTextBox.Clear();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show("Você quer gerar o relatorio em PDF?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resultado == DialogResult.Yes)
+            {
+
+                bool clienteExiste = false;
+                List<Cliente> clientesRelatorio = new List<Cliente>();
+
+                string pesquisa = RelatorioTextBox.Text.Trim();
+                if (string.IsNullOrWhiteSpace(pesquisa))
+                {
+                    foreach (var cliente in clientes)
+                    {                        
+                        clientesRelatorio.Add(cliente);
+                        clienteExiste = true;                        
+                    }
+                }
+                else
+                {
+                    foreach (var cliente in clientes)
+                    {
+                        if (cliente.nome.Contains(pesquisa, StringComparison.OrdinalIgnoreCase))
+                        {
+                            clientesRelatorio.Add(cliente);
+                            clienteExiste = true;
+                        }
+                    }
+                }
+
+                if (!clienteExiste)
+                {
+                    MessageBox.Show("Nenhum cliente com este nome!", "Error", MessageBoxButtons.OK);
+                }
+
+
+
+                QuestPDF.Settings.License = QuestPDF.Infrastructure.LicenseType.Community;
+                string dataAtual = DateTime.Now.ToString("yyyyMMddHHmmss", CultureInfo.InvariantCulture);
+                string titulo = $"Relatório De Clientes Por Nome - {dataAtual}";
+
+                string diretorio = @"C:\Users\claud\OneDrive\Desktop";
+                if (!Directory.Exists(diretorio))
+                {
+                    MessageBox.Show("Diretorio Incorreto, verificar!", "Error", MessageBoxButtons.OK);
+                    return;
+                }
+
+                string nomeArquivo = Path.Combine(diretorio, $"relatorioClientesNome-{dataAtual}.pdf");
+
+                var relatorio = new RelatorioClientes(clientesRelatorio, titulo);
+                relatorio.GeneratePdf(nomeArquivo);
+            }
         }
     }
 }
