@@ -351,7 +351,7 @@ namespace VarejoConnect.View
                     return;
                 }
 
-                string nomeArquivo = Path.Combine(diretorio, $"relatorioClientesNome-{dataAtual}.pdf");
+                string nomeArquivo = Path.Combine(diretorio, $"relatorio-Clientes-Por-Nome-{dataAtual}.pdf");
 
                 var relatorio = new RelatorioClientes(clientesRelatorio, titulo);
                 relatorio.GeneratePdf(nomeArquivo);

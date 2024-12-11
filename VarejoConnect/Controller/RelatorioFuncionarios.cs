@@ -1,25 +1,23 @@
-﻿using System;
+﻿using QuestPDF.Fluent;
+using QuestPDF.Helpers;
+using QuestPDF.Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using QuestPDF.Fluent;
-using QuestPDF.Helpers;
-using QuestPDF.Infrastructure;
 using VarejoConnect.Model;
-using static Npgsql.Replication.PgOutput.Messages.RelationMessage;
 
 namespace VarejoConnect.Controller
 {
-    public class RelatorioClientes : IDocument
+    public class RelatorioFuncionarios : IDocument
     {
-
-        private readonly List<Cliente> _clientes;
+        private readonly List<Funcionario> _funcionarios;
         private readonly string _titulo;
 
-        public RelatorioClientes(List<Cliente> clientes, string titulo)
+        public RelatorioFuncionarios(List<Funcionario> funcionarios, string titulo)
         {
-            _clientes = clientes;
+            _funcionarios = funcionarios;
             _titulo = titulo;
         }
 
@@ -61,42 +59,39 @@ namespace VarejoConnect.Controller
             {
                 table.ColumnsDefinition(columns =>
                 {
-                    columns.RelativeColumn(1);  
-                    columns.RelativeColumn(3);  
+                    columns.RelativeColumn(1); 
+                    columns.RelativeColumn(4); 
                     columns.RelativeColumn(2); 
-                    columns.RelativeColumn(3); 
                     columns.RelativeColumn(2); 
-                    columns.RelativeColumn(2);  
-                    columns.RelativeColumn(2);  
-                    columns.RelativeColumn(2);  
+                    columns.RelativeColumn(2);
+                    columns.RelativeColumn(2); 
+                    columns.RelativeColumn(2); 
                 });
 
                 table.Header(header =>
                 {
                     header.Cell().Element(CellStyle).Text("ID").FontSize(9).SemiBold();
                     header.Cell().Element(CellStyle).Text("Nome").FontSize(9).SemiBold();
-                    header.Cell().Element(CellStyle).Text("CPF").FontSize(9).SemiBold();
-                    header.Cell().Element(CellStyle).Text("E-mail").FontSize(9).SemiBold();
-                    header.Cell().Element(CellStyle).Text("Telefone").FontSize(9).SemiBold();
+                    header.Cell().Element(CellStyle).Text("Cargo").FontSize(9).SemiBold();
+                    header.Cell().Element(CellStyle).Text("Salario").FontSize(9).SemiBold();
                     header.Cell().Element(CellStyle).Text("Funcionário").FontSize(9).SemiBold();
                     header.Cell().Element(CellStyle).Text("Data Alteração").FontSize(9).SemiBold();
                     header.Cell().Element(CellStyle).Text("Data Criação").FontSize(9).SemiBold();
                 });
 
                 bool alternate = false;
-                foreach (var cliente in _clientes)
+                foreach (var funcionario in _funcionarios)
                 {
                     var backgroundColor = alternate ? Colors.Grey.Lighten3 : Colors.White;
                     alternate = !alternate;
 
-                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(cliente.id.ToString()).FontSize(7).AlignRight();
-                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(cliente.nome).FontSize(7);
-                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(cliente.cpf).FontSize(7).AlignRight();
-                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(cliente.email).FontSize(7);
-                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(cliente.telefone).FontSize(7).AlignRight();
-                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(cliente.funcionarioAlteracao.ToString()).FontSize(7).AlignRight();
-                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(cliente.dataAlteracao.ToString("yyyy/MM/dd")).FontSize(7).AlignRight();
-                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(cliente.dataCriacao.ToString("yyyy/MM/dd")).FontSize(7).AlignRight();
+                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(funcionario.id.ToString()).FontSize(7).AlignRight();
+                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(funcionario.nome).FontSize(7).WrapAnywhere(); 
+                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(funcionario.cargo).FontSize(7);
+                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(funcionario.salario.ToString()).FontSize(7).AlignRight();
+                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(funcionario.funcionarioAlteracao.ToString()).FontSize(7).AlignRight();
+                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(funcionario.dataAlteracao.ToString("yyyy/MM/dd")).FontSize(7).AlignRight();
+                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(funcionario.dataCriacao.ToString("yyyy/MM/dd")).FontSize(7).AlignRight();
                 }
             });
         }
@@ -105,10 +100,10 @@ namespace VarejoConnect.Controller
         {
             container.Row(row =>
             {
-                row.RelativeColumn().AlignLeft().Text("\u00a9 2024 - VarejoConnect").FontSize(10).Light();
+                row.RelativeColumn().AlignLeft().Text("© 2024 - VarejoConnect").FontSize(10).Light();
                 row.ConstantColumn(50).AlignRight().Text(text =>
                 {
-                    text.Span("P\u00e1gina ");
+                    text.Span("Página ");
                     text.CurrentPageNumber();
                 });
             });

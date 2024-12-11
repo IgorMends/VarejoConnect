@@ -33,7 +33,6 @@
             groupBox1 = new GroupBox();
             LoginTextBox = new TextBox();
             label9 = new Label();
-            button1 = new Button();
             BtnEditar = new Button();
             ConfirmarSenhaTextBox = new TextBox();
             label8 = new Label();
@@ -53,6 +52,9 @@
             groupBox2 = new GroupBox();
             SearchOptions = new ComboBox();
             label7 = new Label();
+            label10 = new Label();
+            RelatorioTextBox = new TextBox();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -71,19 +73,21 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.FromArgb(121, 182, 201);
             label2.Location = new Point(25, 3);
             label2.Name = "label2";
-            label2.Size = new Size(273, 28);
+            label2.Size = new Size(276, 29);
             label2.TabIndex = 9;
             label2.Text = "Cadastro Funcionários";
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(label10);
+            groupBox1.Controls.Add(RelatorioTextBox);
+            groupBox1.Controls.Add(button1);
             groupBox1.Controls.Add(LoginTextBox);
             groupBox1.Controls.Add(label9);
-            groupBox1.Controls.Add(button1);
             groupBox1.Controls.Add(BtnEditar);
             groupBox1.Controls.Add(ConfirmarSenhaTextBox);
             groupBox1.Controls.Add(label8);
@@ -107,42 +111,28 @@
             // 
             // LoginTextBox
             // 
-            LoginTextBox.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LoginTextBox.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             LoginTextBox.Location = new Point(76, 121);
             LoginTextBox.Name = "LoginTextBox";
-            LoginTextBox.Size = new Size(237, 21);
+            LoginTextBox.Size = new Size(237, 20);
             LoginTextBox.TabIndex = 32;
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label9.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label9.Location = new Point(23, 123);
             label9.Name = "label9";
-            label9.Size = new Size(43, 17);
+            label9.Size = new Size(41, 15);
             label9.TabIndex = 31;
             label9.Text = "Login:";
-            // 
-            // button1
-            // 
-            button1.BackColor = Color.FromArgb(121, 182, 201);
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Popup;
-            button1.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(65, 483);
-            button1.Name = "button1";
-            button1.Size = new Size(208, 57);
-            button1.TabIndex = 30;
-            button1.Text = "Gerar Relatorio";
-            button1.UseVisualStyleBackColor = false;
             // 
             // BtnEditar
             // 
             BtnEditar.BackColor = Color.FromArgb(121, 182, 201);
             BtnEditar.FlatAppearance.BorderSize = 0;
             BtnEditar.FlatStyle = FlatStyle.Popup;
-            BtnEditar.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnEditar.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnEditar.ForeColor = Color.White;
             BtnEditar.Location = new Point(65, 403);
             BtnEditar.Name = "BtnEditar";
@@ -154,29 +144,29 @@
             // 
             // ConfirmarSenhaTextBox
             // 
-            ConfirmarSenhaTextBox.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ConfirmarSenhaTextBox.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             ConfirmarSenhaTextBox.Location = new Point(135, 185);
             ConfirmarSenhaTextBox.Name = "ConfirmarSenhaTextBox";
-            ConfirmarSenhaTextBox.Size = new Size(177, 21);
+            ConfirmarSenhaTextBox.Size = new Size(177, 20);
             ConfirmarSenhaTextBox.TabIndex = 9;
             ConfirmarSenhaTextBox.UseSystemPasswordChar = true;
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label8.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label8.Location = new Point(23, 187);
             label8.Name = "label8";
-            label8.Size = new Size(107, 17);
+            label8.Size = new Size(101, 15);
             label8.TabIndex = 8;
             label8.Text = "Confirmar senha:";
             // 
             // SalarioTextBox
             // 
-            SalarioTextBox.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            SalarioTextBox.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             SalarioTextBox.Location = new Point(76, 56);
             SalarioTextBox.Name = "SalarioTextBox";
-            SalarioTextBox.Size = new Size(237, 21);
+            SalarioTextBox.Size = new Size(237, 20);
             SalarioTextBox.TabIndex = 7;
             // 
             // BtnInativar
@@ -184,7 +174,7 @@
             BtnInativar.BackColor = Color.FromArgb(121, 182, 201);
             BtnInativar.FlatAppearance.BorderSize = 0;
             BtnInativar.FlatStyle = FlatStyle.Popup;
-            BtnInativar.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnInativar.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnInativar.ForeColor = Color.White;
             BtnInativar.Location = new Point(65, 322);
             BtnInativar.Name = "BtnInativar";
@@ -197,10 +187,10 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label5.Location = new Point(23, 58);
             label5.Name = "label5";
-            label5.Size = new Size(52, 17);
+            label5.Size = new Size(49, 15);
             label5.TabIndex = 6;
             label5.Text = "Salario:";
             // 
@@ -209,7 +199,7 @@
             BtnSalvar.BackColor = Color.FromArgb(121, 182, 201);
             BtnSalvar.FlatAppearance.BorderSize = 0;
             BtnSalvar.FlatStyle = FlatStyle.Popup;
-            BtnSalvar.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnSalvar.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnSalvar.ForeColor = Color.White;
             BtnSalvar.Location = new Point(65, 243);
             BtnSalvar.Name = "BtnSalvar";
@@ -221,74 +211,74 @@
             // 
             // CargoTextBox
             // 
-            CargoTextBox.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            CargoTextBox.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             CargoTextBox.Location = new Point(75, 87);
             CargoTextBox.Name = "CargoTextBox";
-            CargoTextBox.Size = new Size(237, 21);
+            CargoTextBox.Size = new Size(237, 20);
             CargoTextBox.TabIndex = 5;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label4.Location = new Point(23, 89);
             label4.Name = "label4";
-            label4.Size = new Size(48, 17);
+            label4.Size = new Size(43, 15);
             label4.TabIndex = 4;
             label4.Text = "Cargo:";
             // 
             // SenhaTextBox
             // 
-            SenhaTextBox.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            SenhaTextBox.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             SenhaTextBox.Location = new Point(75, 153);
             SenhaTextBox.Name = "SenhaTextBox";
-            SenhaTextBox.Size = new Size(237, 21);
+            SenhaTextBox.Size = new Size(237, 20);
             SenhaTextBox.TabIndex = 3;
             SenhaTextBox.UseSystemPasswordChar = true;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.Location = new Point(23, 155);
             label3.Name = "label3";
-            label3.Size = new Size(48, 17);
+            label3.Size = new Size(46, 15);
             label3.TabIndex = 2;
             label3.Text = "Senha:";
             // 
             // NomeTextBox
             // 
-            NomeTextBox.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            NomeTextBox.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             NomeTextBox.Location = new Point(76, 24);
             NomeTextBox.Name = "NomeTextBox";
-            NomeTextBox.Size = new Size(237, 21);
+            NomeTextBox.Size = new Size(237, 20);
             NomeTextBox.TabIndex = 1;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.Location = new Point(23, 26);
             label1.Name = "label1";
-            label1.Size = new Size(47, 17);
+            label1.Size = new Size(44, 15);
             label1.TabIndex = 0;
             label1.Text = "Nome:";
             // 
             // PesquisarTextBox
             // 
-            PesquisarTextBox.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            PesquisarTextBox.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             PesquisarTextBox.Location = new Point(92, 29);
             PesquisarTextBox.Name = "PesquisarTextBox";
-            PesquisarTextBox.Size = new Size(247, 21);
+            PesquisarTextBox.Size = new Size(247, 20);
             PesquisarTextBox.TabIndex = 14;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label6.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label6.Location = new Point(25, 32);
             label6.Name = "label6";
-            label6.Size = new Size(66, 17);
+            label6.Size = new Size(65, 15);
             label6.TabIndex = 13;
             label6.Text = "Pesquisar:";
             // 
@@ -297,7 +287,7 @@
             BtnPesquisar.BackColor = Color.FromArgb(121, 182, 201);
             BtnPesquisar.FlatAppearance.BorderSize = 0;
             BtnPesquisar.FlatStyle = FlatStyle.Popup;
-            BtnPesquisar.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnPesquisar.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnPesquisar.ForeColor = Color.White;
             BtnPesquisar.Location = new Point(376, 22);
             BtnPesquisar.Name = "BtnPesquisar";
@@ -325,23 +315,56 @@
             // SearchOptions
             // 
             SearchOptions.DropDownStyle = ComboBoxStyle.DropDownList;
-            SearchOptions.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            SearchOptions.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             SearchOptions.FormattingEnabled = true;
             SearchOptions.Items.AddRange(new object[] { "TODOS", "NOME", "ID", "CARGO" });
             SearchOptions.Location = new Point(242, 65);
             SearchOptions.Name = "SearchOptions";
-            SearchOptions.Size = new Size(160, 24);
+            SearchOptions.Size = new Size(160, 23);
             SearchOptions.TabIndex = 31;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label7.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label7.Location = new Point(25, 67);
             label7.Name = "label7";
-            label7.Size = new Size(201, 17);
+            label7.Size = new Size(184, 15);
             label7.TabIndex = 19;
             label7.Text = "Selecione um metodo de busca:";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label10.Location = new Point(76, 478);
+            label10.Name = "label10";
+            label10.Size = new Size(180, 15);
+            label10.TabIndex = 36;
+            label10.Text = "Gerar Relatorio PDF Por Nome:";
+            // 
+            // RelatorioTextBox
+            // 
+            RelatorioTextBox.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            RelatorioTextBox.Location = new Point(46, 496);
+            RelatorioTextBox.Name = "RelatorioTextBox";
+            RelatorioTextBox.Size = new Size(240, 20);
+            RelatorioTextBox.TabIndex = 35;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.FromArgb(121, 182, 201);
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Popup;
+            button1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(91, 536);
+            button1.Name = "button1";
+            button1.Size = new Size(149, 33);
+            button1.TabIndex = 34;
+            button1.Text = "Gerar Relatorio";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click_1;
             // 
             // FuncionarioPage
             // 
@@ -396,9 +419,11 @@
         private DataGridViewTextBoxColumn dataCriacao;
         private DataGridViewTextBoxColumn dataAlteracao;
         private DataGridViewTextBoxColumn FuncAlterado;
-        private Button button1;
         private ComboBox SearchOptions;
         private TextBox LoginTextBox;
         private Label label9;
+        private Label label10;
+        private TextBox RelatorioTextBox;
+        private Button button1;
     }
 }

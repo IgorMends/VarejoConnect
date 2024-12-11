@@ -1,8 +1,10 @@
-﻿using System;
+﻿using QuestPDF.Fluent;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -98,7 +100,7 @@ namespace VarejoConnect.View
                     return;
                 }
 
-                Funcionario funcionario = new Funcionario(id, LoginTextBox.Text.Trim(),NomeTextBox.Text.Trim().ToUpper(), SenhaTextBox.Text.Trim(), CargoTextBox.Text.Trim().ToUpper(), numSalario, dataAtual, dataAtual, Global.funcionarioLogado);
+                Funcionario funcionario = new Funcionario(id, LoginTextBox.Text.Trim(), NomeTextBox.Text.Trim().ToUpper(), SenhaTextBox.Text.Trim(), CargoTextBox.Text.Trim().ToUpper(), numSalario, dataAtual, dataAtual, Global.funcionarioLogado);
                 funcionarios.Add(funcionario);
                 repository.Add(funcionario);
 
@@ -181,7 +183,7 @@ namespace VarejoConnect.View
 
         private void BtnPesquisar_Click(object sender, EventArgs e)
         {
-            
+
             buscaFuncionarios.Clear();
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = buscaFuncionarios;
@@ -315,6 +317,61 @@ namespace VarejoConnect.View
         private void groupBox2_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show("Você quer gerar o relatorio em PDF?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resultado == DialogResult.Yes)
+            {
+
+                bool funcionarioExiste = false;
+                List<Funcionario> funcionariosRelatorio = new List<Funcionario>();
+
+                string pesquisa = RelatorioTextBox.Text.Trim();
+                if (string.IsNullOrWhiteSpace(pesquisa))
+                {
+                    foreach (var funcionario in funcionarios)
+                    {
+                        funcionariosRelatorio.Add(funcionario);
+                        funcionarioExiste = true;
+                    }
+                }
+                else
+                {
+                    foreach (var funcionario in funcionarios)
+                    {
+                        if (funcionario.nome.Contains(pesquisa, StringComparison.OrdinalIgnoreCase))
+                        {
+                            funcionariosRelatorio.Add(funcionario);
+                            funcionarioExiste = true;
+                        }
+                    }
+                }
+
+                if (!funcionarioExiste)
+                {
+                    MessageBox.Show("Nenhum funcionario com este nome!", "Error", MessageBoxButtons.OK);
+                }
+
+
+
+                QuestPDF.Settings.License = QuestPDF.Infrastructure.LicenseType.Community;
+                string dataAtual = DateTime.Now.ToString("yyyyMMddHHmmss", CultureInfo.InvariantCulture);
+                string titulo = $"Relatório De Funcionários Por Nome - {dataAtual}";
+
+                string diretorio = @"C:\Users\claud\OneDrive\Desktop";
+                if (!Directory.Exists(diretorio))
+                {
+                    MessageBox.Show("Diretorio Incorreto, verificar!", "Error", MessageBoxButtons.OK);
+                    return;
+                }
+
+                string nomeArquivo = Path.Combine(diretorio, $"relatorio-Funcionrios-Por-Nome-{dataAtual}.pdf");
+
+                var relatorio = new RelatorioFuncionarios(funcionariosRelatorio, titulo);
+                relatorio.GeneratePdf(nomeArquivo);
+            }
         }
     }
 }

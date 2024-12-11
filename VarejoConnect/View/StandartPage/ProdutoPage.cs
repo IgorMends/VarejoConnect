@@ -1,8 +1,10 @@
-﻿using System;
+﻿using QuestPDF.Fluent;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -317,6 +319,61 @@ namespace VarejoConnect.View
         private void ProdutoPage_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show("Você quer gerar o relatorio em PDF?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resultado == DialogResult.Yes)
+            {
+
+                bool produtoExiste = false;
+                List<Produto> produtosRelatorio = new List<Produto>();
+
+                string pesquisa = RelatorioTextBox.Text.Trim();
+                if (string.IsNullOrWhiteSpace(pesquisa))
+                {
+                    foreach (var produto in produtos)
+                    {
+                        produtosRelatorio.Add(produto);
+                        produtoExiste = true;
+                    }
+                }
+                else
+                {
+                    foreach (var produto in produtos)
+                    {
+                        if (produto.nome.Contains(pesquisa, StringComparison.OrdinalIgnoreCase))
+                        {
+                            produtosRelatorio.Add(produto);
+                            produtoExiste = true;
+                        }
+                    }
+                }
+
+                if (!produtoExiste)
+                {
+                    MessageBox.Show("Nenhum produto com este nome!", "Error", MessageBoxButtons.OK);
+                }
+
+
+
+                QuestPDF.Settings.License = QuestPDF.Infrastructure.LicenseType.Community;
+                string dataAtual = DateTime.Now.ToString("yyyyMMddHHmmss", CultureInfo.InvariantCulture);
+                string titulo = $"Relatório De Produto Por Nome - {dataAtual}";
+
+                string diretorio = @"C:\Users\claud\OneDrive\Desktop";
+                if (!Directory.Exists(diretorio))
+                {
+                    MessageBox.Show("Diretorio Incorreto, verificar!", "Error", MessageBoxButtons.OK);
+                    return;
+                }
+
+                string nomeArquivo = Path.Combine(diretorio, $"relatorio-Produtos-Por-Nome-{dataAtual}.pdf");
+
+                var relatorio = new RelatorioProdutos(produtosRelatorio, titulo);
+                relatorio.GeneratePdf(nomeArquivo);
+            }
         }
     }
 }

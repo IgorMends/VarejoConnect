@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             BtnEditar = new Button();
-            button1 = new Button();
             label6 = new Label();
             PesquisarTextBox = new TextBox();
             BtnPesquisar = new Button();
@@ -54,6 +53,9 @@
             btnAtt = new Button();
             groupBox3 = new GroupBox();
             label9 = new Label();
+            label10 = new Label();
+            RelatorioTextBox = new TextBox();
+            button1 = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox2.SuspendLayout();
@@ -74,21 +76,6 @@
             BtnEditar.Text = "Editar";
             BtnEditar.UseVisualStyleBackColor = false;
             BtnEditar.Click += BtnEditar_Click;
-            // 
-            // button1
-            // 
-            button1.BackColor = Color.FromArgb(121, 182, 201);
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Popup;
-            button1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(66, 515);
-            button1.Name = "button1";
-            button1.Size = new Size(208, 57);
-            button1.TabIndex = 29;
-            button1.Text = "Gerar Relatorio";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
             // 
             // label6
             // 
@@ -155,6 +142,9 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(label10);
+            groupBox1.Controls.Add(RelatorioTextBox);
+            groupBox1.Controls.Add(button1);
             groupBox1.Controls.Add(PrecoTextBox);
             groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(MarcaTextBox);
@@ -353,13 +343,45 @@
             label9.TabIndex = 30;
             label9.Text = "Atualize a quantidade inserindo o \r\nnumero de itens a mais ou a menos";
             // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label10.Location = new Point(75, 466);
+            label10.Name = "label10";
+            label10.Size = new Size(180, 15);
+            label10.TabIndex = 36;
+            label10.Text = "Gerar Relatorio PDF Por Nome:";
+            // 
+            // RelatorioTextBox
+            // 
+            RelatorioTextBox.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            RelatorioTextBox.Location = new Point(45, 484);
+            RelatorioTextBox.Name = "RelatorioTextBox";
+            RelatorioTextBox.Size = new Size(240, 20);
+            RelatorioTextBox.TabIndex = 35;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.FromArgb(121, 182, 201);
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Popup;
+            button1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(90, 524);
+            button1.Name = "button1";
+            button1.Size = new Size(149, 33);
+            button1.TabIndex = 34;
+            button1.Text = "Gerar Relatorio";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click_1;
+            // 
             // ProdutoPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1032, 647);
             Controls.Add(groupBox3);
-            Controls.Add(button1);
             Controls.Add(BtnEditar);
             Controls.Add(groupBox2);
             Controls.Add(BtnExcluir);
@@ -401,7 +423,6 @@
         private Label label1;
         private Label label2;
         private DataGridView dataGridView1;
-        private Button button1;
         private ComboBox SearchOptions;
         private Label label7;
         private GroupBox groupBox2;
@@ -410,5 +431,8 @@
         private Button btnAtt;
         private GroupBox groupBox3;
         private Label label9;
+        private Label label10;
+        private TextBox RelatorioTextBox;
+        private Button button1;
     }
 }
