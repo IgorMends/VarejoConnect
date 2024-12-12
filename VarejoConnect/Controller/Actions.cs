@@ -50,16 +50,17 @@ namespace VarejoConnect.Controller
 
         }
 
-        public void verifyBlanksTextboxes(List<string> textBoxes)
+        public bool verifyBlanksTextboxes(List<string> textBoxes)
         {
             foreach (var text in textBoxes)
             {
                 if (string.IsNullOrWhiteSpace(text))
                 {
                     MessageBox.Show("Nenhum campo pode estar vazio.", "Erro", MessageBoxButtons.OK);
-                    return;
-                }
+                    return true;
+                }                
             }
+            return false;
         }
     }
 }

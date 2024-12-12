@@ -106,7 +106,10 @@ namespace VarejoConnect.View
 								precoTotal += produtoSelecionado.preco * quantidadeBox;
 								TotalLabel.Text = "R$: " + precoTotal.ToString();
 								subTotalLabel.Text = "R$: " + precoTotal.ToString();
-							}
+
+                                produtoTextBox.Clear();
+                                quantidadeTextBox.Clear();
+                            }
 							else
 							{
 
@@ -125,7 +128,10 @@ namespace VarejoConnect.View
 								precoTotal += produtoSelecionado.preco * quantidadeBox;
 								TotalLabel.Text = "R$: " + precoTotal.ToString();
 								subTotalLabel.Text = "R$: " + precoTotal.ToString();
-							}
+
+                                produtoTextBox.Clear();
+                                quantidadeTextBox.Clear();
+                            }
 							dataGridView1.Refresh();
 						}
 						catch (FormatException ex)
@@ -176,7 +182,10 @@ namespace VarejoConnect.View
 								precoTotal += produtoSelecionado.preco * quantidadeBox;
 								TotalLabel.Text = "R$: " + precoTotal.ToString();
 								subTotalLabel.Text = "R$: " + precoTotal.ToString();
-							}
+
+                                produtoTextBox.Clear();
+                                quantidadeTextBox.Clear();
+                            }
 							else
 							{
 
@@ -195,7 +204,10 @@ namespace VarejoConnect.View
 								precoTotal += produtoSelecionado.preco * quantidadeBox;
 								TotalLabel.Text = "R$: " + precoTotal.ToString();
 								subTotalLabel.Text = "R$: " + precoTotal.ToString();
-							}
+
+                                produtoTextBox.Clear();
+                                quantidadeTextBox.Clear();
+                            }
 							dataGridView1.Refresh();
 						}
 						catch (FormatException ex)
@@ -262,6 +274,9 @@ namespace VarejoConnect.View
 							precoTotal += produtoSelecionado.preco * quantidadeBox;
 							TotalLabel.Text = "R$: " + precoTotal.ToString();
 							subTotalLabel.Text = "R$: " + precoTotal.ToString();
+
+							produtoTextBox.Clear();
+							quantidadeTextBox.Clear();
 						}
 						else
 						{
@@ -281,7 +296,10 @@ namespace VarejoConnect.View
 							precoTotal += produtoSelecionado.preco * quantidadeBox;
 							TotalLabel.Text = "R$: " + precoTotal.ToString();
 							subTotalLabel.Text = "R$: " + precoTotal.ToString();
-						}
+
+                            produtoTextBox.Clear();
+                            quantidadeTextBox.Clear();
+                        }
 						dataGridView1.Refresh();
 					}
 					catch (FormatException ex)
@@ -332,7 +350,10 @@ namespace VarejoConnect.View
 							precoTotal += produtoSelecionado.preco * quantidadeBox;
 							TotalLabel.Text = "R$: " + precoTotal.ToString();
 							subTotalLabel.Text = "R$: " + precoTotal.ToString();
-						}
+
+                            produtoTextBox.Clear();
+                            quantidadeTextBox.Clear();
+                        }
 						else
 						{
 
@@ -351,7 +372,10 @@ namespace VarejoConnect.View
 							precoTotal += produtoSelecionado.preco * quantidadeBox;
 							TotalLabel.Text = "R$: " + precoTotal.ToString();
 							subTotalLabel.Text = "R$: " + precoTotal.ToString();
-						}
+
+                            produtoTextBox.Clear();
+                            quantidadeTextBox.Clear();
+                        }
 						dataGridView1.Refresh();
 					}
 					catch (FormatException ex)
@@ -416,7 +440,10 @@ namespace VarejoConnect.View
 								precoTotal += produtoSelecionado.preco * quantidadeBox;
 								TotalLabel.Text = "R$: " + precoTotal.ToString();
 								subTotalLabel.Text = "R$: " + precoTotal.ToString();
-							}
+
+                                produtoTextBox.Clear();
+                                quantidadeTextBox.Clear();
+                            }
 							else
 							{
 
@@ -435,7 +462,10 @@ namespace VarejoConnect.View
 								precoTotal += produtoSelecionado.preco * quantidadeBox;
 								TotalLabel.Text = "R$: " + precoTotal.ToString();
 								subTotalLabel.Text = "R$: " + precoTotal.ToString();
-							}
+
+                                produtoTextBox.Clear();
+                                quantidadeTextBox.Clear();
+                            }
 							dataGridView1.Refresh();
 						}
 						catch (FormatException ex)
@@ -486,7 +516,10 @@ namespace VarejoConnect.View
 								precoTotal += produtoSelecionado.preco * quantidadeBox;
 								TotalLabel.Text = "R$: " + precoTotal.ToString();
 								subTotalLabel.Text = "R$: " + precoTotal.ToString();
-							}
+
+                                produtoTextBox.Clear();
+                                quantidadeTextBox.Clear();
+                            }
 							else
 							{
 
@@ -505,7 +538,10 @@ namespace VarejoConnect.View
 								precoTotal += produtoSelecionado.preco * quantidadeBox;
 								TotalLabel.Text = "R$: " + precoTotal.ToString();
 								subTotalLabel.Text = "R$: " + precoTotal.ToString();
-							}
+
+                                produtoTextBox.Clear();
+                                quantidadeTextBox.Clear();
+                            }
 							dataGridView1.Refresh();
 						}
 						catch (FormatException ex)
@@ -530,6 +566,11 @@ namespace VarejoConnect.View
             if (resultado == DialogResult.Yes)
             {
                 Cliente clienteSelecionado;
+
+				if(precoTotal == null || precoTotal == 0.0)
+				{
+					MessageBox.Show("Não há nenhum item na venda, não é possivel realizar a venda deste modo!", "Error", MessageBoxButtons.OK);
+				}
 
                 if (int.TryParse(clienteTextBox.Text, out int id))
                 {

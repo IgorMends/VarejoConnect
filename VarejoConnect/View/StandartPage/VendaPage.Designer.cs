@@ -272,7 +272,7 @@
             // 
             TipoDropBox.DropDownStyle = ComboBoxStyle.DropDownList;
             TipoDropBox.FormattingEnabled = true;
-            TipoDropBox.Items.AddRange(new object[] { "PIX", "DEBITO", "CREDITO" });
+            TipoDropBox.Items.AddRange(new object[] { "PIX", "DINHEIRO", "DEBITO", "CREDITO" });
             TipoDropBox.Location = new Point(226, 171);
             TipoDropBox.Name = "TipoDropBox";
             TipoDropBox.Size = new Size(186, 23);

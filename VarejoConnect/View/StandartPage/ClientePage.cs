@@ -59,9 +59,12 @@ namespace VarejoConnect.View
             textBoxes.Add(EmailTextBox.Text);
             textBoxes.Add(TelefoneTextBox.Text);
 
-            actions.verifyBlanksTextboxes(textBoxes);
+            bool isblank = actions.verifyBlanksTextboxes(textBoxes);
 
-
+            if (isblank)
+            {
+                return;
+            }
 
 
             foreach (var text in clientes)

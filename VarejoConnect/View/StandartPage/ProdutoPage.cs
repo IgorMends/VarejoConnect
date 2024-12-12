@@ -65,7 +65,12 @@ namespace VarejoConnect.View
             textBoxes.Add(PrecoTextBox.Text);
 
 
-            actions.verifyBlanksTextboxes(textBoxes);
+            bool isblank = actions.verifyBlanksTextboxes(textBoxes);
+
+            if (isblank)
+            {
+                return;
+            }
 
 
             foreach (var text in produtos)

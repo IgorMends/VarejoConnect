@@ -73,7 +73,12 @@ namespace VarejoConnect.View
             textBoxes.Add(SalarioTextBox.Text);
             textBoxes.Add(ConfirmarSenhaTextBox.Text);
 
-            actions.verifyBlanksTextboxes(textBoxes);
+            bool isblank = actions.verifyBlanksTextboxes(textBoxes);
+
+            if (isblank)
+            {
+                return;
+            }
 
 
             if (ConfirmarSenhaTextBox.Text.Equals(SenhaTextBox.Text))
