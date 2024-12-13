@@ -35,6 +35,8 @@
             label6 = new Label();
             PesquisarTextBox = new TextBox();
             groupBox1 = new GroupBox();
+            label3 = new Label();
+            RelatorioTextBox = new TextBox();
             CpfTextBox = new TextBox();
             label9 = new Label();
             button1 = new Button();
@@ -49,8 +51,6 @@
             label1 = new Label();
             label2 = new Label();
             dataGridView1 = new DataGridView();
-            RelatorioTextBox = new TextBox();
-            label3 = new Label();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -75,7 +75,7 @@
             SearchOptions.DropDownStyle = ComboBoxStyle.DropDownList;
             SearchOptions.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             SearchOptions.FormattingEnabled = true;
-            SearchOptions.Items.AddRange(new object[] { "TODOS", "NOME", "ID", "CPF" });
+            SearchOptions.Items.AddRange(new object[] { "SEM FILTRO", "NOME", "ID", "CPF" });
             SearchOptions.Location = new Point(242, 65);
             SearchOptions.Name = "SearchOptions";
             SearchOptions.Size = new Size(160, 23);
@@ -146,6 +146,24 @@
             groupBox1.TabIndex = 22;
             groupBox1.TabStop = false;
             groupBox1.Text = "Cadastro";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Location = new Point(76, 465);
+            label3.Name = "label3";
+            label3.Size = new Size(180, 15);
+            label3.TabIndex = 33;
+            label3.Text = "Gerar Relatorio PDF Por Nome:";
+            // 
+            // RelatorioTextBox
+            // 
+            RelatorioTextBox.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            RelatorioTextBox.Location = new Point(46, 483);
+            RelatorioTextBox.Name = "RelatorioTextBox";
+            RelatorioTextBox.Size = new Size(240, 20);
+            RelatorioTextBox.TabIndex = 32;
             // 
             // CpfTextBox
             // 
@@ -298,24 +316,6 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(652, 373);
             dataGridView1.TabIndex = 20;
-            // 
-            // RelatorioTextBox
-            // 
-            RelatorioTextBox.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            RelatorioTextBox.Location = new Point(46, 483);
-            RelatorioTextBox.Name = "RelatorioTextBox";
-            RelatorioTextBox.Size = new Size(240, 20);
-            RelatorioTextBox.TabIndex = 32;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(76, 465);
-            label3.Name = "label3";
-            label3.Size = new Size(180, 15);
-            label3.TabIndex = 33;
-            label3.Text = "Gerar Relatorio PDF Por Nome:";
             // 
             // ClientePage
             // 

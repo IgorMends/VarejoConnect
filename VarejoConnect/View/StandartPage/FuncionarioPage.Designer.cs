@@ -31,6 +31,9 @@
             dataGridView1 = new DataGridView();
             label2 = new Label();
             groupBox1 = new GroupBox();
+            label10 = new Label();
+            RelatorioTextBox = new TextBox();
+            button1 = new Button();
             LoginTextBox = new TextBox();
             label9 = new Label();
             BtnEditar = new Button();
@@ -52,9 +55,6 @@
             groupBox2 = new GroupBox();
             SearchOptions = new ComboBox();
             label7 = new Label();
-            label10 = new Label();
-            RelatorioTextBox = new TextBox();
-            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -108,6 +108,39 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Cadastro";
             groupBox1.Enter += groupBox1_Enter;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label10.Location = new Point(76, 478);
+            label10.Name = "label10";
+            label10.Size = new Size(180, 15);
+            label10.TabIndex = 36;
+            label10.Text = "Gerar Relatorio PDF Por Nome:";
+            // 
+            // RelatorioTextBox
+            // 
+            RelatorioTextBox.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            RelatorioTextBox.Location = new Point(46, 496);
+            RelatorioTextBox.Name = "RelatorioTextBox";
+            RelatorioTextBox.Size = new Size(240, 20);
+            RelatorioTextBox.TabIndex = 35;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.FromArgb(121, 182, 201);
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Popup;
+            button1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(91, 536);
+            button1.Name = "button1";
+            button1.Size = new Size(149, 33);
+            button1.TabIndex = 34;
+            button1.Text = "Gerar Relatorio";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click_1;
             // 
             // LoginTextBox
             // 
@@ -317,7 +350,7 @@
             SearchOptions.DropDownStyle = ComboBoxStyle.DropDownList;
             SearchOptions.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             SearchOptions.FormattingEnabled = true;
-            SearchOptions.Items.AddRange(new object[] { "TODOS", "NOME", "ID", "CARGO" });
+            SearchOptions.Items.AddRange(new object[] { "SEM FILTRO", "NOME", "ID", "CARGO" });
             SearchOptions.Location = new Point(242, 65);
             SearchOptions.Name = "SearchOptions";
             SearchOptions.Size = new Size(160, 23);
@@ -332,39 +365,6 @@
             label7.Size = new Size(184, 15);
             label7.TabIndex = 19;
             label7.Text = "Selecione um metodo de busca:";
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label10.Location = new Point(76, 478);
-            label10.Name = "label10";
-            label10.Size = new Size(180, 15);
-            label10.TabIndex = 36;
-            label10.Text = "Gerar Relatorio PDF Por Nome:";
-            // 
-            // RelatorioTextBox
-            // 
-            RelatorioTextBox.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            RelatorioTextBox.Location = new Point(46, 496);
-            RelatorioTextBox.Name = "RelatorioTextBox";
-            RelatorioTextBox.Size = new Size(240, 20);
-            RelatorioTextBox.TabIndex = 35;
-            // 
-            // button1
-            // 
-            button1.BackColor = Color.FromArgb(121, 182, 201);
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Popup;
-            button1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(91, 536);
-            button1.Name = "button1";
-            button1.Size = new Size(149, 33);
-            button1.TabIndex = 34;
-            button1.Text = "Gerar Relatorio";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click_1;
             // 
             // FuncionarioPage
             // 

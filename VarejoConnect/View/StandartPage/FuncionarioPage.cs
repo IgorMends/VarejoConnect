@@ -214,7 +214,7 @@ namespace VarejoConnect.View
 
 
 
-                if (criterioBusca.Equals("TODOS"))
+                if (criterioBusca.Equals("SEM FILTRO"))
                 {
                     dataGridView1.DataSource = null;
                     dataGridView1.DataSource = funcionarios;
