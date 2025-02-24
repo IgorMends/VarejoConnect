@@ -365,7 +365,7 @@ namespace VarejoConnect.View
                 string dataAtual = DateTime.Now.ToString("yyyyMMddHHmmss", CultureInfo.InvariantCulture);
                 string titulo = $"Relatório De Funcionários Por Nome - {dataAtual}";
 
-                string diretorio = @"C:\Users\claud\OneDrive\Desktop";
+                string diretorio = @"C:\Users\William\Desktop";
                 if (!Directory.Exists(diretorio))
                 {
                     MessageBox.Show("Diretorio Incorreto, verificar!", "Error", MessageBoxButtons.OK);

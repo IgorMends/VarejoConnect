@@ -14,7 +14,7 @@ namespace VarejoConnect.Model.Repositorios
 
         public ConnectionDb()
         {
-            Connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=VarejoDB;User Id = postgres;Password=postgres;");
+            Connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=VarejoDB;User Id = postgres;Password=123;");
             Connection.Open();
         }
 

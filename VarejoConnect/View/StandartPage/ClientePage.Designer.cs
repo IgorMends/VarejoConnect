@@ -223,7 +223,7 @@
             // 
             // BtnInativar
             // 
-            BtnInativar.BackColor = Color.FromArgb(121, 182, 201);
+            BtnInativar.BackColor = Color.FromArgb(250, 90, 110);
             BtnInativar.FlatAppearance.BorderSize = 0;
             BtnInativar.FlatStyle = FlatStyle.Popup;
             BtnInativar.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -248,7 +248,7 @@
             // 
             // BtnSalvar
             // 
-            BtnSalvar.BackColor = Color.FromArgb(121, 182, 201);
+            BtnSalvar.BackColor = Color.FromArgb(100, 250, 140);
             BtnSalvar.FlatAppearance.BorderSize = 0;
             BtnSalvar.FlatStyle = FlatStyle.Popup;
             BtnSalvar.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -257,7 +257,7 @@
             BtnSalvar.Name = "BtnSalvar";
             BtnSalvar.Size = new Size(208, 57);
             BtnSalvar.TabIndex = 11;
-            BtnSalvar.Text = "Salvar";
+            BtnSalvar.Text = "Cadastrar";
             BtnSalvar.UseVisualStyleBackColor = false;
             BtnSalvar.Click += BtnSalvar_Click;
             // 

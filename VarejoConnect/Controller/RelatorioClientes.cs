@@ -42,7 +42,7 @@ namespace VarejoConnect.Controller
             {
                 column.Item().Row(row =>
                 {
-                    row.RelativeColumn().AlignCenter().Height(40).Image("C:\\Users\\claud\\OneDrive\\Desktop\\VarejoConnect\\VarejoConnect\\VarejoConnect\\Imagens\\Logo.png", ImageScaling.FitHeight);
+                    row.RelativeColumn().AlignCenter().Height(40).Image("C:\\Users\\William\\Desktop\\Project\\VarejoConnect\\VarejoConnect\\Imagens\\Logo.png", ImageScaling.FitHeight);
                 });
 
                 column.Item().Height(30);
