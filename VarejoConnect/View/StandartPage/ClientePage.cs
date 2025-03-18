@@ -13,6 +13,8 @@ using VarejoConnect.Model;
 using VarejoConnect.View.EditPage;
 using QuestPDF.Fluent;
 using System.Globalization;
+using VarejoConnect.View.RegisterPage;
+using System.Reflection;
 
 namespace VarejoConnect.View
 {
@@ -53,70 +55,17 @@ namespace VarejoConnect.View
         private void BtnSalvar_Click(object sender, EventArgs e)
         {
 
-            textBoxes.Clear();
-            textBoxes.Add(NomeTextBox.Text);
-            textBoxes.Add(CpfTextBox.Text);
-            textBoxes.Add(EmailTextBox.Text);
-            textBoxes.Add(TelefoneTextBox.Text);
+            ClientRegisterPage clientRegisterPage = new ClientRegisterPage(clientes);
 
-            bool isblank = actions.verifyBlanksTextboxes(textBoxes);
+            clientRegisterPage.ShowDialog();
 
-            if (isblank)
+            if (clientRegisterPage.DialogResult == DialogResult.OK)
             {
-                return;
+                clientes = clientRegisterPage.clientesModal;
+                id++;
             }
 
-
-            foreach (var text in clientes)
-            {
-                if (text.nome.Equals(NomeTextBox.Text))
-                {
-                    MessageBox.Show("Este cliente já esta cadastrado!", "Erro", MessageBoxButtons.OK);
-                    return;
-                }
-            }
-
-            long numCPF;
-            long numTel;
-
-
-            try
-            {
-                numTel = long.Parse(TelefoneTextBox.Text.Trim());
-                if (numTel.ToString().Length != 11)
-                {
-                    MessageBox.Show("O campo de telefone precisa ter 11 numeros, incluindo DDD!");
-                    return;
-                }
-            }
-            catch (FormatException ex)
-            {
-                MessageBox.Show("Você tem que digitar apenas numeros no campo de Telefone", "Error", MessageBoxButtons.OK);
-                return;
-            }
-
-            try
-            {
-                numCPF = long.Parse(CpfTextBox.Text.Trim());
-                numTel = long.Parse(TelefoneTextBox.Text.Trim());
-            }
-            catch (FormatException ex)
-            {
-                MessageBox.Show("Você tem que digitar apenas numeros no campo de CPF", "Error", MessageBoxButtons.OK);
-                return;
-            }
-
-            Cliente cliente = new Cliente(id, NomeTextBox.Text.Trim().ToUpper(), CpfTextBox.Text.Trim(), EmailTextBox.Text.Trim(), TelefoneTextBox.Text.Trim(), dataAtual, dataAtual, Global.funcionarioLogado);
-            clientes.Add(cliente);
-            repository.Add(cliente);
-
-            id++;
-
-            NomeTextBox.Clear();
-            CpfTextBox.Clear();
-            EmailTextBox.Clear();
-            TelefoneTextBox.Clear();
-
+            
             dataGridView1.Refresh();
         }
 

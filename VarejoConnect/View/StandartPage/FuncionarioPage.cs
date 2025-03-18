@@ -13,6 +13,7 @@ using VarejoConnect.Controller;
 using VarejoConnect.Model;
 using VarejoConnect.Model.Repositorios;
 using VarejoConnect.View.EditPage;
+using VarejoConnect.View.RegisterPage;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace VarejoConnect.View
@@ -64,64 +65,16 @@ namespace VarejoConnect.View
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            textBoxes.Clear();
-            textBoxes.Add(NomeTextBox.Text);
-            textBoxes.Add(LoginTextBox.Text);
-            textBoxes.Add(SenhaTextBox.Text);
-            textBoxes.Add(CargoTextBox.Text);
-            textBoxes.Add(LoginTextBox.Text);
-            textBoxes.Add(SalarioTextBox.Text);
-            textBoxes.Add(ConfirmarSenhaTextBox.Text);
+            EmployeeRegisterPage employeeRegisterPage = new EmployeeRegisterPage(funcionarios);
 
-            bool isblank = actions.verifyBlanksTextboxes(textBoxes);
+            employeeRegisterPage.ShowDialog();
 
-            if (isblank)
+            if (employeeRegisterPage.DialogResult == DialogResult.OK)
             {
-                return;
-            }
-
-
-            if (ConfirmarSenhaTextBox.Text.Equals(SenhaTextBox.Text))
-            {
-
-                foreach (var text in funcionarios)
-                {
-                    if (text.nome.Equals(NomeTextBox.Text))
-                    {
-                        MessageBox.Show("Este funcionário já esta cadastrado!", "Erro", MessageBoxButtons.OK);
-                        return;
-                    }
-                }
-
-                double numSalario;
-
-                try
-                {
-                    numSalario = double.Parse(SalarioTextBox.Text.Trim());
-                }
-                catch (FormatException ex)
-                {
-                    MessageBox.Show("Você tem que digitar apenas numeros no campo de Salário", "Error", MessageBoxButtons.OK);
-                    return;
-                }
-
-                Funcionario funcionario = new Funcionario(id, LoginTextBox.Text.Trim(), NomeTextBox.Text.Trim().ToUpper(), SenhaTextBox.Text.Trim(), CargoTextBox.Text.Trim().ToUpper(), numSalario, dataAtual, dataAtual, Global.funcionarioLogado);
-                funcionarios.Add(funcionario);
-                repository.Add(funcionario);
-
+                funcionarios = employeeRegisterPage.funcionariosModal;
                 id++;
+            }
 
-                LoginTextBox.Clear();
-                NomeTextBox.Clear();
-                SenhaTextBox.Clear();
-                CargoTextBox.Clear();
-                SalarioTextBox.Clear();
-                ConfirmarSenhaTextBox.Clear();
-            }
-            else
-            {
-                MessageBox.Show("As senhas não conferem", "Erro", MessageBoxButtons.OK);
-            }
 
             dataGridView1.Refresh();
         }

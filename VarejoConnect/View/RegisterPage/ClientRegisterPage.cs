@@ -7,13 +7,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VarejoConnect.Controller;
+using VarejoConnect.Model;
+using VarejoConnect.Model.Repositorios;
 
 namespace VarejoConnect.View.RegisterPage
 {
     public partial class ClientRegisterPage : Form
     {
-        public ClientRegisterPage()
+        ClienteRepositorio repository = new ClienteRepositorio();
+        public BindingList<Cliente> clientesModal = new BindingList<Cliente>();
+        List<string> textBoxes = new List<string>();
+        Actions actions = new Actions();
+        int id;
+
+        public ClientRegisterPage(BindingList<Cliente> clientesList)
         {
+            clientesModal = clientesList;
+            id = repository.getHighestId() + 1;
             InitializeComponent();
         }
 
@@ -37,7 +48,7 @@ namespace VarejoConnect.View.RegisterPage
             }
 
 
-            foreach (var text in clientes)
+            foreach (var text in clientesModal)
             {
                 if (text.nome.Equals(NomeTextBox.Text))
                 {
@@ -76,9 +87,10 @@ namespace VarejoConnect.View.RegisterPage
                 return;
             }
 
-            Cliente cliente = new Cliente(id, NomeTextBox.Text.Trim().ToUpper(), CpfTextBox.Text.Trim(), EmailTextBox.Text.Trim(), TelefoneTextBox.Text.Trim(), dataAtual, dataAtual, Global.funcionarioLogado);
-            clientes.Add(cliente);
+            Cliente cliente = new Cliente(this.id, NomeTextBox.Text.Trim().ToUpper(), CpfTextBox.Text.Trim(), EmailTextBox.Text.Trim(), TelefoneTextBox.Text.Trim(), DateTime.Today, DateTime.Today, Global.funcionarioLogado);
             repository.Add(cliente);
+            clientesModal.Add(cliente);
+            this.Close();
         }
     }
 }

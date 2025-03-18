@@ -38,14 +38,6 @@
             label10 = new Label();
             RelatorioTextBox = new TextBox();
             button1 = new Button();
-            PrecoTextBox = new TextBox();
-            label5 = new Label();
-            MarcaTextBox = new TextBox();
-            label4 = new Label();
-            DescricaoTextBox = new TextBox();
-            label3 = new Label();
-            NomeTextBox = new TextBox();
-            label1 = new Label();
             label2 = new Label();
             dataGridView1 = new DataGridView();
             SearchOptions = new ComboBox();
@@ -69,9 +61,9 @@
             BtnEditar.FlatStyle = FlatStyle.Popup;
             BtnEditar.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnEditar.ForeColor = Color.White;
-            BtnEditar.Location = new Point(66, 434);
+            BtnEditar.Location = new Point(13, 22);
             BtnEditar.Name = "BtnEditar";
-            BtnEditar.Size = new Size(208, 57);
+            BtnEditar.Size = new Size(107, 36);
             BtnEditar.TabIndex = 28;
             BtnEditar.Text = "Editar";
             BtnEditar.UseVisualStyleBackColor = false;
@@ -117,9 +109,9 @@
             BtnExcluir.FlatStyle = FlatStyle.Popup;
             BtnExcluir.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnExcluir.ForeColor = Color.White;
-            BtnExcluir.Location = new Point(66, 354);
+            BtnExcluir.Location = new Point(129, 22);
             BtnExcluir.Name = "BtnExcluir";
-            BtnExcluir.Size = new Size(208, 57);
+            BtnExcluir.Size = new Size(107, 36);
             BtnExcluir.TabIndex = 25;
             BtnExcluir.Text = "Excluir";
             BtnExcluir.UseVisualStyleBackColor = false;
@@ -132,9 +124,9 @@
             BtnSalvar.FlatStyle = FlatStyle.Popup;
             BtnSalvar.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnSalvar.ForeColor = Color.White;
-            BtnSalvar.Location = new Point(66, 274);
+            BtnSalvar.Location = new Point(244, 22);
             BtnSalvar.Name = "BtnSalvar";
-            BtnSalvar.Size = new Size(208, 57);
+            BtnSalvar.Size = new Size(107, 36);
             BtnSalvar.TabIndex = 24;
             BtnSalvar.Text = "Cadastrar";
             BtnSalvar.UseVisualStyleBackColor = false;
@@ -143,19 +135,14 @@
             // groupBox1
             // 
             groupBox1.Controls.Add(label10);
+            groupBox1.Controls.Add(BtnEditar);
             groupBox1.Controls.Add(RelatorioTextBox);
             groupBox1.Controls.Add(button1);
-            groupBox1.Controls.Add(PrecoTextBox);
-            groupBox1.Controls.Add(label5);
-            groupBox1.Controls.Add(MarcaTextBox);
-            groupBox1.Controls.Add(label4);
-            groupBox1.Controls.Add(DescricaoTextBox);
-            groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(NomeTextBox);
-            groupBox1.Controls.Add(label1);
-            groupBox1.Location = new Point(11, 55);
+            groupBox1.Controls.Add(BtnExcluir);
+            groupBox1.Controls.Add(BtnSalvar);
+            groupBox1.Location = new Point(24, 434);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(335, 570);
+            groupBox1.Size = new Size(366, 201);
             groupBox1.TabIndex = 23;
             groupBox1.TabStop = false;
             groupBox1.Text = "Cadastro";
@@ -164,7 +151,7 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label10.Location = new Point(75, 466);
+            label10.Location = new Point(89, 92);
             label10.Name = "label10";
             label10.Size = new Size(180, 15);
             label10.TabIndex = 36;
@@ -173,7 +160,7 @@
             // RelatorioTextBox
             // 
             RelatorioTextBox.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            RelatorioTextBox.Location = new Point(45, 484);
+            RelatorioTextBox.Location = new Point(59, 110);
             RelatorioTextBox.Name = "RelatorioTextBox";
             RelatorioTextBox.Size = new Size(240, 20);
             RelatorioTextBox.TabIndex = 35;
@@ -185,85 +172,13 @@
             button1.FlatStyle = FlatStyle.Popup;
             button1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.ForeColor = Color.White;
-            button1.Location = new Point(90, 524);
+            button1.Location = new Point(104, 150);
             button1.Name = "button1";
             button1.Size = new Size(149, 33);
             button1.TabIndex = 34;
             button1.Text = "Gerar Relatorio";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click_1;
-            // 
-            // PrecoTextBox
-            // 
-            PrecoTextBox.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            PrecoTextBox.Location = new Point(75, 56);
-            PrecoTextBox.Name = "PrecoTextBox";
-            PrecoTextBox.Size = new Size(237, 20);
-            PrecoTextBox.TabIndex = 1;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(23, 58);
-            label5.Name = "label5";
-            label5.Size = new Size(42, 15);
-            label5.TabIndex = 6;
-            label5.Text = "Preço:";
-            // 
-            // MarcaTextBox
-            // 
-            MarcaTextBox.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            MarcaTextBox.Location = new Point(75, 91);
-            MarcaTextBox.Name = "MarcaTextBox";
-            MarcaTextBox.Size = new Size(237, 20);
-            MarcaTextBox.TabIndex = 2;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(23, 93);
-            label4.Name = "label4";
-            label4.Size = new Size(45, 15);
-            label4.TabIndex = 4;
-            label4.Text = "Marca:";
-            // 
-            // DescricaoTextBox
-            // 
-            DescricaoTextBox.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            DescricaoTextBox.Location = new Point(101, 129);
-            DescricaoTextBox.Name = "DescricaoTextBox";
-            DescricaoTextBox.Size = new Size(211, 20);
-            DescricaoTextBox.TabIndex = 3;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(23, 131);
-            label3.Name = "label3";
-            label3.Size = new Size(65, 15);
-            label3.TabIndex = 2;
-            label3.Text = "Descrição:";
-            // 
-            // NomeTextBox
-            // 
-            NomeTextBox.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            NomeTextBox.Location = new Point(76, 24);
-            NomeTextBox.Name = "NomeTextBox";
-            NomeTextBox.Size = new Size(236, 20);
-            NomeTextBox.TabIndex = 0;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(23, 26);
-            label1.Name = "label1";
-            label1.Size = new Size(44, 15);
-            label1.TabIndex = 0;
-            label1.Text = "Nome:";
             // 
             // label2
             // 
@@ -280,9 +195,9 @@
             // 
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(352, 55);
+            dataGridView1.Location = new Point(24, 55);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(652, 373);
+            dataGridView1.Size = new Size(980, 373);
             dataGridView1.TabIndex = 21;
             // 
             // SearchOptions
@@ -313,9 +228,9 @@
             groupBox2.Controls.Add(label7);
             groupBox2.Controls.Add(BtnPesquisar);
             groupBox2.Controls.Add(PesquisarTextBox);
-            groupBox2.Location = new Point(352, 434);
+            groupBox2.Location = new Point(387, 434);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(652, 112);
+            groupBox2.Size = new Size(617, 112);
             groupBox2.TabIndex = 27;
             groupBox2.TabStop = false;
             groupBox2.Text = "Pesquisa";
@@ -324,7 +239,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.Location = new Point(292, 49);
+            label8.Location = new Point(253, 49);
             label8.Name = "label8";
             label8.Size = new Size(74, 15);
             label8.TabIndex = 28;
@@ -333,7 +248,7 @@
             // quantidadeTextBox
             // 
             quantidadeTextBox.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            quantidadeTextBox.Location = new Point(364, 47);
+            quantidadeTextBox.Location = new Point(325, 47);
             quantidadeTextBox.Name = "quantidadeTextBox";
             quantidadeTextBox.Size = new Size(93, 20);
             quantidadeTextBox.TabIndex = 27;
@@ -345,7 +260,7 @@
             btnAtt.FlatStyle = FlatStyle.Popup;
             btnAtt.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAtt.ForeColor = Color.White;
-            btnAtt.Location = new Point(463, 43);
+            btnAtt.Location = new Point(424, 43);
             btnAtt.Name = "btnAtt";
             btnAtt.Size = new Size(175, 27);
             btnAtt.TabIndex = 29;
@@ -359,9 +274,9 @@
             groupBox3.Controls.Add(btnAtt);
             groupBox3.Controls.Add(label8);
             groupBox3.Controls.Add(quantidadeTextBox);
-            groupBox3.Location = new Point(352, 552);
+            groupBox3.Location = new Point(387, 552);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(652, 83);
+            groupBox3.Size = new Size(617, 83);
             groupBox3.TabIndex = 30;
             groupBox3.TabStop = false;
             groupBox3.Text = "Quantidade";
@@ -382,10 +297,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1032, 647);
             Controls.Add(groupBox3);
-            Controls.Add(BtnEditar);
             Controls.Add(groupBox2);
-            Controls.Add(BtnExcluir);
-            Controls.Add(BtnSalvar);
             Controls.Add(groupBox1);
             Controls.Add(label2);
             Controls.Add(dataGridView1);
@@ -413,14 +325,6 @@
         private Button BtnExcluir;
         private Button BtnSalvar;
         private GroupBox groupBox1;
-        private TextBox PrecoTextBox;
-        private Label label5;
-        private TextBox MarcaTextBox;
-        private Label label4;
-        private TextBox DescricaoTextBox;
-        private Label label3;
-        private TextBox NomeTextBox;
-        private Label label1;
         private Label label2;
         private DataGridView dataGridView1;
         private ComboBox SearchOptions;

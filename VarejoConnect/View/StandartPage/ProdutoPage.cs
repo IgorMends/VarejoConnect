@@ -13,6 +13,7 @@ using VarejoConnect.Controller;
 using VarejoConnect.Model;
 using VarejoConnect.Model.Repositorios;
 using VarejoConnect.View.EditPage;
+using VarejoConnect.View.RegisterPage;
 
 namespace VarejoConnect.View
 {
@@ -58,52 +59,16 @@ namespace VarejoConnect.View
 
         private void BtnSalvar_Click(object sender, EventArgs e)
         {
-            textBoxes.Clear();
-            textBoxes.Add(NomeTextBox.Text);
-            textBoxes.Add(MarcaTextBox.Text);
-            textBoxes.Add(DescricaoTextBox.Text);
-            textBoxes.Add(PrecoTextBox.Text);
 
+            ProductRegisterPage productRegisterPage = new ProductRegisterPage(produtos);
 
-            bool isblank = actions.verifyBlanksTextboxes(textBoxes);
+            productRegisterPage.ShowDialog();
 
-            if (isblank)
+            if (productRegisterPage.DialogResult == DialogResult.OK)
             {
-                return;
+                produtos = productRegisterPage.produtosModal;
+                id++;
             }
-
-
-            foreach (var text in produtos)
-            {
-                if (text.nome.Equals(NomeTextBox.Text))
-                {
-                    MessageBox.Show("Este produto já esta cadastrado!", "Erro", MessageBoxButtons.OK);
-                    return;
-                }
-            }
-
-            double numPreco;
-
-            try
-            {
-                numPreco = double.Parse(PrecoTextBox.Text.Trim());
-            }
-            catch (FormatException ex)
-            {
-                MessageBox.Show("Você tem que digitar apenas numeros no campo de Preço!", "Error", MessageBoxButtons.OK);
-                return;
-            }
-
-            Produto produto = new Produto(id, NomeTextBox.Text.Trim().ToUpper(), MarcaTextBox.Text.Trim().ToUpper(), DescricaoTextBox.Text.Trim().ToUpper(), numPreco, 0, Global.funcionarioLogado, dataAtual, dataAtual);
-            produtos.Add(produto);
-            repository.Add(produto);
-
-            id++;
-
-            NomeTextBox.Clear();
-            MarcaTextBox.Clear();
-            DescricaoTextBox.Clear();
-            PrecoTextBox.Clear();
 
             dataGridView1.Refresh();
         }

@@ -37,18 +37,10 @@
             groupBox1 = new GroupBox();
             label3 = new Label();
             RelatorioTextBox = new TextBox();
-            CpfTextBox = new TextBox();
-            label9 = new Label();
             button1 = new Button();
             BtnEditar = new Button();
-            EmailTextBox = new TextBox();
             BtnInativar = new Button();
-            label5 = new Label();
             BtnSalvar = new Button();
-            TelefoneTextBox = new TextBox();
-            label4 = new Label();
-            NomeTextBox = new TextBox();
-            label1 = new Label();
             label2 = new Label();
             dataGridView1 = new DataGridView();
             groupBox2.SuspendLayout();
@@ -63,9 +55,9 @@
             groupBox2.Controls.Add(BtnPesquisar);
             groupBox2.Controls.Add(label6);
             groupBox2.Controls.Add(PesquisarTextBox);
-            groupBox2.Location = new Point(352, 434);
+            groupBox2.Location = new Point(387, 434);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(652, 197);
+            groupBox2.Size = new Size(617, 197);
             groupBox2.TabIndex = 23;
             groupBox2.TabStop = false;
             groupBox2.Text = "Pesquisa";
@@ -128,21 +120,13 @@
             // 
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(RelatorioTextBox);
-            groupBox1.Controls.Add(CpfTextBox);
-            groupBox1.Controls.Add(label9);
             groupBox1.Controls.Add(button1);
             groupBox1.Controls.Add(BtnEditar);
-            groupBox1.Controls.Add(EmailTextBox);
             groupBox1.Controls.Add(BtnInativar);
-            groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(BtnSalvar);
-            groupBox1.Controls.Add(TelefoneTextBox);
-            groupBox1.Controls.Add(label4);
-            groupBox1.Controls.Add(NomeTextBox);
-            groupBox1.Controls.Add(label1);
-            groupBox1.Location = new Point(10, 55);
+            groupBox1.Location = new Point(25, 434);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(336, 580);
+            groupBox1.Size = new Size(366, 201);
             groupBox1.TabIndex = 22;
             groupBox1.TabStop = false;
             groupBox1.Text = "Cadastro";
@@ -151,7 +135,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(76, 465);
+            label3.Location = new Point(89, 92);
             label3.Name = "label3";
             label3.Size = new Size(180, 15);
             label3.TabIndex = 33;
@@ -160,28 +144,10 @@
             // RelatorioTextBox
             // 
             RelatorioTextBox.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            RelatorioTextBox.Location = new Point(46, 483);
+            RelatorioTextBox.Location = new Point(59, 110);
             RelatorioTextBox.Name = "RelatorioTextBox";
             RelatorioTextBox.Size = new Size(240, 20);
             RelatorioTextBox.TabIndex = 32;
-            // 
-            // CpfTextBox
-            // 
-            CpfTextBox.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            CpfTextBox.Location = new Point(76, 58);
-            CpfTextBox.Name = "CpfTextBox";
-            CpfTextBox.Size = new Size(237, 20);
-            CpfTextBox.TabIndex = 32;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label9.Location = new Point(23, 60);
-            label9.Name = "label9";
-            label9.Size = new Size(33, 15);
-            label9.TabIndex = 31;
-            label9.Text = "CPF:";
             // 
             // button1
             // 
@@ -190,7 +156,7 @@
             button1.FlatStyle = FlatStyle.Popup;
             button1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.ForeColor = Color.White;
-            button1.Location = new Point(91, 523);
+            button1.Location = new Point(104, 150);
             button1.Name = "button1";
             button1.Size = new Size(149, 33);
             button1.TabIndex = 30;
@@ -205,21 +171,13 @@
             BtnEditar.FlatStyle = FlatStyle.Popup;
             BtnEditar.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnEditar.ForeColor = Color.White;
-            BtnEditar.Location = new Point(65, 372);
+            BtnEditar.Location = new Point(13, 22);
             BtnEditar.Name = "BtnEditar";
-            BtnEditar.Size = new Size(208, 57);
+            BtnEditar.Size = new Size(107, 36);
             BtnEditar.TabIndex = 20;
             BtnEditar.Text = "Editar";
             BtnEditar.UseVisualStyleBackColor = false;
             BtnEditar.Click += BtnEditar_Click;
-            // 
-            // EmailTextBox
-            // 
-            EmailTextBox.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            EmailTextBox.Location = new Point(76, 93);
-            EmailTextBox.Name = "EmailTextBox";
-            EmailTextBox.Size = new Size(237, 20);
-            EmailTextBox.TabIndex = 7;
             // 
             // BtnInativar
             // 
@@ -228,23 +186,13 @@
             BtnInativar.FlatStyle = FlatStyle.Popup;
             BtnInativar.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnInativar.ForeColor = Color.White;
-            BtnInativar.Location = new Point(65, 291);
+            BtnInativar.Location = new Point(129, 22);
             BtnInativar.Name = "BtnInativar";
-            BtnInativar.Size = new Size(208, 57);
+            BtnInativar.Size = new Size(107, 36);
             BtnInativar.TabIndex = 12;
             BtnInativar.Text = "Excluir";
             BtnInativar.UseVisualStyleBackColor = false;
             BtnInativar.Click += BtnInativar_Click;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(23, 95);
-            label5.Name = "label5";
-            label5.Size = new Size(42, 15);
-            label5.TabIndex = 6;
-            label5.Text = "Email:";
             // 
             // BtnSalvar
             // 
@@ -253,49 +201,13 @@
             BtnSalvar.FlatStyle = FlatStyle.Popup;
             BtnSalvar.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnSalvar.ForeColor = Color.White;
-            BtnSalvar.Location = new Point(65, 212);
+            BtnSalvar.Location = new Point(244, 22);
             BtnSalvar.Name = "BtnSalvar";
-            BtnSalvar.Size = new Size(208, 57);
+            BtnSalvar.Size = new Size(107, 36);
             BtnSalvar.TabIndex = 11;
             BtnSalvar.Text = "Cadastrar";
             BtnSalvar.UseVisualStyleBackColor = false;
             BtnSalvar.Click += BtnSalvar_Click;
-            // 
-            // TelefoneTextBox
-            // 
-            TelefoneTextBox.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            TelefoneTextBox.Location = new Point(91, 128);
-            TelefoneTextBox.Name = "TelefoneTextBox";
-            TelefoneTextBox.Size = new Size(221, 20);
-            TelefoneTextBox.TabIndex = 5;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(23, 130);
-            label4.Name = "label4";
-            label4.Size = new Size(58, 15);
-            label4.TabIndex = 4;
-            label4.Text = "Telefone:";
-            // 
-            // NomeTextBox
-            // 
-            NomeTextBox.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            NomeTextBox.Location = new Point(76, 24);
-            NomeTextBox.Name = "NomeTextBox";
-            NomeTextBox.Size = new Size(237, 20);
-            NomeTextBox.TabIndex = 1;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(23, 26);
-            label1.Name = "label1";
-            label1.Size = new Size(44, 15);
-            label1.TabIndex = 0;
-            label1.Text = "Nome:";
             // 
             // label2
             // 
@@ -312,9 +224,9 @@
             // 
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(352, 55);
+            dataGridView1.Location = new Point(25, 55);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(652, 373);
+            dataGridView1.Size = new Size(979, 373);
             dataGridView1.TabIndex = 20;
             // 
             // ClientePage
@@ -347,18 +259,10 @@
         private Label label6;
         private TextBox PesquisarTextBox;
         private GroupBox groupBox1;
-        private TextBox CpfTextBox;
-        private Label label9;
         private Button button1;
         private Button BtnEditar;
-        private TextBox EmailTextBox;
         private Button BtnInativar;
-        private Label label5;
         private Button BtnSalvar;
-        private TextBox TelefoneTextBox;
-        private Label label4;
-        private TextBox NomeTextBox;
-        private Label label1;
         private Label label2;
         private DataGridView dataGridView1;
         private Label label3;
