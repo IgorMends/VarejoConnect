@@ -70,7 +70,7 @@ namespace VarejoConnect.View.RegisterPage
                 return;
             }
 
-            Produto produto = new Produto(id, NomeTextBox.Text.Trim().ToUpper(), MarcaTextBox.Text.Trim().ToUpper(), DescricaoTextBox.Text.Trim().ToUpper(), numPreco, 0, Global.funcionarioLogado, DateTime.Today, DateTime.Today);
+            Produto produto = new Produto(id, NomeTextBox.Text.Trim().ToUpper(), MarcaTextBox.Text.Trim().ToUpper(), DescricaoTextBox.Text.Trim().ToUpper(), numPreco, 0, Global.funcionarioLogado, DateTime.Today, DateTime.Today, true);
             produtosModal.Add(produto);
             repository.Add(produto);
 

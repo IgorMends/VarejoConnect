@@ -35,6 +35,7 @@ namespace VarejoConnect.View
             ObterDados();
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = clientes;
+            dataGridView1.Columns["status"].Visible = false;
             dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns["id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;

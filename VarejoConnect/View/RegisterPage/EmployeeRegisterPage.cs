@@ -70,7 +70,7 @@ namespace VarejoConnect.View.RegisterPage
                     return;
                 }
 
-                Funcionario funcionario = new Funcionario(id, LoginTextBox.Text.Trim(), NomeTextBox.Text.Trim().ToUpper(), PasswordTextBox.Text.Trim(), PositionTextBox.Text.Trim().ToUpper(), numSalario, DateTime.Today, DateTime.Today, Global.funcionarioLogado);
+                Funcionario funcionario = new Funcionario(id, LoginTextBox.Text.Trim(), NomeTextBox.Text.Trim().ToUpper(), PasswordTextBox.Text.Trim(), PositionTextBox.Text.Trim().ToUpper(), numSalario, DateTime.Today, DateTime.Today, Global.funcionarioLogado, true);
                 funcionariosModal.Add(funcionario);
                 repository.Add(funcionario);
 

@@ -15,8 +15,8 @@ namespace VarejoConnect.Model.Repositorios
             using var connection = new ConnectionDb();
 
             string query = @"INSERT INTO public.funcionarios(
-	                        id, login,nome, senha, cargo, salario, funcionarioAlteracao, dataAlteracao, dataCriacao)
-	                        VALUES (@id, @login,@nome, @senha, @cargo, @salario, @funcionarioAlteracao, @dataAlteracao, @dataAlteracao);";
+	                        id, login,nome, senha, cargo, salario, funcionarioAlteracao, dataAlteracao, dataCriacao, status)
+	                        VALUES (@id, @login,@nome, @senha, @cargo, @salario, @funcionarioAlteracao, @dataAlteracao, @dataAlteracao, @status);";
 
             var result = connection.Connection.Execute(sql: query, param: funcionario);
 
@@ -27,7 +27,7 @@ namespace VarejoConnect.Model.Repositorios
         {
             using var connection = new ConnectionDb();
 
-            string query = @"SELECT * from public.funcionarios";
+            string query = @"SELECT * from public.funcionarios WHERE status = TRUE;";
 
             var funcionarios = connection.Connection.Query<Funcionario>(sql: query);
 
@@ -49,7 +49,7 @@ namespace VarejoConnect.Model.Repositorios
         {
             using var connection = new ConnectionDb();
 
-            string query = @"DELETE FROM funcionarios WHERE id = @Id";
+            string query = @"UPDATE funcionarios SET status = FALSE WHERE id = @Id";
 
             var result = connection.Connection.Execute(sql: query, param: funcionario);
 
@@ -72,7 +72,7 @@ namespace VarejoConnect.Model.Repositorios
         {
             using var connection = new ConnectionDb();
 
-            string query = @"SELECT nome FROM funcionarios WHERE id = @Id;";
+            string query = @"SELECT nome FROM funcionarios WHERE id = @Id AND status = TRUE;";
 
             string nomeRetornado = connection.Connection.QuerySingleOrDefault<string>(query, new { Id = id });
 
@@ -83,7 +83,7 @@ namespace VarejoConnect.Model.Repositorios
         {
             using var connection = new ConnectionDb();
 
-            string query = @"SELECT * FROM funcionarios WHERE id = @Id;";
+            string query = @"SELECT * FROM funcionarios WHERE id = @Id AND status = TRUE;";
 
             Funcionario funcionarioRetornado = connection.Connection.QuerySingleOrDefault<Funcionario>(query, new { Id = id });
 

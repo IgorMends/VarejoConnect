@@ -14,8 +14,8 @@ namespace VarejoConnect.Model.Repositorios
             using var connection = new ConnectionDb();
 
             string query = @"INSERT INTO public.clientes(
-	                            id, nome, email, telefone, funcionarioalteracao, dataalteracao, datacriacao, cpf)
-	                            VALUES (@id, @nome, @email, @telefone, @funcionarioAlteracao, @dataAlteracao, @dataCriacao, @cpf);";
+	                            id, nome, email, telefone, funcionarioalteracao, dataalteracao, datacriacao, cpf, status)
+	                            VALUES (@id, @nome, @email, @telefone, @funcionarioAlteracao, @dataAlteracao, @dataCriacao, @cpf, @status);";
 
             var result = connection.Connection.Execute(sql: query, param: cliente);
 
@@ -26,7 +26,7 @@ namespace VarejoConnect.Model.Repositorios
         {
             using var connection = new ConnectionDb();
 
-            string query = @"SELECT * from public.clientes";
+            string query = @"SELECT * from public.clientes WHERE status = TRUE;";
 
             var clientes = connection.Connection.Query<Cliente>(sql: query);
 
@@ -57,7 +57,7 @@ namespace VarejoConnect.Model.Repositorios
         {
             using var connection = new ConnectionDb();
 
-            string query = @"DELETE FROM clientes WHERE id = @Id";
+            string query = @"UPDATE clientes SET status = FALSE WHERE id = @Id";
 
             var result = connection.Connection.Execute(sql: query, param: cliente);
 
@@ -81,7 +81,7 @@ namespace VarejoConnect.Model.Repositorios
         {
             using var connection = new ConnectionDb();
 
-            string query = @"SELECT nome FROM clientes WHERE id = @Id;";
+            string query = @"SELECT nome FROM clientes WHERE id = @Id AND status = TRUE;";
 
             string nomeRetornado = connection.Connection.QuerySingleOrDefault<string>(query, new { Id = id });
 
@@ -92,7 +92,7 @@ namespace VarejoConnect.Model.Repositorios
         {
             using var connection = new ConnectionDb();
 
-            string query = @"SELECT * FROM clientes WHERE id = @Id;";
+            string query = @"SELECT * FROM clientes WHERE id = @Id AND status = TRUE;";
 
             Cliente clienteRetornado = connection.Connection.QuerySingleOrDefault<Cliente>(query, new { Id = id });
 
@@ -103,7 +103,7 @@ namespace VarejoConnect.Model.Repositorios
 		{
 			using var connection = new ConnectionDb();
 
-			string query = @"SELECT * FROM clientes WHERE nome = @nome;";
+			string query = @"SELECT * FROM clientes WHERE nome = @nome AND status = TRUE;";
 
 			Cliente clienteRetornado = connection.Connection.QuerySingleOrDefault<Cliente>(query, new { nome = nome });
 

@@ -15,8 +15,8 @@ namespace VarejoConnect.Model.Repositorios
             using var connection = new ConnectionDb();
 
             string query = @"INSERT INTO public.produtos(
-	                            id, nome, preco, quantidade, marca, descricao, funcionarioalteracao, dataalteracao, datacriacao)
-	                            VALUES (@id, @nome, @preco, @quantidade, @marca, @descricao, @funcionarioAlteracao, @dataAlteracao, @dataCriacao);";
+	                            id, nome, preco, quantidade, marca, descricao, funcionarioalteracao, dataalteracao, datacriacao, status)
+	                            VALUES (@id, @nome, @preco, @quantidade, @marca, @descricao, @funcionarioAlteracao, @dataAlteracao, @dataCriacao, @status);";
 
             var result = connection.Connection.Execute(sql: query, param: produto);
 
@@ -27,7 +27,7 @@ namespace VarejoConnect.Model.Repositorios
         {
             using var connection = new ConnectionDb();
 
-            string query = @"SELECT * from public.produtos";
+            string query = @"SELECT * from public.produtos WHERE status = TRUE;";
 
             var produtos = connection.Connection.Query<Produto>(sql: query);
 
@@ -58,7 +58,7 @@ namespace VarejoConnect.Model.Repositorios
         {
             using var connection = new ConnectionDb();
 
-            string query = @"DELETE FROM produtos WHERE id = @Id";
+            string query = @"UPDATE produtos SET status = FALSE WHERE id = @Id";
 
             var result = connection.Connection.Execute(sql: query, param: produto);
 
@@ -81,7 +81,7 @@ namespace VarejoConnect.Model.Repositorios
         {
             using var connection = new ConnectionDb();
 
-            string query = @"SELECT nome FROM produtos WHERE id = @Id;";
+            string query = @"SELECT nome FROM produtos WHERE id = @Id AND status = TRUE;";
 
             string nomeRetornado = connection.Connection.QuerySingleOrDefault<string>(query, new { Id = id });
 
@@ -92,7 +92,7 @@ namespace VarejoConnect.Model.Repositorios
         {
             using var connection = new ConnectionDb();
 
-            string query = @"SELECT * FROM produtos WHERE id = @Id;";
+            string query = @"SELECT * FROM produtos WHERE id = @Id AND status = TRUE;";
 
             Produto produtoRetornado = connection.Connection.QuerySingleOrDefault<Produto>(query, new { Id = id });
 
@@ -103,7 +103,7 @@ namespace VarejoConnect.Model.Repositorios
         {
             using var connection = new ConnectionDb();
 
-            string query = @"UPDATE public.produtos SET quantidade = @quantidade WHERE id = @id;";
+            string query = @"UPDATE public.produtos SET quantidade = @quantidade WHERE id = @id AND status = TRUE;";
 
             var result = connection.Connection.Execute(sql: query, param: produto);
 
@@ -114,7 +114,7 @@ namespace VarejoConnect.Model.Repositorios
         {
             using var connection = new ConnectionDb();
 
-            string query = @"SELECT * FROM produtos WHERE nome = @nome;";
+            string query = @"SELECT * FROM produtos WHERE nome = @nome AND status = TRUE;";
 
             Produto produtoRetornado = connection.Connection.QuerySingleOrDefault<Produto>(query, new { nome = nome });
 
@@ -125,7 +125,7 @@ namespace VarejoConnect.Model.Repositorios
         {
             using var connection = new ConnectionDb();
 
-            string query = "UPDATE Produtos SET quantidade = quantidade - @quantidade WHERE id = @id";
+            string query = "UPDATE Produtos SET quantidade = quantidade - @quantidade WHERE id = @id AND status = TRUE";
 
             connection.Connection.Execute(query ,new { Quantidade = decrease, Id = produto.id });
         }
@@ -134,7 +134,7 @@ namespace VarejoConnect.Model.Repositorios
         {
             using var connectionDb = new ConnectionDb();
 
-            string query = "SELECT quantidade FROM produtos WHERE id = @id";
+            string query = "SELECT quantidade FROM produtos WHERE id = @id AND status = TRUE";
 
             return connectionDb.Connection.QuerySingle<int>(query, new { Id = produto.id });
         }

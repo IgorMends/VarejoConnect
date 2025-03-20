@@ -15,13 +15,14 @@ namespace VarejoConnect.Model
         public string cargo { get; set; }
         public double salario { get; set; }
         public DateTime dataCriacao { get; set; }
-        public DateTime dataAlteracao { get; set; }
+        public DateTime dataAlteracao { get; set; } 
         public int funcionarioAlteracao { get; set; }
+        public bool status { get; set; }
 
 
         public Funcionario() { }
 
-        public Funcionario(int id, string login,string nome, string senha, string cargo, double salario, DateTime dataCriacao, DateTime dataAlteracao, int funcionarioAlteracao)
+        public Funcionario(int id, string login,string nome, string senha, string cargo, double salario, DateTime dataCriacao, DateTime dataAlteracao, int funcionarioAlteracao, bool status)
         {
             this.id = id;
             this.login = login;
@@ -32,6 +33,7 @@ namespace VarejoConnect.Model
             this.dataCriacao = dataCriacao;
             this.dataAlteracao = dataAlteracao;
             this.funcionarioAlteracao = funcionarioAlteracao;
+            this.status = status;
         }
     }
 }

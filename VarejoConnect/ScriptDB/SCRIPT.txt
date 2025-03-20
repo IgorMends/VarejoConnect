@@ -9,7 +9,8 @@ create table funcionarios(
 	salario double precision not null,
 	funcionarioalteracao int not null,
 	dataalteracao date not null,
-	datacriacao date not null
+	datacriacao date not null,
+	status BOOLEAN not null
 );
 
 create table clientes(
@@ -21,7 +22,8 @@ create table clientes(
 	funcionarioalteracao int not null,
 	dataalteracao date not null,
 	datacriacao date not null,
-	FOREIGN KEY (funcionario_fk) REFERENCES funcionarios(id)
+	status BOOLEAN not null,
+	FOREIGN KEY (funcionarioalteracao) REFERENCES funcionarios(id)
 );
 
 create table vendas(
@@ -45,7 +47,8 @@ create table produtos(
 	funcionarioalteracao int not null,
 	dataalteracao date not null,
 	datacriacao date not null,
-	FOREIGN KEY (funcionario_fk) REFERENCES funcionarios(id)
+	status BOOLEAN not null,
+	FOREIGN KEY (funcionarioalteracao) REFERENCES funcionarios(id)
 );
 
 create table produto_venda(
@@ -57,5 +60,5 @@ create table produto_venda(
 	FOREIGN KEY (produto_fk) REFERENCES produtos(id)
 );
 
-INSERT INTO public.funcionarios(id, login,nome, senha, cargo, salario, funcionarioalteracao, dataalteracao, datacriacao)
-	VALUES (0, 'admin','admin', 'admin', 'admin', 0, 0, CURRENT_DATE, CURRENT_DATE);
+INSERT INTO public.funcionarios(id, login,nome, senha, cargo, salario, funcionarioalteracao, dataalteracao, datacriacao, status)
+	VALUES (0, 'admin','admin', 'admin', 'admin', 0, 0, CURRENT_DATE, CURRENT_DATE, TRUE);
