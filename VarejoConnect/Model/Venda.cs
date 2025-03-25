@@ -15,7 +15,9 @@ namespace VarejoConnect.Model
         public string formaPagamento{  get; set; }
         public DateTime dataVenda{  get; set; }
         public int clienteVenda{ get; set; }
+        public string clienteNome { get; set; }
         public int funcionarioVenda{ get; set; }
+        public string funcionarioNome {  get; set; }
 
         public Venda(int id, double valorTotal, string formaPagamento, DateTime dataVenda, int clienteVenda, int funcionarioVenda)
         {
@@ -26,5 +28,6 @@ namespace VarejoConnect.Model
             this.clienteVenda = clienteVenda;
             this.funcionarioVenda = funcionarioVenda;
         }
+        public Venda() { }  
     }
 }

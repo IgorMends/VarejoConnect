@@ -33,6 +33,11 @@ namespace VarejoConnect.View
             ObterDados();
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = produtos;
+            ConfigureDataGrid();
+        }
+
+        public void ConfigureDataGrid()
+        {
             dataGridView1.Columns["status"].Visible = false;
             dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Format = "dd/MM/yyyy";
@@ -133,15 +138,7 @@ namespace VarejoConnect.View
             buscaProdutos.Clear();
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = buscaProdutos;
-            dataGridView1.Columns["id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["preco"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["quantidade"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["funcionarioAlteracao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridView1.Columns["preco"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridView1.Columns["preco"].DefaultCellStyle.Format = "N2";
+            ConfigureDataGrid();
 
 
             string criterioBusca = SearchOptions.SelectedItem?.ToString();
@@ -156,6 +153,7 @@ namespace VarejoConnect.View
                 {
                     dataGridView1.DataSource = null;
                     dataGridView1.DataSource = produtos;
+                    ConfigureDataGrid();
                 }
                 else
                 {

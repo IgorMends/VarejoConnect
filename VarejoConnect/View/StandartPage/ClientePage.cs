@@ -35,6 +35,11 @@ namespace VarejoConnect.View
             ObterDados();
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = clientes;
+            ConfigureDataGrid();
+        }
+
+        public void ConfigureDataGrid()
+        {
             dataGridView1.Columns["status"].Visible = false;
             dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Format = "dd/MM/yyyy";
@@ -66,7 +71,7 @@ namespace VarejoConnect.View
                 id++;
             }
 
-            
+
             dataGridView1.Refresh();
         }
 
@@ -129,15 +134,7 @@ namespace VarejoConnect.View
             buscaClientes.Clear();
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = buscaClientes;
-            dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Format = "dd/MM/yyyy";
-            dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Format = "dd/MM/yyyy";
-            dataGridView1.Columns["id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["cpf"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["telefone"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["funcionarioAlteracao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            ConfigureDataGrid();
 
 
             string criterioBusca = SearchOptions.SelectedItem?.ToString();
@@ -155,6 +152,7 @@ namespace VarejoConnect.View
                 {
                     dataGridView1.DataSource = null;
                     dataGridView1.DataSource = clientes;
+                    ConfigureDataGrid();
                 }
                 else
                 {
@@ -269,9 +267,9 @@ namespace VarejoConnect.View
                 if (string.IsNullOrWhiteSpace(pesquisa))
                 {
                     foreach (var cliente in clientes)
-                    {                        
+                    {
                         clientesRelatorio.Add(cliente);
-                        clienteExiste = true;                        
+                        clienteExiste = true;
                     }
                 }
                 else
@@ -309,6 +307,11 @@ namespace VarejoConnect.View
                 var relatorio = new RelatorioClientes(clientesRelatorio, titulo);
                 relatorio.GeneratePdf(nomeArquivo);
             }
+        }
+
+        private void ClientePage_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

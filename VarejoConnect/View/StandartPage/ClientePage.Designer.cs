@@ -241,6 +241,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "ClientePage";
             Text = "ClientePage";
+            Load += ClientePage_Load;
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             groupBox1.ResumeLayout(false);

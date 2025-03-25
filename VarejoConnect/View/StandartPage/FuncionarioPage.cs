@@ -35,6 +35,11 @@ namespace VarejoConnect.View
             ObterDados();
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = funcionarios;
+            ConfigureDataGrid();
+        }
+
+        public void ConfigureDataGrid()
+        {
             dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns["senha"].Visible = false;
@@ -146,15 +151,7 @@ namespace VarejoConnect.View
             buscaFuncionarios.Clear();
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = buscaFuncionarios;
-            dataGridView1.Columns["senha"].Visible = false;
-            dataGridView1.Columns["id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["salario"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["funcionarioAlteracao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridView1.Columns["salario"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridView1.Columns["salario"].DefaultCellStyle.Format = "N2";
+            ConfigureDataGrid();
 
 
             string criterioBusca = SearchOptions.SelectedItem?.ToString();
@@ -172,7 +169,7 @@ namespace VarejoConnect.View
                 {
                     dataGridView1.DataSource = null;
                     dataGridView1.DataSource = funcionarios;
-                    dataGridView1.Columns["senha"].Visible = false;
+                    ConfigureDataGrid();
                 }
                 else
                 {

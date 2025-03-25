@@ -50,6 +50,7 @@
             TipoDropBox = new ComboBox();
             BtnLimpar = new Button();
             label11 = new Label();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -107,7 +108,7 @@
             // 
             clienteTextBox.Location = new Point(144, 104);
             clienteTextBox.Name = "clienteTextBox";
-            clienteTextBox.Size = new Size(251, 23);
+            clienteTextBox.Size = new Size(268, 23);
             clienteTextBox.TabIndex = 26;
             clienteTextBox.TextChanged += textBox2_TextChanged;
             clienteTextBox.KeyDown += textBox2_KeyDown;
@@ -116,7 +117,7 @@
             // 
             produtoTextBox.Location = new Point(144, 137);
             produtoTextBox.Name = "produtoTextBox";
-            produtoTextBox.Size = new Size(251, 23);
+            produtoTextBox.Size = new Size(268, 23);
             produtoTextBox.TabIndex = 27;
             produtoTextBox.KeyDown += textBox3_KeyDown;
             // 
@@ -135,7 +136,7 @@
             // 
             pictureBox1.Cursor = Cursors.Hand;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(405, 103);
+            pictureBox1.Location = new Point(422, 103);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(25, 25);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -147,7 +148,7 @@
             // 
             pictureBox3.Cursor = Cursors.Hand;
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(620, 136);
+            pictureBox3.Location = new Point(637, 136);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(25, 25);
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -159,7 +160,7 @@
             // 
             pictureBox4.Cursor = Cursors.Hand;
             pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(593, 138);
+            pictureBox4.Location = new Point(610, 138);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(21, 21);
             pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -169,7 +170,7 @@
             // 
             // quantidadeTextBox
             // 
-            quantidadeTextBox.Location = new Point(529, 137);
+            quantidadeTextBox.Location = new Point(546, 137);
             quantidadeTextBox.Name = "quantidadeTextBox";
             quantidadeTextBox.Size = new Size(56, 23);
             quantidadeTextBox.TabIndex = 36;
@@ -182,7 +183,7 @@
             label5.BackColor = Color.FromArgb(121, 182, 201);
             label5.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.White;
-            label5.Location = new Point(405, 137);
+            label5.Location = new Point(422, 137);
             label5.Name = "label5";
             label5.Padding = new Padding(7, 2, 6, 2);
             label5.Size = new Size(120, 24);
@@ -242,7 +243,7 @@
             // 
             // BtnVenda
             // 
-            BtnVenda.BackColor = Color.FromArgb(121, 182, 201);
+            BtnVenda.BackColor = Color.FromArgb(100, 250, 140);
             BtnVenda.FlatAppearance.BorderSize = 0;
             BtnVenda.FlatStyle = FlatStyle.Popup;
             BtnVenda.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -280,7 +281,7 @@
             // 
             // BtnLimpar
             // 
-            BtnLimpar.BackColor = Color.FromArgb(121, 182, 201);
+            BtnLimpar.BackColor = Color.FromArgb(250, 90, 110);
             BtnLimpar.FlatAppearance.BorderSize = 0;
             BtnLimpar.FlatStyle = FlatStyle.Popup;
             BtnLimpar.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -301,15 +302,31 @@
             label11.Location = new Point(144, 71);
             label11.Name = "label11";
             label11.Padding = new Padding(6, 2, 6, 2);
-            label11.Size = new Size(251, 24);
+            label11.Size = new Size(268, 24);
             label11.TabIndex = 46;
             label11.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.FromArgb(121, 182, 201);
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Popup;
+            button1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(365, 563);
+            button1.Name = "button1";
+            button1.Size = new Size(208, 57);
+            button1.TabIndex = 47;
+            button1.Text = "Listar Vendas";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // VendaPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1032, 647);
+            Controls.Add(button1);
             Controls.Add(label11);
             Controls.Add(BtnLimpar);
             Controls.Add(TipoDropBox);
@@ -365,5 +382,6 @@
         private ComboBox TipoDropBox;
         private Button BtnLimpar;
         private Label label11;
+        private Button button1;
     }
 }

@@ -41,5 +41,46 @@ namespace VarejoConnect.Model.Repositorios
 
             return id;
         }
+
+        public List<Venda> GetVendasWithNames(DateTime dataInicio, DateTime dataFim)
+        {
+            using var connection = new ConnectionDb();
+
+            string query = @"
+                            SELECT v.id, 
+                               c.nome AS nome_cliente, 
+                               f.nome AS nome_funcionario, 
+                               v.data_venda, 
+                               v.valor_total, 
+                               v.forma_pagamento
+                            FROM vendas v
+                            JOIN clientes c ON v.cliente_fk = c.id
+                            JOIN funcionarios f ON v.funcionario_fk = f.id
+                            WHERE v.data_venda BETWEEN @DataInicio AND @DataFim  
+                            ORDER BY v.data_venda DESC;";
+
+            return connection.Connection.Query<Venda>(query, new { DataInicio = dataInicio, DataFim = dataFim }).ToList();
+        }
+
+        public List<Venda> GetAllVendas()
+        {
+            using var connection = new ConnectionDb();
+
+            string query = @"
+                            SELECT v.id AS Id, 
+                               v.cliente_fk AS clienteVenda, 
+                               c.nome AS clienteNome, 
+                               v.funcionario_fk AS funcionarioVenda, 
+                               f.nome AS funcionarioNome, 
+                               v.data_venda AS dataVenda, 
+                               v.valor_total AS valorTotal, 
+                               v.forma_pagamento AS formaPagamento
+                            FROM vendas v
+                            JOIN clientes c ON v.cliente_fk = c.id
+                            JOIN funcionarios f ON v.funcionario_fk = f.id
+                            ORDER BY v.data_venda DESC;"; 
+
+            return connection.Connection.Query<Venda>(query).ToList();
+        }
     }
 }

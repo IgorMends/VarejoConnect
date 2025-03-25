@@ -31,19 +31,22 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomePage));
             pictureBox1 = new PictureBox();
             panel1 = new Panel();
+            button6 = new Button();
             label3 = new Label();
             button4 = new Button();
-            button3 = new Button();
-            button2 = new Button();
+            button5 = new Button();
             pictureBox4 = new PictureBox();
             label2 = new Label();
+            button3 = new Button();
             label1 = new Label();
+            button2 = new Button();
             button1 = new Button();
             pictureBox2 = new PictureBox();
             panel2 = new Panel();
             pictureBox9 = new PictureBox();
             label8 = new Label();
             label4 = new Label();
+            button7 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
@@ -67,12 +70,15 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(121, 182, 201);
+            panel1.Controls.Add(button7);
+            panel1.Controls.Add(button6);
+            panel1.Controls.Add(button5);
+            panel1.Controls.Add(button2);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(button4);
-            panel1.Controls.Add(button3);
-            panel1.Controls.Add(button2);
             panel1.Controls.Add(pictureBox4);
             panel1.Controls.Add(label2);
+            panel1.Controls.Add(button3);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(button1);
             panel1.Dock = DockStyle.Left;
@@ -81,6 +87,25 @@
             panel1.Size = new Size(248, 680);
             panel1.TabIndex = 1;
             panel1.Paint += panel1_Paint;
+            // 
+            // button6
+            // 
+            button6.BackColor = Color.Transparent;
+            button6.Cursor = Cursors.Hand;
+            button6.FlatAppearance.BorderSize = 0;
+            button6.FlatAppearance.MouseDownBackColor = Color.FromArgb(82, 168, 191);
+            button6.FlatAppearance.MouseOverBackColor = Color.FromArgb(82, 168, 191);
+            button6.FlatStyle = FlatStyle.Flat;
+            button6.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button6.ForeColor = Color.White;
+            button6.Image = (Image)resources.GetObject("button6.Image");
+            button6.Location = new Point(0, 450);
+            button6.Name = "button6";
+            button6.Size = new Size(248, 48);
+            button6.TabIndex = 16;
+            button6.Text = "Fornecedor";
+            button6.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button6.UseVisualStyleBackColor = false;
             // 
             // label3
             // 
@@ -105,7 +130,7 @@
             button4.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button4.ForeColor = Color.White;
             button4.Image = (Image)resources.GetObject("button4.Image");
-            button4.Location = new Point(0, 456);
+            button4.Location = new Point(0, 520);
             button4.Name = "button4";
             button4.Size = new Size(248, 48);
             button4.TabIndex = 14;
@@ -114,45 +139,24 @@
             button4.UseVisualStyleBackColor = false;
             button4.Click += button4_Click;
             // 
-            // button3
+            // button5
             // 
-            button3.BackColor = Color.Transparent;
-            button3.Cursor = Cursors.Hand;
-            button3.FlatAppearance.BorderSize = 0;
-            button3.FlatAppearance.MouseDownBackColor = Color.FromArgb(82, 168, 191);
-            button3.FlatAppearance.MouseOverBackColor = Color.FromArgb(82, 168, 191);
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button3.ForeColor = Color.White;
-            button3.Image = (Image)resources.GetObject("button3.Image");
-            button3.Location = new Point(0, 356);
-            button3.Name = "button3";
-            button3.Size = new Size(248, 48);
-            button3.TabIndex = 13;
-            button3.Text = "Vendas";
-            button3.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button3.UseVisualStyleBackColor = false;
-            button3.Click += button3_Click;
-            // 
-            // button2
-            // 
-            button2.BackColor = Color.Transparent;
-            button2.Cursor = Cursors.Hand;
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatAppearance.MouseDownBackColor = Color.FromArgb(82, 168, 191);
-            button2.FlatAppearance.MouseOverBackColor = Color.FromArgb(82, 168, 191);
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.ForeColor = Color.White;
-            button2.Image = (Image)resources.GetObject("button2.Image");
-            button2.Location = new Point(0, 256);
-            button2.Name = "button2";
-            button2.Size = new Size(248, 48);
-            button2.TabIndex = 12;
-            button2.Text = "Clientes";
-            button2.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button2.UseVisualStyleBackColor = false;
-            button2.Click += button2_Click;
+            button5.BackColor = Color.Transparent;
+            button5.Cursor = Cursors.Hand;
+            button5.FlatAppearance.BorderSize = 0;
+            button5.FlatAppearance.MouseDownBackColor = Color.FromArgb(82, 168, 191);
+            button5.FlatAppearance.MouseOverBackColor = Color.FromArgb(82, 168, 191);
+            button5.FlatStyle = FlatStyle.Flat;
+            button5.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button5.ForeColor = Color.White;
+            button5.Image = (Image)resources.GetObject("button5.Image");
+            button5.Location = new Point(0, 170);
+            button5.Name = "button5";
+            button5.Size = new Size(248, 48);
+            button5.TabIndex = 15;
+            button5.Text = "Seção";
+            button5.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button5.UseVisualStyleBackColor = false;
             // 
             // pictureBox4
             // 
@@ -175,6 +179,26 @@
             label2.TabIndex = 8;
             label2.Text = "Varejo Connect";
             // 
+            // button3
+            // 
+            button3.BackColor = Color.Transparent;
+            button3.Cursor = Cursors.Hand;
+            button3.FlatAppearance.BorderSize = 0;
+            button3.FlatAppearance.MouseDownBackColor = Color.FromArgb(82, 168, 191);
+            button3.FlatAppearance.MouseOverBackColor = Color.FromArgb(82, 168, 191);
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button3.ForeColor = Color.White;
+            button3.Image = (Image)resources.GetObject("button3.Image");
+            button3.Location = new Point(0, 310);
+            button3.Name = "button3";
+            button3.Size = new Size(248, 48);
+            button3.TabIndex = 13;
+            button3.Text = "Vendas";
+            button3.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
+            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -188,6 +212,26 @@
             label1.Text = "Sair";
             label1.Click += label1_Click;
             // 
+            // button2
+            // 
+            button2.BackColor = Color.Transparent;
+            button2.Cursor = Cursors.Hand;
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatAppearance.MouseDownBackColor = Color.FromArgb(82, 168, 191);
+            button2.FlatAppearance.MouseOverBackColor = Color.FromArgb(82, 168, 191);
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button2.ForeColor = Color.White;
+            button2.Image = (Image)resources.GetObject("button2.Image");
+            button2.Location = new Point(0, 240);
+            button2.Name = "button2";
+            button2.Size = new Size(248, 48);
+            button2.TabIndex = 12;
+            button2.Text = "Clientes";
+            button2.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
+            // 
             // button1
             // 
             button1.BackColor = Color.Transparent;
@@ -199,7 +243,7 @@
             button1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.ForeColor = Color.White;
             button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.Location = new Point(0, 156);
+            button1.Location = new Point(0, 100);
             button1.Name = "button1";
             button1.Size = new Size(248, 48);
             button1.TabIndex = 11;
@@ -264,6 +308,25 @@
             label4.Text = "label4";
             label4.Click += label4_Click;
             // 
+            // button7
+            // 
+            button7.BackColor = Color.Transparent;
+            button7.Cursor = Cursors.Hand;
+            button7.FlatAppearance.BorderSize = 0;
+            button7.FlatAppearance.MouseDownBackColor = Color.FromArgb(82, 168, 191);
+            button7.FlatAppearance.MouseOverBackColor = Color.FromArgb(82, 168, 191);
+            button7.FlatStyle = FlatStyle.Flat;
+            button7.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button7.ForeColor = Color.White;
+            button7.Image = (Image)resources.GetObject("button7.Image");
+            button7.Location = new Point(0, 380);
+            button7.Name = "button7";
+            button7.Size = new Size(248, 48);
+            button7.TabIndex = 17;
+            button7.Text = "Devolução";
+            button7.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button7.UseVisualStyleBackColor = false;
+            // 
             // HomePage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -308,5 +371,8 @@
         private Label label8;
         private Label label3;
         private Label label4;
+        private Button button6;
+        private Button button5;
+        private Button button7;
     }
 }
