@@ -1,6 +1,6 @@
 ﻿namespace VarejoConnect.View.RegisterPage
 {
-    partial class ProductRegisterPage
+    partial class SupplierRegisterPage
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductRegisterPage));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SupplierRegisterPage));
+            label4 = new Label();
+            TipoDropBox = new ComboBox();
             BtnSalvar = new Button();
             label1 = new Label();
             label3 = new Label();
@@ -36,14 +38,33 @@
             label7 = new Label();
             pictureBox2 = new PictureBox();
             label2 = new Label();
-            MarcaTextBox = new TextBox();
-            DescricaoTextBox = new TextBox();
-            PrecoTextBox = new TextBox();
-            NomeTextBox = new TextBox();
-            comboBox1 = new ComboBox();
-            label4 = new Label();
+            FornecedorDoc = new TextBox();
+            FornecedorNum = new TextBox();
+            FornecedorName = new TextBox();
+            textBox1 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.FromArgb(121, 182, 201);
+            label4.Location = new Point(80, 151);
+            label4.Name = "label4";
+            label4.Size = new Size(53, 23);
+            label4.TabIndex = 62;
+            label4.Text = "Tipo:";
+            // 
+            // TipoDropBox
+            // 
+            TipoDropBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            TipoDropBox.FormattingEnabled = true;
+            TipoDropBox.Items.AddRange(new object[] { "FÍSICA", "JURÍDICA" });
+            TipoDropBox.Location = new Point(139, 151);
+            TipoDropBox.Name = "TipoDropBox";
+            TipoDropBox.Size = new Size(237, 23);
+            TipoDropBox.TabIndex = 61;
             // 
             // BtnSalvar
             // 
@@ -55,7 +76,7 @@
             BtnSalvar.Location = new Point(78, 345);
             BtnSalvar.Name = "BtnSalvar";
             BtnSalvar.Size = new Size(263, 57);
-            BtnSalvar.TabIndex = 58;
+            BtnSalvar.TabIndex = 60;
             BtnSalvar.Text = "Cadastrar";
             BtnSalvar.UseVisualStyleBackColor = false;
             BtnSalvar.Click += BtnSalvar_Click;
@@ -65,43 +86,44 @@
             label1.AutoSize = true;
             label1.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(121, 182, 201);
-            label1.Location = new Point(47, 156);
+            label1.Location = new Point(11, 187);
             label1.Name = "label1";
-            label1.Size = new Size(76, 23);
-            label1.TabIndex = 57;
-            label1.Text = "Marca:";
+            label1.Size = new Size(122, 23);
+            label1.TabIndex = 59;
+            label1.Text = "Documento:";
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.FromArgb(121, 182, 201);
-            label3.Location = new Point(55, 224);
+            label3.Location = new Point(41, 259);
             label3.Name = "label3";
-            label3.Size = new Size(68, 23);
-            label3.TabIndex = 56;
-            label3.Text = "Preço:";
+            label3.Size = new Size(92, 23);
+            label3.TabIndex = 58;
+            label3.Text = "Telefone:";
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.FromArgb(121, 182, 201);
-            label6.Location = new Point(15, 191);
+            label6.Location = new Point(38, 223);
             label6.Name = "label6";
-            label6.Size = new Size(108, 23);
-            label6.TabIndex = 55;
-            label6.Text = "Descrição:";
+            label6.Size = new Size(95, 23);
+            label6.TabIndex = 57;
+            label6.Text = "Empresa:";
+            label6.Click += label6_Click;
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.FromArgb(121, 182, 201);
-            label7.Location = new Point(52, 123);
+            label7.Location = new Point(62, 114);
             label7.Name = "label7";
             label7.Size = new Size(71, 23);
-            label7.TabIndex = 54;
+            label7.TabIndex = 56;
             label7.Text = "Nome:";
             // 
             // pictureBox2
@@ -112,7 +134,7 @@
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(20, 20);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox2.TabIndex = 53;
+            pictureBox2.TabIndex = 55;
             pictureBox2.TabStop = false;
             pictureBox2.Click += pictureBox2_Click;
             // 
@@ -123,70 +145,50 @@
             label2.ForeColor = Color.FromArgb(121, 182, 201);
             label2.Location = new Point(12, 9);
             label2.Name = "label2";
-            label2.Size = new Size(179, 23);
-            label2.TabIndex = 52;
-            label2.Text = "Cadastrar Produto";
+            label2.Size = new Size(212, 23);
+            label2.TabIndex = 54;
+            label2.Text = "Cadastrar Fonecedor:";
             // 
-            // MarcaTextBox
+            // FornecedorDoc
             // 
-            MarcaTextBox.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            MarcaTextBox.Location = new Point(129, 159);
-            MarcaTextBox.Name = "MarcaTextBox";
-            MarcaTextBox.Size = new Size(237, 20);
-            MarcaTextBox.TabIndex = 51;
+            FornecedorDoc.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            FornecedorDoc.Location = new Point(139, 190);
+            FornecedorDoc.Name = "FornecedorDoc";
+            FornecedorDoc.Size = new Size(237, 20);
+            FornecedorDoc.TabIndex = 53;
             // 
-            // DescricaoTextBox
+            // FornecedorNum
             // 
-            DescricaoTextBox.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            DescricaoTextBox.Location = new Point(129, 194);
-            DescricaoTextBox.Name = "DescricaoTextBox";
-            DescricaoTextBox.Size = new Size(237, 20);
-            DescricaoTextBox.TabIndex = 50;
+            FornecedorNum.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            FornecedorNum.Location = new Point(139, 260);
+            FornecedorNum.Name = "FornecedorNum";
+            FornecedorNum.Size = new Size(236, 20);
+            FornecedorNum.TabIndex = 51;
             // 
-            // PrecoTextBox
+            // FornecedorName
             // 
-            PrecoTextBox.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            PrecoTextBox.Location = new Point(129, 227);
-            PrecoTextBox.Name = "PrecoTextBox";
-            PrecoTextBox.Size = new Size(236, 20);
-            PrecoTextBox.TabIndex = 49;
+            FornecedorName.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            FornecedorName.Location = new Point(139, 117);
+            FornecedorName.Name = "FornecedorName";
+            FornecedorName.Size = new Size(237, 20);
+            FornecedorName.TabIndex = 50;
             // 
-            // NomeTextBox
+            // textBox1
             // 
-            NomeTextBox.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            NomeTextBox.Location = new Point(129, 126);
-            NomeTextBox.Name = "NomeTextBox";
-            NomeTextBox.Size = new Size(237, 20);
-            NomeTextBox.TabIndex = 48;
+            textBox1.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBox1.Location = new Point(139, 228);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(237, 20);
+            textBox1.TabIndex = 63;
             // 
-            // comboBox1
-            // 
-            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(129, 261);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(236, 23);
-            comboBox1.TabIndex = 59;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.ForeColor = Color.FromArgb(121, 182, 201);
-            label4.Location = new Point(49, 261);
-            label4.Name = "label4";
-            label4.Size = new Size(74, 23);
-            label4.TabIndex = 60;
-            label4.Text = "Seção:";
-            // 
-            // ProductRegisterPage
+            // SupplierRegisterPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ControlLight;
             ClientSize = new Size(427, 450);
+            Controls.Add(textBox1);
             Controls.Add(label4);
-            Controls.Add(comboBox1);
+            Controls.Add(TipoDropBox);
             Controls.Add(BtnSalvar);
             Controls.Add(label1);
             Controls.Add(label3);
@@ -194,15 +196,13 @@
             Controls.Add(label7);
             Controls.Add(pictureBox2);
             Controls.Add(label2);
-            Controls.Add(MarcaTextBox);
-            Controls.Add(DescricaoTextBox);
-            Controls.Add(PrecoTextBox);
-            Controls.Add(NomeTextBox);
+            Controls.Add(FornecedorDoc);
+            Controls.Add(FornecedorNum);
+            Controls.Add(FornecedorName);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "ProductRegisterPage";
+            Name = "SupplierRegisterPage";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "ProductRegisterPage";
-            Load += ProductRegisterPage_Load;
+            Text = "SupplierRegister";
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -210,6 +210,8 @@
 
         #endregion
 
+        private Label label4;
+        private ComboBox TipoDropBox;
         private Button BtnSalvar;
         private Label label1;
         private Label label3;
@@ -217,11 +219,9 @@
         private Label label7;
         private PictureBox pictureBox2;
         private Label label2;
-        private TextBox MarcaTextBox;
-        private TextBox DescricaoTextBox;
-        private TextBox PrecoTextBox;
-        private TextBox NomeTextBox;
-        private ComboBox comboBox1;
-        private Label label4;
+        private TextBox FornecedorDoc;
+        private TextBox FornecedorNum;
+        private TextBox FornecedorName;
+        private TextBox textBox1;
     }
 }

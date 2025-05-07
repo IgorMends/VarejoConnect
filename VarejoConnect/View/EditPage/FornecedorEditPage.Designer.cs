@@ -1,6 +1,6 @@
 ﻿namespace VarejoConnect.View.EditPage
 {
-    partial class ClienteEditPage
+    partial class FornecedorEditPage
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClienteEditPage));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FornecedorEditPage));
             BtnSalvar = new Button();
             textBox3 = new TextBox();
             textBox2 = new TextBox();
@@ -51,7 +51,7 @@
             BtnSalvar.Location = new Point(112, 358);
             BtnSalvar.Name = "BtnSalvar";
             BtnSalvar.Size = new Size(208, 57);
-            BtnSalvar.TabIndex = 42;
+            BtnSalvar.TabIndex = 51;
             BtnSalvar.Text = "Salvar";
             BtnSalvar.UseVisualStyleBackColor = false;
             BtnSalvar.Click += BtnSalvar_Click;
@@ -61,21 +61,21 @@
             textBox3.Location = new Point(135, 240);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(245, 23);
-            textBox3.TabIndex = 41;
+            textBox3.TabIndex = 50;
             // 
             // textBox2
             // 
             textBox2.Location = new Point(135, 184);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(245, 23);
-            textBox2.TabIndex = 40;
+            textBox2.TabIndex = 49;
             // 
             // textBox1
             // 
             textBox1.Location = new Point(135, 126);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(245, 23);
-            textBox1.TabIndex = 39;
+            textBox1.TabIndex = 48;
             // 
             // label4
             // 
@@ -85,7 +85,7 @@
             label4.Location = new Point(42, 240);
             label4.Name = "label4";
             label4.Size = new Size(92, 23);
-            label4.TabIndex = 38;
+            label4.TabIndex = 47;
             label4.Text = "Telefone:";
             // 
             // label3
@@ -93,11 +93,11 @@
             label3.AutoSize = true;
             label3.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.FromArgb(121, 182, 201);
-            label3.Location = new Point(67, 184);
+            label3.Location = new Point(39, 184);
             label3.Name = "label3";
-            label3.Size = new Size(66, 23);
-            label3.TabIndex = 37;
-            label3.Text = "Email:";
+            label3.Size = new Size(95, 23);
+            label3.TabIndex = 46;
+            label3.Text = "Empresa:";
             // 
             // label1
             // 
@@ -107,7 +107,7 @@
             label1.Location = new Point(61, 126);
             label1.Name = "label1";
             label1.Size = new Size(71, 23);
-            label1.TabIndex = 36;
+            label1.TabIndex = 45;
             label1.Text = "Nome:";
             // 
             // pictureBox2
@@ -118,7 +118,7 @@
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(20, 20);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox2.TabIndex = 35;
+            pictureBox2.TabIndex = 44;
             pictureBox2.TabStop = false;
             pictureBox2.Click += pictureBox2_Click;
             // 
@@ -129,15 +129,14 @@
             label2.ForeColor = Color.FromArgb(121, 182, 201);
             label2.Location = new Point(12, 12);
             label2.Name = "label2";
-            label2.Size = new Size(134, 23);
-            label2.TabIndex = 34;
-            label2.Text = "Editar Cliente";
+            label2.Size = new Size(173, 23);
+            label2.TabIndex = 43;
+            label2.Text = "Editar Fornecedor";
             // 
-            // ClienteEditPage
+            // FornecedorEditPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ControlLight;
             ClientSize = new Size(429, 504);
             Controls.Add(BtnSalvar);
             Controls.Add(textBox3);
@@ -149,15 +148,16 @@
             Controls.Add(pictureBox2);
             Controls.Add(label2);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "ClienteEditPage";
+            Name = "FornecedorEditPage";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "ClienteEditPage";
+            Text = "FornecedorEditPage";
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
+
         private Button BtnSalvar;
         private TextBox textBox3;
         private TextBox textBox2;

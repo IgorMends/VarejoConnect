@@ -19,6 +19,7 @@ namespace VarejoConnect.View
 {
     public partial class ProdutoPage : Form
     {
+        SecaoRepositorio secaoRepositorio = new SecaoRepositorio();
         ProdutoRepositorio repository = new ProdutoRepositorio();
         Actions actions = new Actions();
         BindingList<Produto> buscaProdutos = new BindingList<Produto>();
@@ -44,12 +45,28 @@ namespace VarejoConnect.View
             dataGridView1.Columns["id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridView1.Columns["preco"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridView1.Columns["quantidade"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["secao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridView1.Columns["funcionarioAlteracao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridView1.Columns["id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView1.Columns["preco"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView1.Columns["preco"].DefaultCellStyle.Format = "N2";
+
+            dataGridView1.EnableHeadersVisualStyles = false;
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.LightGray;
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 8, FontStyle.Bold);
+
+            dataGridView1.Columns["id"].HeaderText = "ID";
+            dataGridView1.Columns["nome"].HeaderText = "NOME";
+            dataGridView1.Columns["marca"].HeaderText = "MARCA";
+            dataGridView1.Columns["descricao"].HeaderText = "DESCRIÇÃO";
+            dataGridView1.Columns["secao"].HeaderText = "SEÇÃO";
+            dataGridView1.Columns["preco"].HeaderText = "PREÇO";
+            dataGridView1.Columns["quantidade"].HeaderText = "QUANTIDADE";
+            dataGridView1.Columns["dataAlteracao"].HeaderText = "DATA DE ALTERAÇÃO";
+            dataGridView1.Columns["dataCriacao"].HeaderText = "DATA DE CRIAÇÃO";
+            dataGridView1.Columns["funcionarioAlteracao"].HeaderText = "ALTERADO POR";
         }
 
         public void ObterDados()
@@ -97,6 +114,7 @@ namespace VarejoConnect.View
                         produtos.Remove(produtoSelecionado);
                         buscaProdutos.Remove(produtoSelecionado);
                         repository.RemoveProduto(produtoSelecionado);
+                        secaoRepositorio.DecrementarQuantidadeSecao(produtoSelecionado.secao);
                     }
                 }
 
@@ -117,12 +135,17 @@ namespace VarejoConnect.View
 
                 ProdutoEditPage editPage = new ProdutoEditPage(produtoSelecionado);
                 int index = produtos.IndexOf(produtoSelecionado);
+                int secaoAntiga = produtos[index].secao;
                 editPage.ShowDialog();
 
 
                 if (editPage.DialogResult == DialogResult.OK)
                 {
                     produtos[index] = editPage.produto;
+
+                    secaoRepositorio.DecrementarQuantidadeSecao(secaoAntiga);
+                    secaoRepositorio.IncrementarQuantidadeSecao(produtos[index].secao);
+                    dataGridView1.Refresh();
                 }
 
                 dataGridView1.Refresh();

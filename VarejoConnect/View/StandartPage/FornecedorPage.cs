@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,30 +12,27 @@ using VarejoConnect.Controller;
 using VarejoConnect.Model.Repositorios;
 using VarejoConnect.Model;
 using VarejoConnect.View.EditPage;
-using QuestPDF.Fluent;
-using System.Globalization;
 using VarejoConnect.View.RegisterPage;
-using System.Reflection;
+using QuestPDF.Fluent;
 
-namespace VarejoConnect.View
+namespace VarejoConnect.View.StandartPage
 {
-    public partial class ClientePage : Form
+    public partial class FornecedorPage : Form
     {
-
-        ClienteRepositorio repository = new ClienteRepositorio();
+        FornecedorRepositorio repository = new FornecedorRepositorio();
         Actions actions = new Actions();
-        BindingList<Cliente> buscaClientes = new BindingList<Cliente>();
-        BindingList<Cliente> clientes = new BindingList<Cliente>();
+        BindingList<Fornecedor> buscaFornecedores = new BindingList<Fornecedor>();
+        BindingList<Fornecedor> fornecedores = new BindingList<Fornecedor>();
         List<string> textBoxes = new List<string>();
         DateTime dataAtual = DateTime.Today;
         int id;
 
-        public ClientePage()
+        public FornecedorPage()
         {
             InitializeComponent();
             ObterDados();
             dataGridView1.DataSource = null;
-            dataGridView1.DataSource = clientes;
+            dataGridView1.DataSource = fornecedores;
             ConfigureDataGrid();
         }
 
@@ -52,14 +50,14 @@ namespace VarejoConnect.View
             dataGridView1.Columns["id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
             dataGridView1.EnableHeadersVisualStyles = false;
-            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.LightGray; 
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.LightGray;
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 8, FontStyle.Bold);
 
             dataGridView1.Columns["id"].HeaderText = "ID";
             dataGridView1.Columns["nome"].HeaderText = "NOME";
             dataGridView1.Columns["telefone"].HeaderText = "TELEFONE";
             dataGridView1.Columns["documento"].HeaderText = "DOCUMENTO";
-            dataGridView1.Columns["email"].HeaderText = "EMAIL";
+            dataGridView1.Columns["Empresa"].HeaderText = "EMPRESA";
             dataGridView1.Columns["dataAlteracao"].HeaderText = "DATA DE ALTERAÇÃO";
             dataGridView1.Columns["dataCriacao"].HeaderText = "DATA DE CRIAÇÃO";
             dataGridView1.Columns["funcionarioAlteracao"].HeaderText = "ALTERADO POR";
@@ -68,20 +66,19 @@ namespace VarejoConnect.View
 
         public void ObterDados()
         {
-            clientes = new BindingList<Cliente>(repository.GetAll());
+            fornecedores = new BindingList<Fornecedor>(repository.GetAll());
             id = repository.getHighestId() + 1;
         }
 
-        private void BtnSalvar_Click(object sender, EventArgs e)
+        private void BtnSalvar_Click_1(object sender, EventArgs e)
         {
+            SupplierRegisterPage supplierRegisterPage = new SupplierRegisterPage(fornecedores);
 
-            ClientRegisterPage clientRegisterPage = new ClientRegisterPage(clientes);
+            supplierRegisterPage.ShowDialog();
 
-            clientRegisterPage.ShowDialog();
-
-            if (clientRegisterPage.DialogResult == DialogResult.OK)
+            if (supplierRegisterPage.DialogResult == DialogResult.OK)
             {
-                clientes = clientRegisterPage.clientesModal;
+                fornecedores = supplierRegisterPage.fornecedoresModal;
                 id++;
             }
 
@@ -89,9 +86,9 @@ namespace VarejoConnect.View
             dataGridView1.Refresh();
         }
 
-        private void BtnInativar_Click(object sender, EventArgs e)
+        private void BtnInativar_Click_1(object sender, EventArgs e)
         {
-            Cliente clienteSelecionado;
+            Fornecedor fornecedorSelecionado;
             DataGridViewRow dataGridViewRow;
 
             if (dataGridView1.SelectedRows.Count > 0)
@@ -99,14 +96,14 @@ namespace VarejoConnect.View
                 for (int i = dataGridView1.SelectedRows.Count - 1; i >= 0; i--)
                 {
                     dataGridViewRow = dataGridView1.SelectedRows[i];
-                    clienteSelecionado = dataGridViewRow.DataBoundItem as Cliente;
+                    fornecedorSelecionado = dataGridViewRow.DataBoundItem as Fornecedor;
 
 
-                    if (clienteSelecionado != null)
+                    if (fornecedorSelecionado != null)
                     {
-                        clientes.Remove(clienteSelecionado);
-                        buscaClientes.Remove(clienteSelecionado);
-                        repository.RemoveCliente(clienteSelecionado);
+                        fornecedores.Remove(fornecedorSelecionado);
+                        buscaFornecedores.Remove(fornecedorSelecionado);
+                        repository.RemoveFornecedor(fornecedorSelecionado);
                     }
                 }
 
@@ -114,40 +111,40 @@ namespace VarejoConnect.View
             }
             else
             {
-                MessageBox.Show("Nenhum Cliente selecionado!", "Error", MessageBoxButtons.OK);
+                MessageBox.Show("Nenhum Fornecedor selecionado!", "Error", MessageBoxButtons.OK);
             }
         }
 
-        private void BtnEditar_Click(object sender, EventArgs e)
+        private void BtnEditar_Click_1(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count == 1)
             {
                 DataGridViewRow dataGridViewRow = dataGridView1.SelectedRows[0];
-                Cliente clienteSelecionado = dataGridViewRow.DataBoundItem as Cliente;
+                Fornecedor fornecedorSelecionado = dataGridViewRow.DataBoundItem as Fornecedor;
 
-                ClienteEditPage editPage = new ClienteEditPage(clienteSelecionado);
-                int index = clientes.IndexOf(clienteSelecionado);
+                FornecedorEditPage editPage = new FornecedorEditPage(fornecedorSelecionado);
+                int index = fornecedores.IndexOf(fornecedorSelecionado);
                 editPage.ShowDialog();
 
 
                 if (editPage.DialogResult == DialogResult.OK)
                 {
-                    clientes[index] = editPage.cliente;
+                    fornecedores[index] = editPage.fornecedor;
                 }
 
                 dataGridView1.Refresh();
             }
             else
             {
-                MessageBox.Show("É possivel editar apenas um cliente por vez!", "Error", MessageBoxButtons.OK);
+                MessageBox.Show("É possivel editar apenas um fornecedor por vez!", "Error", MessageBoxButtons.OK);
             }
         }
 
         private void BtnPesquisar_Click(object sender, EventArgs e)
         {
-            buscaClientes.Clear();
+            buscaFornecedores.Clear();
             dataGridView1.DataSource = null;
-            dataGridView1.DataSource = buscaClientes;
+            dataGridView1.DataSource = buscaFornecedores;
             ConfigureDataGrid();
 
 
@@ -165,7 +162,7 @@ namespace VarejoConnect.View
                 if (criterioBusca.Equals("SEM FILTRO"))
                 {
                     dataGridView1.DataSource = null;
-                    dataGridView1.DataSource = clientes;
+                    dataGridView1.DataSource = fornecedores;
                     ConfigureDataGrid();
                 }
                 else
@@ -175,21 +172,21 @@ namespace VarejoConnect.View
                         if (criterioBusca.Equals("NOME"))
                         {
 
-                            bool clienteExiste = false;
+                            bool fornecedorExiste = false;
 
-                            foreach (var cliente in clientes)
+                            foreach (var fornecedor in fornecedores)
                             {
-                                if (cliente.nome.Contains(PesquisarTextBox.Text.Trim(), StringComparison.OrdinalIgnoreCase))
+                                if (fornecedor.nome.Contains(PesquisarTextBox.Text.Trim(), StringComparison.OrdinalIgnoreCase))
                                 {
-                                    buscaClientes.Add(cliente);
+                                    buscaFornecedores.Add(fornecedor);
 
-                                    clienteExiste = true;
+                                    fornecedorExiste = true;
                                 }
                             }
 
-                            if (!clienteExiste)
+                            if (!fornecedorExiste)
                             {
-                                MessageBox.Show("Cliente não está cadastrado", "Error", MessageBoxButtons.OK);
+                                MessageBox.Show("Fornecedor não está cadastrado", "Error", MessageBoxButtons.OK);
                             }
                             else
                             {
@@ -198,7 +195,7 @@ namespace VarejoConnect.View
                         }
                         else if (criterioBusca.Equals("ID"))
                         {
-                            bool clienteExiste = false;
+                            bool fornecedorExiste = false;
                             int numId;
 
                             try
@@ -212,19 +209,19 @@ namespace VarejoConnect.View
                             }
 
 
-                            foreach (var cliente in clientes)
+                            foreach (var fornecedor in fornecedores)
                             {
-                                if (cliente.id == numId)
+                                if (fornecedor.id == numId)
                                 {
-                                    buscaClientes.Add(cliente);
+                                    buscaFornecedores.Add(fornecedor);
 
-                                    clienteExiste = true;
+                                    fornecedorExiste = true;
                                 }
                             }
 
-                            if (!clienteExiste)
+                            if (!fornecedorExiste)
                             {
-                                MessageBox.Show("Cliente não está cadastrado", "Error", MessageBoxButtons.OK);
+                                MessageBox.Show("Fornecedor não está cadastrado", "Error", MessageBoxButtons.OK);
                             }
                             else
                             {
@@ -233,21 +230,21 @@ namespace VarejoConnect.View
                         }
                         else if (criterioBusca.Equals("DOCUMENTO"))
                         {
-                            bool clienteExiste = false;
+                            bool fornecedorExiste = false;
 
-                            foreach (var cliente in clientes)
+                            foreach (var fornecedor in fornecedores)
                             {
-                                if (cliente.documento.Equals(PesquisarTextBox.Text.Trim()))
+                                if (fornecedor.documento.Equals(PesquisarTextBox.Text.Trim()))
                                 {
-                                    buscaClientes.Add(cliente);
+                                    buscaFornecedores.Add(fornecedor);
 
-                                    clienteExiste = true;
+                                    fornecedorExiste = true;
                                 }
                             }
 
-                            if (!clienteExiste)
+                            if (!fornecedorExiste)
                             {
-                                MessageBox.Show("Não há nenhum cliente com este cpf!", "Error", MessageBoxButtons.OK);
+                                MessageBox.Show("Não há nenhum Fornecedor com este cpf!", "Error", MessageBoxButtons.OK);
                             }
                             else
                             {
@@ -274,40 +271,40 @@ namespace VarejoConnect.View
             if (resultado == DialogResult.Yes)
             {
 
-                bool clienteExiste = false;
-                List<Cliente> clientesRelatorio = new List<Cliente>();
+                bool fornecedorExiste = false;
+                List<Fornecedor> fornecedoresRelatorio = new List<Fornecedor>();
 
                 string pesquisa = RelatorioTextBox.Text.Trim();
                 if (string.IsNullOrWhiteSpace(pesquisa))
                 {
-                    foreach (var cliente in clientes)
+                    foreach (var fornecedor in fornecedores)
                     {
-                        clientesRelatorio.Add(cliente);
-                        clienteExiste = true;
+                        fornecedoresRelatorio.Add(fornecedor);
+                        fornecedorExiste = true;
                     }
                 }
                 else
                 {
-                    foreach (var cliente in clientes)
+                    foreach (var fornecedor in fornecedores)
                     {
-                        if (cliente.nome.Contains(pesquisa, StringComparison.OrdinalIgnoreCase))
+                        if (fornecedor.nome.Contains(pesquisa, StringComparison.OrdinalIgnoreCase))
                         {
-                            clientesRelatorio.Add(cliente);
-                            clienteExiste = true;
+                            fornecedoresRelatorio.Add(fornecedor);
+                            fornecedorExiste = true;
                         }
                     }
                 }
 
-                if (!clienteExiste)
+                if (!fornecedorExiste)
                 {
-                    MessageBox.Show("Nenhum cliente com este nome!", "Error", MessageBoxButtons.OK);
+                    MessageBox.Show("Nenhum fornecedor com este nome!", "Error", MessageBoxButtons.OK);
                 }
 
 
 
                 QuestPDF.Settings.License = QuestPDF.Infrastructure.LicenseType.Community;
                 string dataAtual = DateTime.Now.ToString("yyyyMMddHHmmss", CultureInfo.InvariantCulture);
-                string titulo = $"Relatório De Clientes Por Nome - {dataAtual}";
+                string titulo = $"Relatório De Fornecedor Por Nome - {dataAtual}";
 
                 string diretorio = @"C:\Users\William\Desktop";
                 if (!Directory.Exists(diretorio))
@@ -316,16 +313,11 @@ namespace VarejoConnect.View
                     return;
                 }
 
-                string nomeArquivo = Path.Combine(diretorio, $"relatorio-Clientes-Por-Nome-{dataAtual}.pdf");
+                string nomeArquivo = Path.Combine(diretorio, $"relatorio-Fornecedor-Por-Nome-{dataAtual}.pdf");
 
-                var relatorio = new RelatorioClientes(clientesRelatorio, titulo);
+                var relatorio = new RelatorioFornecedores(fornecedoresRelatorio, titulo);
                 relatorio.GeneratePdf(nomeArquivo);
             }
-        }
-
-        private void ClientePage_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

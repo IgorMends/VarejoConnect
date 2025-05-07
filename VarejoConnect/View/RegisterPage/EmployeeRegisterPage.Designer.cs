@@ -205,6 +205,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ControlLight;
             ClientSize = new Size(427, 450);
             Controls.Add(label5);
             Controls.Add(ConfirmPasswordTextBox);

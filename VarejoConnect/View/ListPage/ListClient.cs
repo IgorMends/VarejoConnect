@@ -35,11 +35,19 @@ namespace VarejoConnect.View.ListPage
             dataGridView1.Columns["id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 			dataGridView1.Columns["id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 			dataGridView1.Columns["telefone"].Visible = false;
-			dataGridView1.Columns["cpf"].Visible = false;
+			dataGridView1.Columns["documento"].Visible = false;
 			dataGridView1.Columns["funcionarioAlteracao"].Visible = false;
 			dataGridView1.Columns["dataAlteracao"].Visible = false;
 			dataGridView1.Columns["dataCriacao"].Visible = false;
-		}
+
+            dataGridView1.EnableHeadersVisualStyles = false;
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.LightGray;
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 8, FontStyle.Bold);
+
+            dataGridView1.Columns["id"].HeaderText = "ID";
+            dataGridView1.Columns["nome"].HeaderText = "NOME";
+            dataGridView1.Columns["email"].HeaderText = "EMAIL";
+        }
 
 		private void AtualizarDataGridView(List<Cliente> clientes)
 		{

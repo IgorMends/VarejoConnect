@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!--
-    Microsoft ResX Schema 
+    Microsoft ResX Schema
 
     Version 2.0
 
@@ -48,7 +48,7 @@
     value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
     value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
@@ -121,14 +121,14 @@
   <data name="pictureBox2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAF9SURBVFhHzZdN
-        TsMwEIUtFghuxV3KBRBdNF3lPF1RIdti1R3E2XOOdtMum844HgrJJI5NnPRJT6risb9X58e2IK3011Om
-        jAQfwKdMFibTZpHn1Z0rCRb2XUnzDOOVdkxl9mCJLFdSK1PFEhrO4KrptTZv+W734EoHC/tkqtxyY4KB
-        VSxtofvnLPzH2uiQEBYOfdixrj7bmYAfOO1cwV8PDDEQTpYYAO8L19i2J0QgHL3HAMfGxX53hIiAo4/C
-        Pu18Y7cbISLhFbIFdFywjT67ENFwNLDtu4qvGlvgM4Ij4fb1pm9Mvvm+h4vvzaKE/vh9C60mDNGGkyYI
-        0Q0nJQzhh5MShBgOJ40YIhxOGiFEPBw1RoCXzeejGy5MY96C4BApHsLBIRLAyf4QCeHk7hATwMntEBPC
-        ydcQuCT27F77/Y/lGJl2OXb7dqbAYwDjRwYdGwLZN7Alq08sfAHnBpwUGeJ0E9vyeQ8msx/NUHMcTteq
-        fHWltdxMTHw8F+ICYeu/c0puwkAAAAAASUVORK5CYII=
+        vAAADrwBlbxySQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAFtSURBVFhHzZex
+        TsMwEIYjBgRvxbuUF0Aw9DrleTpRoZzF1A162XmOdmnHpjrXB4odJ46xk/7SP53t708a1+eiMFqq7ydA
+        qgDpAEgnqHYEihZl2dzJmLHiucuKngGp1msi7ZnBrNZAwN0bIJ0BqbG9UvRebrcPrQkB4jmA9cZez/jM
+        TD3QPHkn/NeK1JgQGq5IOetYIfSbMK/dLroODBEIF1ccgH8Xu9DtgRAj4ew9Bzh2FPz2hIiAs4+F/trd
+        Qr+tEJHwhtkFbzWnEGITIhp+XWOh9ypvNacYYgZHwvX2lv+Ycv1zD0gf9qCM/nS+owlDuHDRBCH8cFHG
+        EMNwUYYQ4XBRwhDj4aIEIeLhrBQBXtZfj/a6QUoAjw+REC4OD5EBLh4OkREu9oeYAC52Q0wIF/+F4COx
+        p3vt9z+OY2bq49j07R0DBpygIWH2DbRk1xuLW/Q5bVN6uom2fN6LyexXM9Ycl9MV1q+tCXNdzy9h679z
+        9LQiNwAAAABJRU5ErkJggg==
 </value>
   </data>
 </root>

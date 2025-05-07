@@ -31,22 +31,22 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomePage));
             pictureBox1 = new PictureBox();
             panel1 = new Panel();
+            button7 = new Button();
             button6 = new Button();
+            button5 = new Button();
+            button2 = new Button();
             label3 = new Label();
             button4 = new Button();
-            button5 = new Button();
             pictureBox4 = new PictureBox();
             label2 = new Label();
             button3 = new Button();
             label1 = new Label();
-            button2 = new Button();
             button1 = new Button();
             pictureBox2 = new PictureBox();
             panel2 = new Panel();
             pictureBox9 = new PictureBox();
             label8 = new Label();
             label4 = new Label();
-            button7 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
@@ -88,6 +88,25 @@
             panel1.TabIndex = 1;
             panel1.Paint += panel1_Paint;
             // 
+            // button7
+            // 
+            button7.BackColor = Color.Transparent;
+            button7.Cursor = Cursors.Hand;
+            button7.FlatAppearance.BorderSize = 0;
+            button7.FlatAppearance.MouseDownBackColor = Color.FromArgb(82, 168, 191);
+            button7.FlatAppearance.MouseOverBackColor = Color.FromArgb(82, 168, 191);
+            button7.FlatStyle = FlatStyle.Flat;
+            button7.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button7.ForeColor = Color.White;
+            button7.Image = (Image)resources.GetObject("button7.Image");
+            button7.Location = new Point(0, 380);
+            button7.Name = "button7";
+            button7.Size = new Size(248, 48);
+            button7.TabIndex = 17;
+            button7.Text = "Devolução";
+            button7.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button7.UseVisualStyleBackColor = false;
+            // 
             // button6
             // 
             button6.BackColor = Color.Transparent;
@@ -106,6 +125,47 @@
             button6.Text = "Fornecedor";
             button6.TextImageRelation = TextImageRelation.ImageBeforeText;
             button6.UseVisualStyleBackColor = false;
+            button6.Click += button6_Click;
+            // 
+            // button5
+            // 
+            button5.BackColor = Color.Transparent;
+            button5.Cursor = Cursors.Hand;
+            button5.FlatAppearance.BorderSize = 0;
+            button5.FlatAppearance.MouseDownBackColor = Color.FromArgb(82, 168, 191);
+            button5.FlatAppearance.MouseOverBackColor = Color.FromArgb(82, 168, 191);
+            button5.FlatStyle = FlatStyle.Flat;
+            button5.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button5.ForeColor = Color.White;
+            button5.Image = (Image)resources.GetObject("button5.Image");
+            button5.Location = new Point(0, 170);
+            button5.Name = "button5";
+            button5.Size = new Size(248, 48);
+            button5.TabIndex = 15;
+            button5.Text = "Seção";
+            button5.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click_1;
+            // 
+            // button2
+            // 
+            button2.BackColor = Color.Transparent;
+            button2.Cursor = Cursors.Hand;
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatAppearance.MouseDownBackColor = Color.FromArgb(82, 168, 191);
+            button2.FlatAppearance.MouseOverBackColor = Color.FromArgb(82, 168, 191);
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button2.ForeColor = Color.White;
+            button2.Image = (Image)resources.GetObject("button2.Image");
+            button2.Location = new Point(0, 240);
+            button2.Name = "button2";
+            button2.Size = new Size(248, 48);
+            button2.TabIndex = 12;
+            button2.Text = "Clientes";
+            button2.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // label3
             // 
@@ -138,25 +198,6 @@
             button4.TextImageRelation = TextImageRelation.ImageBeforeText;
             button4.UseVisualStyleBackColor = false;
             button4.Click += button4_Click;
-            // 
-            // button5
-            // 
-            button5.BackColor = Color.Transparent;
-            button5.Cursor = Cursors.Hand;
-            button5.FlatAppearance.BorderSize = 0;
-            button5.FlatAppearance.MouseDownBackColor = Color.FromArgb(82, 168, 191);
-            button5.FlatAppearance.MouseOverBackColor = Color.FromArgb(82, 168, 191);
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button5.ForeColor = Color.White;
-            button5.Image = (Image)resources.GetObject("button5.Image");
-            button5.Location = new Point(0, 170);
-            button5.Name = "button5";
-            button5.Size = new Size(248, 48);
-            button5.TabIndex = 15;
-            button5.Text = "Seção";
-            button5.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button5.UseVisualStyleBackColor = false;
             // 
             // pictureBox4
             // 
@@ -211,26 +252,6 @@
             label1.TabIndex = 0;
             label1.Text = "Sair";
             label1.Click += label1_Click;
-            // 
-            // button2
-            // 
-            button2.BackColor = Color.Transparent;
-            button2.Cursor = Cursors.Hand;
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatAppearance.MouseDownBackColor = Color.FromArgb(82, 168, 191);
-            button2.FlatAppearance.MouseOverBackColor = Color.FromArgb(82, 168, 191);
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.ForeColor = Color.White;
-            button2.Image = (Image)resources.GetObject("button2.Image");
-            button2.Location = new Point(0, 240);
-            button2.Name = "button2";
-            button2.Size = new Size(248, 48);
-            button2.TabIndex = 12;
-            button2.Text = "Clientes";
-            button2.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button2.UseVisualStyleBackColor = false;
-            button2.Click += button2_Click;
             // 
             // button1
             // 
@@ -307,25 +328,6 @@
             label4.TabIndex = 5;
             label4.Text = "label4";
             label4.Click += label4_Click;
-            // 
-            // button7
-            // 
-            button7.BackColor = Color.Transparent;
-            button7.Cursor = Cursors.Hand;
-            button7.FlatAppearance.BorderSize = 0;
-            button7.FlatAppearance.MouseDownBackColor = Color.FromArgb(82, 168, 191);
-            button7.FlatAppearance.MouseOverBackColor = Color.FromArgb(82, 168, 191);
-            button7.FlatStyle = FlatStyle.Flat;
-            button7.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button7.ForeColor = Color.White;
-            button7.Image = (Image)resources.GetObject("button7.Image");
-            button7.Location = new Point(0, 380);
-            button7.Name = "button7";
-            button7.Size = new Size(248, 48);
-            button7.TabIndex = 17;
-            button7.Text = "Devolução";
-            button7.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button7.UseVisualStyleBackColor = false;
             // 
             // HomePage
             // 

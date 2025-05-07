@@ -15,8 +15,8 @@ namespace VarejoConnect.Model.Repositorios
             using var connection = new ConnectionDb();
 
             string query = @"INSERT INTO public.produtos(
-	                            id, nome, preco, quantidade, marca, descricao, funcionarioalteracao, dataalteracao, datacriacao, status)
-	                            VALUES (@id, @nome, @preco, @quantidade, @marca, @descricao, @funcionarioAlteracao, @dataAlteracao, @dataCriacao, @status);";
+	                            id, nome, preco, quantidade, secao, marca, descricao, funcionarioalteracao, dataalteracao, datacriacao, status)
+	                            VALUES (@id, @nome, @preco, @quantidade, @secao, @marca, @descricao, @funcionarioAlteracao, @dataAlteracao, @dataCriacao, @status);";
 
             var result = connection.Connection.Execute(sql: query, param: produto);
 
@@ -69,7 +69,7 @@ namespace VarejoConnect.Model.Repositorios
         {
             using var connection = new ConnectionDb();
 
-            string query = @"UPDATE public.produtos SET nome= @nome, marca= @marca, preco= @preco, funcionarioalteracao= @funcionarioAlteracao, dataalteracao= @dataAlteracao
+            string query = @"UPDATE public.produtos SET nome= @nome, marca= @marca, preco= @preco, secao = @secao,funcionarioalteracao= @funcionarioAlteracao, dataalteracao= @dataAlteracao
 	WHERE id = @id;";
 
             var result = connection.Connection.Execute(sql: query, param: produto);
@@ -137,6 +137,19 @@ namespace VarejoConnect.Model.Repositorios
             string query = "SELECT quantidade FROM produtos WHERE id = @id AND status = TRUE";
 
             return connectionDb.Connection.QuerySingle<int>(query, new { Id = produto.id });
+        }
+
+        public int GetQuantidadePorSecao(int secaoId)
+        {
+            using var connection = new ConnectionDb();
+
+            string query = @"SELECT COUNT(*) 
+                     FROM public.produtos 
+                     WHERE secao = @SecaoId AND status = TRUE;";
+
+            int quantidade = connection.Connection.QuerySingle<int>(sql: query, param: new { SecaoId = secaoId });
+
+            return quantidade;
         }
     }
 }

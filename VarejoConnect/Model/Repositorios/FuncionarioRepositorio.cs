@@ -27,7 +27,7 @@ namespace VarejoConnect.Model.Repositorios
         {
             using var connection = new ConnectionDb();
 
-            string query = @"SELECT * from public.funcionarios WHERE status = TRUE;";
+            string query = @"SELECT * FROM public.funcionarios WHERE status = TRUE;";
 
             var funcionarios = connection.Connection.Query<Funcionario>(sql: query);
 

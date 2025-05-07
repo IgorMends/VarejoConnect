@@ -8,7 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VarejoConnect.Controller;
+using VarejoConnect.Model;
 using VarejoConnect.Model.Repositorios;
+using VarejoConnect.View.StandartPage;
 
 namespace VarejoConnect.View
 {
@@ -16,7 +18,7 @@ namespace VarejoConnect.View
     {
 
         Actions actions = new Actions();
-        FuncionarioRepositorio repositoryFuncionario = new FuncionarioRepositorio();    
+        FuncionarioRepositorio repositoryFuncionario = new FuncionarioRepositorio();
 
         public HomePage()
         {
@@ -66,7 +68,7 @@ namespace VarejoConnect.View
 
         private void button5_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -105,6 +107,18 @@ namespace VarejoConnect.View
         private void label4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            FornecedorPage fornecedorPage = new FornecedorPage();
+            actions.ChangePage(panel2, fornecedorPage);
+        }
+
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+            SecaoPage secaoPage = new SecaoPage();
+            actions.ChangePage(panel2, secaoPage);
         }
     }
 }

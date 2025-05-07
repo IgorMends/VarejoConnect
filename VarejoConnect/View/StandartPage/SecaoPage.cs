@@ -10,31 +10,29 @@ using System.Windows.Forms;
 using VarejoConnect.Controller;
 using VarejoConnect.Model.Repositorios;
 using VarejoConnect.Model;
+using VarejoConnect.View.RegisterPage;
 using VarejoConnect.View.EditPage;
 using QuestPDF.Fluent;
 using System.Globalization;
-using VarejoConnect.View.RegisterPage;
-using System.Reflection;
 
-namespace VarejoConnect.View
+namespace VarejoConnect.View.StandartPage
 {
-    public partial class ClientePage : Form
+    public partial class SecaoPage : Form
     {
-
-        ClienteRepositorio repository = new ClienteRepositorio();
+        SecaoRepositorio repository = new SecaoRepositorio();
         Actions actions = new Actions();
-        BindingList<Cliente> buscaClientes = new BindingList<Cliente>();
-        BindingList<Cliente> clientes = new BindingList<Cliente>();
+        BindingList<Secao> buscaSecao = new BindingList<Secao>();
+        BindingList<Secao> secoes = new BindingList<Secao>();
         List<string> textBoxes = new List<string>();
         DateTime dataAtual = DateTime.Today;
         int id;
 
-        public ClientePage()
+        public SecaoPage()
         {
             InitializeComponent();
             ObterDados();
             dataGridView1.DataSource = null;
-            dataGridView1.DataSource = clientes;
+            dataGridView1.DataSource = secoes;
             ConfigureDataGrid();
         }
 
@@ -44,22 +42,20 @@ namespace VarejoConnect.View
             dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns["id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["documento"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["telefone"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["quantidade"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridView1.Columns["funcionarioAlteracao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridView1.Columns["id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
             dataGridView1.EnableHeadersVisualStyles = false;
-            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.LightGray; 
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.LightGray;
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 8, FontStyle.Bold);
 
             dataGridView1.Columns["id"].HeaderText = "ID";
             dataGridView1.Columns["nome"].HeaderText = "NOME";
-            dataGridView1.Columns["telefone"].HeaderText = "TELEFONE";
-            dataGridView1.Columns["documento"].HeaderText = "DOCUMENTO";
-            dataGridView1.Columns["email"].HeaderText = "EMAIL";
+            dataGridView1.Columns["descricao"].HeaderText = "DESCRIÇÃO";
+            dataGridView1.Columns["quantidade"].HeaderText = "QUANTIDADE DE PRODUTOS";
             dataGridView1.Columns["dataAlteracao"].HeaderText = "DATA DE ALTERAÇÃO";
             dataGridView1.Columns["dataCriacao"].HeaderText = "DATA DE CRIAÇÃO";
             dataGridView1.Columns["funcionarioAlteracao"].HeaderText = "ALTERADO POR";
@@ -68,20 +64,19 @@ namespace VarejoConnect.View
 
         public void ObterDados()
         {
-            clientes = new BindingList<Cliente>(repository.GetAll());
+            secoes = new BindingList<Secao>(repository.GetAll());
             id = repository.getHighestId() + 1;
         }
 
         private void BtnSalvar_Click(object sender, EventArgs e)
         {
+            SectionRegisterPage sectionRegisterPage = new SectionRegisterPage(secoes);
 
-            ClientRegisterPage clientRegisterPage = new ClientRegisterPage(clientes);
+            sectionRegisterPage.ShowDialog();
 
-            clientRegisterPage.ShowDialog();
-
-            if (clientRegisterPage.DialogResult == DialogResult.OK)
+            if (sectionRegisterPage.DialogResult == DialogResult.OK)
             {
-                clientes = clientRegisterPage.clientesModal;
+                secoes = sectionRegisterPage.secoesModal;
                 id++;
             }
 
@@ -91,7 +86,7 @@ namespace VarejoConnect.View
 
         private void BtnInativar_Click(object sender, EventArgs e)
         {
-            Cliente clienteSelecionado;
+            Secao secaoSelecionada;
             DataGridViewRow dataGridViewRow;
 
             if (dataGridView1.SelectedRows.Count > 0)
@@ -99,14 +94,14 @@ namespace VarejoConnect.View
                 for (int i = dataGridView1.SelectedRows.Count - 1; i >= 0; i--)
                 {
                     dataGridViewRow = dataGridView1.SelectedRows[i];
-                    clienteSelecionado = dataGridViewRow.DataBoundItem as Cliente;
+                    secaoSelecionada = dataGridViewRow.DataBoundItem as Secao;
 
 
-                    if (clienteSelecionado != null)
+                    if (secaoSelecionada != null)
                     {
-                        clientes.Remove(clienteSelecionado);
-                        buscaClientes.Remove(clienteSelecionado);
-                        repository.RemoveCliente(clienteSelecionado);
+                        secoes.Remove(secaoSelecionada);
+                        buscaSecao.Remove(secaoSelecionada);
+                        repository.RemoveSecao(secaoSelecionada);
                     }
                 }
 
@@ -114,7 +109,7 @@ namespace VarejoConnect.View
             }
             else
             {
-                MessageBox.Show("Nenhum Cliente selecionado!", "Error", MessageBoxButtons.OK);
+                MessageBox.Show("Nenhuma Seção selecionada!", "Error", MessageBoxButtons.OK);
             }
         }
 
@@ -123,31 +118,31 @@ namespace VarejoConnect.View
             if (dataGridView1.SelectedRows.Count == 1)
             {
                 DataGridViewRow dataGridViewRow = dataGridView1.SelectedRows[0];
-                Cliente clienteSelecionado = dataGridViewRow.DataBoundItem as Cliente;
+                Secao secaoSelecionada = dataGridViewRow.DataBoundItem as Secao;
 
-                ClienteEditPage editPage = new ClienteEditPage(clienteSelecionado);
-                int index = clientes.IndexOf(clienteSelecionado);
+                SecaoEditPage editPage = new SecaoEditPage(secaoSelecionada);
+                int index = secoes.IndexOf(secaoSelecionada);
                 editPage.ShowDialog();
 
 
                 if (editPage.DialogResult == DialogResult.OK)
                 {
-                    clientes[index] = editPage.cliente;
+                    secoes[index] = editPage.secao;
                 }
 
                 dataGridView1.Refresh();
             }
             else
             {
-                MessageBox.Show("É possivel editar apenas um cliente por vez!", "Error", MessageBoxButtons.OK);
+                MessageBox.Show("É possivel editar apenas uma secao por vez!", "Error", MessageBoxButtons.OK);
             }
         }
 
         private void BtnPesquisar_Click(object sender, EventArgs e)
         {
-            buscaClientes.Clear();
+            buscaSecao.Clear();
             dataGridView1.DataSource = null;
-            dataGridView1.DataSource = buscaClientes;
+            dataGridView1.DataSource = buscaSecao;
             ConfigureDataGrid();
 
 
@@ -165,7 +160,7 @@ namespace VarejoConnect.View
                 if (criterioBusca.Equals("SEM FILTRO"))
                 {
                     dataGridView1.DataSource = null;
-                    dataGridView1.DataSource = clientes;
+                    dataGridView1.DataSource = buscaSecao;
                     ConfigureDataGrid();
                 }
                 else
@@ -175,21 +170,21 @@ namespace VarejoConnect.View
                         if (criterioBusca.Equals("NOME"))
                         {
 
-                            bool clienteExiste = false;
+                            bool secaoExiste = false;
 
-                            foreach (var cliente in clientes)
+                            foreach (var secao in secoes)
                             {
-                                if (cliente.nome.Contains(PesquisarTextBox.Text.Trim(), StringComparison.OrdinalIgnoreCase))
+                                if (secao.nome.Contains(PesquisarTextBox.Text.Trim(), StringComparison.OrdinalIgnoreCase))
                                 {
-                                    buscaClientes.Add(cliente);
+                                    buscaSecao.Add(secao);
 
-                                    clienteExiste = true;
+                                    secaoExiste = true;
                                 }
                             }
 
-                            if (!clienteExiste)
+                            if (!secaoExiste)
                             {
-                                MessageBox.Show("Cliente não está cadastrado", "Error", MessageBoxButtons.OK);
+                                MessageBox.Show("Seção não está cadastrado", "Error", MessageBoxButtons.OK);
                             }
                             else
                             {
@@ -198,7 +193,7 @@ namespace VarejoConnect.View
                         }
                         else if (criterioBusca.Equals("ID"))
                         {
-                            bool clienteExiste = false;
+                            bool secaoExiste = false;
                             int numId;
 
                             try
@@ -212,42 +207,54 @@ namespace VarejoConnect.View
                             }
 
 
-                            foreach (var cliente in clientes)
+                            foreach (var secao in secoes)
                             {
-                                if (cliente.id == numId)
+                                if (secao.id == numId)
                                 {
-                                    buscaClientes.Add(cliente);
+                                    buscaSecao.Add(secao);
 
-                                    clienteExiste = true;
+                                    secaoExiste = true;
                                 }
                             }
 
-                            if (!clienteExiste)
+                            if (!secaoExiste)
                             {
-                                MessageBox.Show("Cliente não está cadastrado", "Error", MessageBoxButtons.OK);
+                                MessageBox.Show("Seção não está cadastrado", "Error", MessageBoxButtons.OK);
                             }
                             else
                             {
                                 dataGridView1.Refresh();
                             }
                         }
-                        else if (criterioBusca.Equals("DOCUMENTO"))
+                        else if (criterioBusca.Equals("QUANTIDADE"))
                         {
-                            bool clienteExiste = false;
+                            bool secaoExiste = false;
+                            int numProd;
 
-                            foreach (var cliente in clientes)
+                            try
                             {
-                                if (cliente.documento.Equals(PesquisarTextBox.Text.Trim()))
-                                {
-                                    buscaClientes.Add(cliente);
+                                numProd = int.Parse(PesquisarTextBox.Text);
+                            }
+                            catch (FormatException ex)
+                            {
+                                MessageBox.Show("Você tem que digitar apenas numeros", "Error", MessageBoxButtons.OK);
+                                return;
+                            }
 
-                                    clienteExiste = true;
+
+                            foreach (var secao in secoes)
+                            {
+                                if (secao.quantidade == numProd)
+                                {
+                                    buscaSecao.Add(secao);
+
+                                    secaoExiste = true;
                                 }
                             }
 
-                            if (!clienteExiste)
+                            if (!secaoExiste)
                             {
-                                MessageBox.Show("Não há nenhum cliente com este cpf!", "Error", MessageBoxButtons.OK);
+                                MessageBox.Show("Seção não está cadastrado", "Error", MessageBoxButtons.OK);
                             }
                             else
                             {
@@ -274,40 +281,40 @@ namespace VarejoConnect.View
             if (resultado == DialogResult.Yes)
             {
 
-                bool clienteExiste = false;
-                List<Cliente> clientesRelatorio = new List<Cliente>();
+                bool secaoExiste = false;
+                List<Secao> secoesRelatorio = new List<Secao>();
 
                 string pesquisa = RelatorioTextBox.Text.Trim();
                 if (string.IsNullOrWhiteSpace(pesquisa))
                 {
-                    foreach (var cliente in clientes)
+                    foreach (var secao in secoes)
                     {
-                        clientesRelatorio.Add(cliente);
-                        clienteExiste = true;
+                        secoesRelatorio.Add(secao);
+                        secaoExiste = true;
                     }
                 }
                 else
                 {
-                    foreach (var cliente in clientes)
+                    foreach (var secao in secoes)
                     {
-                        if (cliente.nome.Contains(pesquisa, StringComparison.OrdinalIgnoreCase))
+                        if (secao.nome.Contains(pesquisa, StringComparison.OrdinalIgnoreCase))
                         {
-                            clientesRelatorio.Add(cliente);
-                            clienteExiste = true;
+                            secoesRelatorio.Add(secao);
+                            secaoExiste = true;
                         }
                     }
                 }
 
-                if (!clienteExiste)
+                if (!secaoExiste)
                 {
-                    MessageBox.Show("Nenhum cliente com este nome!", "Error", MessageBoxButtons.OK);
+                    MessageBox.Show("Nenhuma Seção com este nome!", "Error", MessageBoxButtons.OK);
                 }
 
 
 
                 QuestPDF.Settings.License = QuestPDF.Infrastructure.LicenseType.Community;
                 string dataAtual = DateTime.Now.ToString("yyyyMMddHHmmss", CultureInfo.InvariantCulture);
-                string titulo = $"Relatório De Clientes Por Nome - {dataAtual}";
+                string titulo = $"Relatório De Seçõs Por Nome - {dataAtual}";
 
                 string diretorio = @"C:\Users\William\Desktop";
                 if (!Directory.Exists(diretorio))
@@ -316,16 +323,11 @@ namespace VarejoConnect.View
                     return;
                 }
 
-                string nomeArquivo = Path.Combine(diretorio, $"relatorio-Clientes-Por-Nome-{dataAtual}.pdf");
+                string nomeArquivo = Path.Combine(diretorio, $"relatorio-Seções-Por-Nome-{dataAtual}.pdf");
 
-                var relatorio = new RelatorioClientes(clientesRelatorio, titulo);
+                var relatorio = new RelatorioSecoes(secoesRelatorio, titulo);
                 relatorio.GeneratePdf(nomeArquivo);
             }
-        }
-
-        private void ClientePage_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

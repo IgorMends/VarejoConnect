@@ -40,13 +40,15 @@
             label7 = new Label();
             label1 = new Label();
             BtnSalvar = new Button();
+            TipoDropBox = new ComboBox();
+            label4 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // CpfTextBox
             // 
             CpfTextBox.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            CpfTextBox.Location = new Point(129, 160);
+            CpfTextBox.Location = new Point(139, 190);
             CpfTextBox.Name = "CpfTextBox";
             CpfTextBox.Size = new Size(237, 20);
             CpfTextBox.TabIndex = 40;
@@ -54,7 +56,7 @@
             // EmailTextBox
             // 
             EmailTextBox.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            EmailTextBox.Location = new Point(129, 195);
+            EmailTextBox.Location = new Point(139, 225);
             EmailTextBox.Name = "EmailTextBox";
             EmailTextBox.Size = new Size(237, 20);
             EmailTextBox.TabIndex = 38;
@@ -62,15 +64,15 @@
             // TelefoneTextBox
             // 
             TelefoneTextBox.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            TelefoneTextBox.Location = new Point(144, 230);
+            TelefoneTextBox.Location = new Point(139, 260);
             TelefoneTextBox.Name = "TelefoneTextBox";
-            TelefoneTextBox.Size = new Size(221, 20);
+            TelefoneTextBox.Size = new Size(236, 20);
             TelefoneTextBox.TabIndex = 36;
             // 
             // NomeTextBox
             // 
             NomeTextBox.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            NomeTextBox.Location = new Point(129, 126);
+            NomeTextBox.Location = new Point(139, 117);
             NomeTextBox.Name = "NomeTextBox";
             NomeTextBox.Size = new Size(237, 20);
             NomeTextBox.TabIndex = 34;
@@ -103,7 +105,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.FromArgb(121, 182, 201);
-            label3.Location = new Point(31, 229);
+            label3.Location = new Point(41, 259);
             label3.Name = "label3";
             label3.Size = new Size(92, 23);
             label3.TabIndex = 45;
@@ -114,7 +116,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.FromArgb(121, 182, 201);
-            label6.Location = new Point(57, 192);
+            label6.Location = new Point(67, 222);
             label6.Name = "label6";
             label6.Size = new Size(66, 23);
             label6.TabIndex = 44;
@@ -125,7 +127,7 @@
             label7.AutoSize = true;
             label7.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.FromArgb(121, 182, 201);
-            label7.Location = new Point(52, 123);
+            label7.Location = new Point(62, 114);
             label7.Name = "label7";
             label7.Size = new Size(71, 23);
             label7.TabIndex = 43;
@@ -136,11 +138,11 @@
             label1.AutoSize = true;
             label1.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(121, 182, 201);
-            label1.Location = new Point(73, 159);
+            label1.Location = new Point(11, 187);
             label1.Name = "label1";
-            label1.Size = new Size(50, 23);
+            label1.Size = new Size(122, 23);
             label1.TabIndex = 46;
-            label1.Text = "CPF:";
+            label1.Text = "Documento:";
             // 
             // BtnSalvar
             // 
@@ -157,11 +159,35 @@
             BtnSalvar.UseVisualStyleBackColor = false;
             BtnSalvar.Click += BtnSalvar_Click;
             // 
+            // TipoDropBox
+            // 
+            TipoDropBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            TipoDropBox.FormattingEnabled = true;
+            TipoDropBox.Items.AddRange(new object[] { "FÍSICA", "JURÍDICA" });
+            TipoDropBox.Location = new Point(139, 151);
+            TipoDropBox.Name = "TipoDropBox";
+            TipoDropBox.Size = new Size(237, 23);
+            TipoDropBox.TabIndex = 48;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.FromArgb(121, 182, 201);
+            label4.Location = new Point(80, 151);
+            label4.Name = "label4";
+            label4.Size = new Size(53, 23);
+            label4.TabIndex = 49;
+            label4.Text = "Tipo:";
+            // 
             // ClientRegisterPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ControlLight;
             ClientSize = new Size(427, 450);
+            Controls.Add(label4);
+            Controls.Add(TipoDropBox);
             Controls.Add(BtnSalvar);
             Controls.Add(label1);
             Controls.Add(label3);
@@ -177,6 +203,7 @@
             Name = "ClientRegisterPage";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ClientRegisterPage";
+            Load += ClientRegisterPage_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -195,5 +222,7 @@
         private Label label7;
         private Label label1;
         private Button BtnSalvar;
+        private ComboBox TipoDropBox;
+        private Label label4;
     }
 }

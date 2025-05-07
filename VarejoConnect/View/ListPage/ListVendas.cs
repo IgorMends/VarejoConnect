@@ -21,8 +21,24 @@ namespace VarejoConnect.View.ListPage
             InitializeComponent();
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = repository.GetAllVendas();
+            ConfigurarDataGrid();
+        }
+
+        public void ConfigurarDataGrid()
+        {
             dataGridView1.Columns["clienteVenda"].Visible = false;
             dataGridView1.Columns["funcionarioVenda"].Visible = false;
+
+            dataGridView1.EnableHeadersVisualStyles = false;
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.LightGray;
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 8, FontStyle.Bold);
+
+            dataGridView1.Columns["id"].HeaderText = "ID";
+            dataGridView1.Columns["valorTotal"].HeaderText = "VALOR TOTAL";
+            dataGridView1.Columns["formaPagamento"].HeaderText = "FORMA DE PAGAMENTO";
+            dataGridView1.Columns["dataVenda"].HeaderText = "DATA DA VENDA";
+            dataGridView1.Columns["clienteNome"].HeaderText = "CLIENTE";
+            dataGridView1.Columns["funcionarioNome"].HeaderText = "FUNCIONÁRIO";
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -41,16 +57,14 @@ namespace VarejoConnect.View.ListPage
             DateTime dataFim = dtpFim.Value.Date.AddDays(1).AddSeconds(-1);
 
             dataGridView1.DataSource = repository.GetVendasWithNames(dataInicio, dataFim);
-            dataGridView1.Columns["clienteVenda"].Visible = false;
-            dataGridView1.Columns["funcionarioVenda"].Visible = false;
+            ConfigurarDataGrid();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = repository.GetAllVendas();
-            dataGridView1.Columns["clienteVenda"].Visible = false;
-            dataGridView1.Columns["funcionarioVenda"].Visible = false;
+            ConfigurarDataGrid();
         }
     }
 }

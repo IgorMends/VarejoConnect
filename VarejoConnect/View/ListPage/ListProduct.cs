@@ -45,6 +45,16 @@ namespace VarejoConnect.View.ListPage
 			dataGridView1.Columns["funcionarioAlteracao"].Visible = false;
 			dataGridView1.Columns["dataAlteracao"].Visible = false;
 			dataGridView1.Columns["dataCriacao"].Visible = false;
+
+            dataGridView1.EnableHeadersVisualStyles = false;
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.LightGray;
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 8, FontStyle.Bold);
+
+            dataGridView1.Columns["id"].HeaderText = "ID";
+            dataGridView1.Columns["nome"].HeaderText = "NOME";
+            dataGridView1.Columns["secao"].HeaderText = "SECAO";
+            dataGridView1.Columns["quantidade"].HeaderText = "QUANTIDADE";
+
 		}
 
 		private void AtualizarDataGridView(List<Produto> produtos)

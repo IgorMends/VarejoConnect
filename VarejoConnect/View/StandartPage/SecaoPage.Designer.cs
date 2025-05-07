@@ -1,6 +1,6 @@
-﻿namespace VarejoConnect.View
+﻿namespace VarejoConnect.View.StandartPage
 {
-    partial class ClientePage
+    partial class SecaoPage
     {
         /// <summary>
         /// Required designer variable.
@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             groupBox2 = new GroupBox();
+            button2 = new Button();
             SearchOptions = new ComboBox();
             label7 = new Label();
             BtnPesquisar = new Button();
@@ -50,6 +51,7 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(button2);
             groupBox2.Controls.Add(SearchOptions);
             groupBox2.Controls.Add(label7);
             groupBox2.Controls.Add(BtnPesquisar);
@@ -58,16 +60,30 @@
             groupBox2.Location = new Point(387, 434);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(617, 197);
-            groupBox2.TabIndex = 23;
+            groupBox2.TabIndex = 27;
             groupBox2.TabStop = false;
             groupBox2.Text = "Pesquisa";
+            // 
+            // button2
+            // 
+            button2.BackColor = Color.FromArgb(121, 182, 201);
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatStyle = FlatStyle.Popup;
+            button2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button2.ForeColor = Color.White;
+            button2.Location = new Point(196, 119);
+            button2.Name = "button2";
+            button2.Size = new Size(232, 49);
+            button2.TabIndex = 32;
+            button2.Text = "Ver Produtos Na Seção";
+            button2.UseVisualStyleBackColor = false;
             // 
             // SearchOptions
             // 
             SearchOptions.DropDownStyle = ComboBoxStyle.DropDownList;
             SearchOptions.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             SearchOptions.FormattingEnabled = true;
-            SearchOptions.Items.AddRange(new object[] { "SEM FILTRO", "NOME", "ID", "DOCUMENTO" });
+            SearchOptions.Items.AddRange(new object[] { "SEM FILTRO", "NOME", "ID", "QUANTIDADE" });
             SearchOptions.Location = new Point(242, 65);
             SearchOptions.Name = "SearchOptions";
             SearchOptions.Size = new Size(160, 23);
@@ -127,7 +143,7 @@
             groupBox1.Location = new Point(25, 434);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(366, 201);
-            groupBox1.TabIndex = 22;
+            groupBox1.TabIndex = 26;
             groupBox1.TabStop = false;
             groupBox1.Text = "Cadastro";
             // 
@@ -216,9 +232,9 @@
             label2.ForeColor = Color.FromArgb(121, 182, 201);
             label2.Location = new Point(25, 3);
             label2.Name = "label2";
-            label2.Size = new Size(221, 29);
-            label2.TabIndex = 21;
-            label2.Text = "Cadastro Clientes";
+            label2.Size = new Size(213, 29);
+            label2.TabIndex = 25;
+            label2.Text = "Cadastro Seções";
             // 
             // dataGridView1
             // 
@@ -227,9 +243,9 @@
             dataGridView1.Location = new Point(25, 55);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(979, 373);
-            dataGridView1.TabIndex = 20;
+            dataGridView1.TabIndex = 24;
             // 
-            // ClientePage
+            // SecaoPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -239,9 +255,9 @@
             Controls.Add(label2);
             Controls.Add(dataGridView1);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "ClientePage";
-            Text = "ClientePage";
-            Load += ClientePage_Load;
+            Name = "SecaoPage";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "SecaoPage";
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             groupBox1.ResumeLayout(false);
@@ -260,13 +276,14 @@
         private Label label6;
         private TextBox PesquisarTextBox;
         private GroupBox groupBox1;
+        private Label label3;
+        private TextBox RelatorioTextBox;
         private Button button1;
         private Button BtnEditar;
         private Button BtnInativar;
         private Button BtnSalvar;
         private Label label2;
         private DataGridView dataGridView1;
-        private Label label3;
-        private TextBox RelatorioTextBox;
+        private Button button2;
     }
 }

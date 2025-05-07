@@ -52,6 +52,19 @@ namespace VarejoConnect.View
             dataGridView1.Columns["id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView1.Columns["salario"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView1.Columns["salario"].DefaultCellStyle.Format = "N2";
+
+            dataGridView1.EnableHeadersVisualStyles = false;
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.LightGray;
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 8, FontStyle.Bold);
+
+            dataGridView1.Columns["id"].HeaderText = "ID";
+            dataGridView1.Columns["login"].HeaderText = "LOGIN";
+            dataGridView1.Columns["nome"].HeaderText = "NOME";
+            dataGridView1.Columns["cargo"].HeaderText = "CARGO";
+            dataGridView1.Columns["salario"].HeaderText = "SALÁRIO";
+            dataGridView1.Columns["dataAlteracao"].HeaderText = "DATA DE ALTERAÇÃO";
+            dataGridView1.Columns["dataCriacao"].HeaderText = "DATA DE CRIAÇÃO";
+            dataGridView1.Columns["funcionarioAlteracao"].HeaderText = "ALTERADO POR";
         }
 
         public void ObterDados()

@@ -1,25 +1,23 @@
-﻿using System;
+﻿using QuestPDF.Fluent;
+using QuestPDF.Helpers;
+using QuestPDF.Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using QuestPDF.Fluent;
-using QuestPDF.Helpers;
-using QuestPDF.Infrastructure;
 using VarejoConnect.Model;
-using static Npgsql.Replication.PgOutput.Messages.RelationMessage;
 
 namespace VarejoConnect.Controller
 {
-    public class RelatorioClientes : IDocument
+    public class RelatorioSecoes : IDocument
     {
-
-        private readonly List<Cliente> _clientes;
+        private readonly List<Secao> _secoes;
         private readonly string _titulo;
 
-        public RelatorioClientes(List<Cliente> clientes, string titulo)
+        public RelatorioSecoes(List<Secao> secoes, string titulo)
         {
-            _clientes = clientes;
+            _secoes = secoes;
             _titulo = titulo;
         }
 
@@ -61,42 +59,39 @@ namespace VarejoConnect.Controller
             {
                 table.ColumnsDefinition(columns =>
                 {
-                    columns.RelativeColumn(1);  
-                    columns.RelativeColumn(3);  
-                    columns.RelativeColumn(3); 
-                    columns.RelativeColumn(3); 
-                    columns.RelativeColumn(2); 
-                    columns.RelativeColumn(2);  
-                    columns.RelativeColumn(2);  
-                    columns.RelativeColumn(2);  
+                    columns.RelativeColumn(1);
+                    columns.RelativeColumn(3);
+                    columns.RelativeColumn(3);
+                    columns.RelativeColumn(3);
+                    columns.RelativeColumn(2);
+                    columns.RelativeColumn(2);
+                    columns.RelativeColumn(2);
                 });
 
                 table.Header(header =>
                 {
                     header.Cell().Element(CellStyle).Text("ID").FontSize(9).SemiBold();
                     header.Cell().Element(CellStyle).Text("Nome").FontSize(9).SemiBold();
-                    header.Cell().Element(CellStyle).Text("Documento").FontSize(9).SemiBold();
-                    header.Cell().Element(CellStyle).Text("E-mail").FontSize(9).SemiBold();
-                    header.Cell().Element(CellStyle).Text("Telefone").FontSize(9).SemiBold();
+                    header.Cell().Element(CellStyle).Text("Descrição").FontSize(9).SemiBold();
+                    header.Cell().Element(CellStyle).Text("Quantidade de Produtos").FontSize(9).SemiBold();
                     header.Cell().Element(CellStyle).Text("Funcionário").FontSize(9).SemiBold();
                     header.Cell().Element(CellStyle).Text("Data Alteração").FontSize(9).SemiBold();
                     header.Cell().Element(CellStyle).Text("Data Criação").FontSize(9).SemiBold();
                 });
 
                 bool alternate = false;
-                foreach (var cliente in _clientes)
+                foreach (var secao in _secoes)
                 {
                     var backgroundColor = alternate ? Colors.Grey.Lighten3 : Colors.White;
                     alternate = !alternate;
 
-                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(cliente.id.ToString()).FontSize(7).AlignRight();
-                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(cliente.nome).FontSize(7);
-                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(cliente.documento).FontSize(7).AlignRight();
-                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(cliente.email).FontSize(7);
-                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(cliente.telefone).FontSize(7).AlignRight();
-                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(cliente.funcionarioAlteracao.ToString()).FontSize(7).AlignRight();
-                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(cliente.dataAlteracao.ToString("yyyy/MM/dd")).FontSize(7).AlignRight();
-                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(cliente.dataCriacao.ToString("yyyy/MM/dd")).FontSize(7).AlignRight();
+                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(secao.id.ToString()).FontSize(7).AlignRight();
+                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(secao.nome).FontSize(7);
+                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(secao.descricao).FontSize(7).AlignRight();
+                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(secao.quantidade).FontSize(7);
+                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(secao.funcionarioAlteracao.ToString()).FontSize(7).AlignRight();
+                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(secao.dataAlteracao.ToString("yyyy/MM/dd")).FontSize(7).AlignRight();
+                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(secao.dataCriacao.ToString("yyyy/MM/dd")).FontSize(7).AlignRight();
                 }
             });
         }

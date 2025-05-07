@@ -1,6 +1,6 @@
-﻿namespace VarejoConnect.View
+﻿namespace VarejoConnect.View.StandartPage
 {
-    partial class ClientePage
+    partial class FornecedorPage
     {
         /// <summary>
         /// Required designer variable.
@@ -58,7 +58,7 @@
             groupBox2.Location = new Point(387, 434);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(617, 197);
-            groupBox2.TabIndex = 23;
+            groupBox2.TabIndex = 27;
             groupBox2.TabStop = false;
             groupBox2.Text = "Pesquisa";
             // 
@@ -127,7 +127,7 @@
             groupBox1.Location = new Point(25, 434);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(366, 201);
-            groupBox1.TabIndex = 22;
+            groupBox1.TabIndex = 26;
             groupBox1.TabStop = false;
             groupBox1.Text = "Cadastro";
             // 
@@ -177,7 +177,7 @@
             BtnEditar.TabIndex = 20;
             BtnEditar.Text = "Editar";
             BtnEditar.UseVisualStyleBackColor = false;
-            BtnEditar.Click += BtnEditar_Click;
+            BtnEditar.Click += BtnEditar_Click_1;
             // 
             // BtnInativar
             // 
@@ -192,7 +192,7 @@
             BtnInativar.TabIndex = 12;
             BtnInativar.Text = "Excluir";
             BtnInativar.UseVisualStyleBackColor = false;
-            BtnInativar.Click += BtnInativar_Click;
+            BtnInativar.Click += BtnInativar_Click_1;
             // 
             // BtnSalvar
             // 
@@ -207,7 +207,7 @@
             BtnSalvar.TabIndex = 11;
             BtnSalvar.Text = "Cadastrar";
             BtnSalvar.UseVisualStyleBackColor = false;
-            BtnSalvar.Click += BtnSalvar_Click;
+            BtnSalvar.Click += BtnSalvar_Click_1;
             // 
             // label2
             // 
@@ -216,9 +216,9 @@
             label2.ForeColor = Color.FromArgb(121, 182, 201);
             label2.Location = new Point(25, 3);
             label2.Name = "label2";
-            label2.Size = new Size(221, 29);
-            label2.TabIndex = 21;
-            label2.Text = "Cadastro Clientes";
+            label2.Size = new Size(289, 29);
+            label2.TabIndex = 25;
+            label2.Text = "Cadastro Fornecedores";
             // 
             // dataGridView1
             // 
@@ -227,9 +227,9 @@
             dataGridView1.Location = new Point(25, 55);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(979, 373);
-            dataGridView1.TabIndex = 20;
+            dataGridView1.TabIndex = 24;
             // 
-            // ClientePage
+            // FornecedorPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -239,9 +239,8 @@
             Controls.Add(label2);
             Controls.Add(dataGridView1);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "ClientePage";
-            Text = "ClientePage";
-            Load += ClientePage_Load;
+            Name = "FornecedorPage";
+            Text = "FornecedorPage";
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             groupBox1.ResumeLayout(false);
@@ -260,13 +259,13 @@
         private Label label6;
         private TextBox PesquisarTextBox;
         private GroupBox groupBox1;
+        private Label label3;
+        private TextBox RelatorioTextBox;
         private Button button1;
         private Button BtnEditar;
         private Button BtnInativar;
         private Button BtnSalvar;
         private Label label2;
         private DataGridView dataGridView1;
-        private Label label3;
-        private TextBox RelatorioTextBox;
     }
 }

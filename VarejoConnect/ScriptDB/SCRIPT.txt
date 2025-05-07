@@ -1,5 +1,7 @@
 CREATE DATABASE "VarejoDB";
 
+
+
 create table funcionarios(
 	id serial primary key,
 	login varchar(200) not null,
@@ -13,10 +15,23 @@ create table funcionarios(
 	status BOOLEAN not null
 );
 
+create table fornecedores(
+	id serial primary key,
+	nome varchar(200) not null,
+	empresa varchar(200) not null,
+	documento varchar(14) not null,
+	telefone varchar(11) not null,
+	funcionarioalteracao int not null,
+	dataalteracao date not null,
+	datacriacao date not null,
+	status BOOLEAN not null,
+	FOREIGN KEY (funcionarioalteracao) REFERENCES funcionarios(id)
+);
+
 create table clientes(
 	id serial primary key,
 	nome varchar(200) not null,
-	cpf varchar(11) not null,
+	documento varchar(14) not null,
 	email varchar(250) not null UNIQUE,
 	telefone varchar(11) not null,
 	funcionarioalteracao int not null,
@@ -37,6 +52,17 @@ create table vendas(
 	FOREIGN KEY (cliente_fk) REFERENCES clientes(id)
 );
 
+create table secoes(
+	id serial primary key,
+	nome varchar(200) not null,
+	descricao varchar(200) not null,
+	quantidade int not null,
+	funcionarioalteracao int not null,
+	dataalteracao date not null,
+	datacriacao date not null,
+	status BOOLEAN not null
+);
+
 create table produtos(
 	id serial primary key,
 	nome varchar(200) not null,
@@ -44,11 +70,13 @@ create table produtos(
 	quantidade int not null,
 	marca varchar(200) not null,
 	descricao varchar(200) not null,
+	secao int not null,
 	funcionarioalteracao int not null,
 	dataalteracao date not null,
 	datacriacao date not null,
 	status BOOLEAN not null,
-	FOREIGN KEY (funcionarioalteracao) REFERENCES funcionarios(id)
+	FOREIGN KEY (funcionarioalteracao) REFERENCES funcionarios(id),
+	FOREIGN KEY (secao) REFERENCES secoes(id)
 );
 
 create table produto_venda(

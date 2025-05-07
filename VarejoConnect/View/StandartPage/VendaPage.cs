@@ -46,6 +46,21 @@ namespace VarejoConnect.View
             dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridView1.Columns["funcionarioAlteracao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             label11.Text = funcionarioRepositorio.getNameById(Global.funcionarioLogado).ToUpper();
+
+            dataGridView1.EnableHeadersVisualStyles = false;
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.LightGray;
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 8, FontStyle.Bold);
+
+            dataGridView1.Columns["id"].HeaderText = "ID";
+            dataGridView1.Columns["nome"].HeaderText = "NOME";
+            dataGridView1.Columns["marca"].HeaderText = "MARCA";
+            dataGridView1.Columns["descricao"].HeaderText = "DESCRICAO";
+            dataGridView1.Columns["preco"].HeaderText = "PREÇO";
+            dataGridView1.Columns["secao"].HeaderText = "SEÇÃO";
+            dataGridView1.Columns["quantidade"].HeaderText = "QUANTIDADE";
+            dataGridView1.Columns["dataAlteracao"].HeaderText = "DATA DE ALTERAÇÃO";
+            dataGridView1.Columns["dataCriacao"].HeaderText = "DATA DE CRIAÇÃO";
+            dataGridView1.Columns["funcionarioAlteracao"].HeaderText = "ALTERADO POR";
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)

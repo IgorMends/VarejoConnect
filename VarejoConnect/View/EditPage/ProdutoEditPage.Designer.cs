@@ -40,12 +40,14 @@
             label1 = new Label();
             pictureBox2 = new PictureBox();
             label2 = new Label();
+            label6 = new Label();
+            comboBox1 = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(133, 301);
+            textBox4.Location = new Point(133, 270);
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(245, 23);
             textBox4.TabIndex = 33;
@@ -55,7 +57,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.FromArgb(121, 182, 201);
-            label5.Location = new Point(24, 301);
+            label5.Location = new Point(24, 270);
             label5.Name = "label5";
             label5.Size = new Size(108, 23);
             label5.TabIndex = 32;
@@ -78,21 +80,21 @@
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(135, 240);
+            textBox3.Location = new Point(135, 212);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(245, 23);
             textBox3.TabIndex = 30;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(135, 184);
+            textBox2.Location = new Point(135, 154);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(245, 23);
             textBox2.TabIndex = 29;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(135, 126);
+            textBox1.Location = new Point(135, 96);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(245, 23);
             textBox1.TabIndex = 28;
@@ -102,7 +104,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.FromArgb(121, 182, 201);
-            label4.Location = new Point(58, 240);
+            label4.Location = new Point(58, 212);
             label4.Name = "label4";
             label4.Size = new Size(76, 23);
             label4.TabIndex = 27;
@@ -113,7 +115,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.FromArgb(121, 182, 201);
-            label3.Location = new Point(65, 184);
+            label3.Location = new Point(65, 154);
             label3.Name = "label3";
             label3.Size = new Size(68, 23);
             label3.TabIndex = 26;
@@ -124,7 +126,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(121, 182, 201);
-            label1.Location = new Point(61, 126);
+            label1.Location = new Point(61, 96);
             label1.Name = "label1";
             label1.Size = new Size(71, 23);
             label1.TabIndex = 25;
@@ -154,11 +156,34 @@
             label2.Text = "Editar Produto";
             label2.Click += label2_Click;
             // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.ForeColor = Color.FromArgb(121, 182, 201);
+            label6.Location = new Point(53, 326);
+            label6.Name = "label6";
+            label6.Size = new Size(74, 23);
+            label6.TabIndex = 62;
+            label6.Text = "Seção:";
+            // 
+            // comboBox1
+            // 
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(133, 326);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(247, 23);
+            comboBox1.TabIndex = 61;
+            // 
             // ProdutoEditPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ControlLight;
             ClientSize = new Size(429, 504);
+            Controls.Add(label6);
+            Controls.Add(comboBox1);
             Controls.Add(textBox4);
             Controls.Add(label5);
             Controls.Add(BtnSalvar);
@@ -172,6 +197,7 @@
             Controls.Add(label2);
             FormBorderStyle = FormBorderStyle.None;
             Name = "ProdutoEditPage";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "ProdutoEditPage";
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
@@ -190,5 +216,7 @@
         private Label label1;
         private PictureBox pictureBox2;
         private Label label2;
+        private Label label6;
+        private ComboBox comboBox1;
     }
 }

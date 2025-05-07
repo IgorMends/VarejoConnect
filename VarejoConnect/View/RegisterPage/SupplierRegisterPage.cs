@@ -8,24 +8,30 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VarejoConnect.Controller;
-using VarejoConnect.Model;
 using VarejoConnect.Model.Repositorios;
+using VarejoConnect.Model;
 
 namespace VarejoConnect.View.RegisterPage
 {
-    public partial class ClientRegisterPage : Form
+    public partial class SupplierRegisterPage : Form
     {
-        ClienteRepositorio repository = new ClienteRepositorio();
-        public BindingList<Cliente> clientesModal = new BindingList<Cliente>();
+
+        FornecedorRepositorio repository = new FornecedorRepositorio();
+        public BindingList<Fornecedor> fornecedoresModal = new BindingList<Fornecedor>();
         List<string> textBoxes = new List<string>();
         Actions actions = new Actions();
         int id;
 
-        public ClientRegisterPage(BindingList<Cliente> clientesList)
+        public SupplierRegisterPage(BindingList<Fornecedor> fornecedoresList)
         {
-            clientesModal = clientesList;
+            fornecedoresModal = fornecedoresList;
             id = repository.getHighestId() + 1;
             InitializeComponent();
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -35,10 +41,13 @@ namespace VarejoConnect.View.RegisterPage
 
         private void BtnSalvar_Click(object sender, EventArgs e)
         {
-            textBoxes.Add(NomeTextBox.Text);
-            textBoxes.Add(CpfTextBox.Text);
-            textBoxes.Add(EmailTextBox.Text);
-            textBoxes.Add(TelefoneTextBox.Text);
+           
+
+            textBoxes.Add(FornecedorName.Text);
+            textBoxes.Add(FornecedorDoc.Text);
+            textBoxes.Add(textBox1.Text);
+            textBoxes.Add(FornecedorNum.Text);
+
 
             bool isblank = actions.verifyBlanksTextboxes(textBoxes);
 
@@ -48,11 +57,11 @@ namespace VarejoConnect.View.RegisterPage
             }
 
 
-            foreach (var text in clientesModal)
+            foreach (var text in fornecedoresModal)
             {
-                if (text.nome.Equals(NomeTextBox.Text))
+                if (text.nome.Equals(FornecedorName.Text))
                 {
-                    MessageBox.Show("Este cliente já esta cadastrado!", "Erro", MessageBoxButtons.OK);
+                    MessageBox.Show("Este fornecedor já esta cadastrado!", "Erro", MessageBoxButtons.OK);
                     return;
                 }
             }
@@ -63,7 +72,7 @@ namespace VarejoConnect.View.RegisterPage
 
             try
             {
-                numTel = long.Parse(TelefoneTextBox.Text.Trim());
+                numTel = long.Parse(FornecedorNum.Text.Trim());
                 if (numTel.ToString().Length != 11)
                 {
                     MessageBox.Show("O campo de telefone precisa ter 11 numeros, incluindo DDD!");
@@ -78,8 +87,8 @@ namespace VarejoConnect.View.RegisterPage
 
             try
             {
-                string documento = CpfTextBox.Text.Trim();
-                string telefone = TelefoneTextBox.Text.Trim();
+                string documento = FornecedorDoc.Text.Trim();
+                string telefone = FornecedorNum.Text.Trim();
 
                 if (!long.TryParse(documento, out numDoc))
                 {
@@ -128,13 +137,18 @@ namespace VarejoConnect.View.RegisterPage
                 return;
             }
 
-            Cliente cliente = new Cliente(this.id, NomeTextBox.Text.Trim().ToUpper(), CpfTextBox.Text.Trim(), EmailTextBox.Text.Trim(), TelefoneTextBox.Text.Trim(), DateTime.Today, DateTime.Today, Global.funcionarioLogado, true);
-            repository.Add(cliente);
-            clientesModal.Add(cliente);
+            Fornecedor fornecedor = new Fornecedor(this.id, FornecedorName.Text.Trim().ToUpper(), textBox1.Text.Trim().ToUpper(), FornecedorDoc.Text.Trim(), FornecedorNum.Text.Trim(), Global.funcionarioLogado, DateTime.Today, DateTime.Today, true);
+            repository.Add(fornecedor);
+            fornecedoresModal.Add(fornecedor);
             this.Close();
         }
 
-        private void ClientRegisterPage_Load(object sender, EventArgs e)
+        private void EmpresaBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EmpresaBox_TextChanged_1(object sender, EventArgs e)
         {
 
         }

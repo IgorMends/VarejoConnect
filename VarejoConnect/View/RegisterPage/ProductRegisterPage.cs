@@ -15,7 +15,7 @@ namespace VarejoConnect.View.RegisterPage
 {
     public partial class ProductRegisterPage : Form
     {
-
+        SecaoRepositorio secaoRepo = new SecaoRepositorio();
         ProdutoRepositorio repository = new ProdutoRepositorio();
         public BindingList<Produto> produtosModal = new BindingList<Produto>();
         List<string> textBoxes = new List<string>();
@@ -27,6 +27,11 @@ namespace VarejoConnect.View.RegisterPage
             produtosModal = produtosList;
             id = repository.getHighestId() + 1;
             InitializeComponent();
+
+            List<string> nomes = secaoRepo.getAllNomes();
+            comboBox1.DataSource = null;
+            comboBox1.Items.Clear();
+            comboBox1.DataSource = nomes;
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -36,6 +41,8 @@ namespace VarejoConnect.View.RegisterPage
 
         private void BtnSalvar_Click(object sender, EventArgs e)
         {
+            string secaoSelecionada = comboBox1.SelectedItem?.ToString();
+            textBoxes.Add(secaoSelecionada);
             textBoxes.Add(NomeTextBox.Text);
             textBoxes.Add(MarcaTextBox.Text);
             textBoxes.Add(DescricaoTextBox.Text);
@@ -70,11 +77,17 @@ namespace VarejoConnect.View.RegisterPage
                 return;
             }
 
-            Produto produto = new Produto(id, NomeTextBox.Text.Trim().ToUpper(), MarcaTextBox.Text.Trim().ToUpper(), DescricaoTextBox.Text.Trim().ToUpper(), numPreco, 0, Global.funcionarioLogado, DateTime.Today, DateTime.Today, true);
+            Produto produto = new Produto(id, NomeTextBox.Text.Trim().ToUpper(), MarcaTextBox.Text.Trim().ToUpper(), DescricaoTextBox.Text.Trim().ToUpper(), secaoRepo.getIdByName(secaoSelecionada),numPreco, 0, Global.funcionarioLogado, DateTime.Today, DateTime.Today, true);
+            secaoRepo.IncrementarQuantidadeSecao(secaoRepo.getIdByName(secaoSelecionada));
             produtosModal.Add(produto);
             repository.Add(produto);
 
             this.Close();
+        }
+
+        private void ProductRegisterPage_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
