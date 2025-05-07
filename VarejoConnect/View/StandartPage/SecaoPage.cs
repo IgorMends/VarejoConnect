@@ -52,7 +52,7 @@ namespace VarejoConnect.View.StandartPage
             dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.LightGray;
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 8, FontStyle.Bold);
 
-            dataGridView1.Columns["id"].HeaderText = "ID";
+            dataGridView1.Columns["id"].HeaderText = "iDE";
             dataGridView1.Columns["nome"].HeaderText = "NOME";
             dataGridView1.Columns["descricao"].HeaderText = "DESCRIÇÃO";
             dataGridView1.Columns["quantidade"].HeaderText = "QUANTIDADE DE PRODUTOS";
