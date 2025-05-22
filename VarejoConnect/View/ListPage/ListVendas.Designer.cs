@@ -39,6 +39,7 @@
             label4 = new Label();
             dataGridView1 = new DataGridView();
             button1 = new Button();
+            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -73,7 +74,7 @@
             BtnPesquisar.FlatStyle = FlatStyle.Popup;
             BtnPesquisar.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnPesquisar.ForeColor = Color.White;
-            BtnPesquisar.Location = new Point(456, 86);
+            BtnPesquisar.Location = new Point(347, 98);
             BtnPesquisar.Name = "BtnPesquisar";
             BtnPesquisar.Size = new Size(130, 35);
             BtnPesquisar.TabIndex = 52;
@@ -84,7 +85,7 @@
             // dtpInicio
             // 
             dtpInicio.Format = DateTimePickerFormat.Short;
-            dtpInicio.Location = new Point(149, 91);
+            dtpInicio.Location = new Point(128, 84);
             dtpInicio.Name = "dtpInicio";
             dtpInicio.Size = new Size(78, 23);
             dtpInicio.TabIndex = 55;
@@ -92,7 +93,7 @@
             // dtpFim
             // 
             dtpFim.Format = DateTimePickerFormat.Short;
-            dtpFim.Location = new Point(334, 91);
+            dtpFim.Location = new Point(128, 113);
             dtpFim.Name = "dtpFim";
             dtpFim.Size = new Size(78, 23);
             dtpFim.TabIndex = 56;
@@ -101,7 +102,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(46, 92);
+            label1.Location = new Point(24, 87);
             label1.Name = "label1";
             label1.Size = new Size(97, 21);
             label1.TabIndex = 57;
@@ -111,7 +112,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(29, 52);
+            label3.Location = new Point(19, 52);
             label3.Name = "label3";
             label3.Size = new Size(291, 25);
             label3.TabIndex = 58;
@@ -121,7 +122,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(248, 92);
+            label4.Location = new Point(40, 114);
             label4.Name = "label4";
             label4.Size = new Size(80, 21);
             label4.TabIndex = 59;
@@ -133,7 +134,7 @@
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(29, 150);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(751, 354);
+            dataGridView1.Size = new Size(751, 351);
             dataGridView1.TabIndex = 60;
             // 
             // button1
@@ -143,7 +144,7 @@
             button1.FlatStyle = FlatStyle.Popup;
             button1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.ForeColor = Color.White;
-            button1.Location = new Point(605, 86);
+            button1.Location = new Point(498, 98);
             button1.Name = "button1";
             button1.Size = new Size(130, 35);
             button1.TabIndex = 61;
@@ -151,12 +152,28 @@
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
+            // button2
+            // 
+            button2.BackColor = Color.FromArgb(121, 182, 201);
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatStyle = FlatStyle.Popup;
+            button2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button2.ForeColor = Color.White;
+            button2.Location = new Point(648, 98);
+            button2.Name = "button2";
+            button2.Size = new Size(130, 35);
+            button2.TabIndex = 62;
+            button2.Text = "Ver Produtos";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
+            // 
             // ListVendas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLight;
             ClientSize = new Size(809, 528);
+            Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(dataGridView1);
             Controls.Add(label4);
@@ -190,5 +207,6 @@
         private Label label4;
         private DataGridView dataGridView1;
         private Button button1;
+        private Button button2;
     }
 }

@@ -36,6 +36,7 @@
             NomeRadio = new RadioButton();
             dataGridView1 = new DataGridView();
             pictureBox2 = new PictureBox();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
@@ -104,7 +105,7 @@
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(12, 136);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(527, 412);
+            dataGridView1.Size = new Size(527, 373);
             dataGridView1.TabIndex = 44;
             // 
             // pictureBox2
@@ -119,12 +120,28 @@
             pictureBox2.TabStop = false;
             pictureBox2.Click += pictureBox2_Click;
             // 
+            // button1
+            // 
+            button1.BackColor = Color.FromArgb(121, 182, 201);
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Popup;
+            button1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(394, 525);
+            button1.Name = "button1";
+            button1.Size = new Size(130, 35);
+            button1.TabIndex = 50;
+            button1.Text = "Selecionar";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
             // ListClient
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLight;
             ClientSize = new Size(551, 574);
+            Controls.Add(button1);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(BtnPesquisar);
@@ -151,5 +168,6 @@
 		private RadioButton NomeRadio;
 		private DataGridView dataGridView1;
 		private PictureBox pictureBox2;
-	}
+        private Button button1;
+    }
 }

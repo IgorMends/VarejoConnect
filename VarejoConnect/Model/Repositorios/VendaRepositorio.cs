@@ -47,12 +47,15 @@ namespace VarejoConnect.Model.Repositorios
             using var connection = new ConnectionDb();
 
             string query = @"
-                            SELECT v.id, 
-                               c.nome AS nome_cliente, 
-                               f.nome AS nome_funcionario, 
-                               v.data_venda, 
-                               v.valor_total, 
-                               v.forma_pagamento
+                            SELECT 
+                                v.id, 
+                                c.nome AS clienteNome, 
+                                f.nome AS funcionarioNome, 
+                                v.data_venda AS dataVenda, 
+                                v.valor_total AS valorTotal, 
+                                v.forma_pagamento AS formaPagamento,
+                                v.cliente_fk AS clienteVenda,
+                                v.funcionario_fk AS funcionarioVenda
                             FROM vendas v
                             JOIN clientes c ON v.cliente_fk = c.id
                             JOIN funcionarios f ON v.funcionario_fk = f.id

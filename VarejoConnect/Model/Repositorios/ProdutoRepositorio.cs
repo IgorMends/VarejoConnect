@@ -23,6 +23,34 @@ namespace VarejoConnect.Model.Repositorios
             return result == 1;
         }
 
+        public List<Produto> getAllWithNames()
+        {
+            using var connection = new ConnectionDb();
+
+            string query = @"
+        SELECT 
+            p.id,
+            p.nome,
+            p.preco,
+            p.quantidade,
+            p.marca,
+            p.descricao,
+            p.secao,
+            s.nome AS secaoNome,
+            p.funcionarioalteracao,
+            f.nome AS funcionarioNome,
+            p.dataalteracao,
+            p.datacriacao,
+            p.status
+        FROM produtos p
+        JOIN secoes s ON p.secao = s.id
+        JOIN funcionarios f ON p.funcionarioalteracao = f.id
+        WHERE p.status = true
+        ORDER BY p.id DESC;";
+
+            return connection.Connection.Query<Produto>(query).ToList();
+        }
+
         public List<Produto> GetAll()
         {
             using var connection = new ConnectionDb();
@@ -151,5 +179,19 @@ namespace VarejoConnect.Model.Repositorios
 
             return quantidade;
         }
+
+        public List<Produto> getAllBySecao(int secaoId)
+        {
+            using var connection = new ConnectionDb();
+
+            string query = @"SELECT * 
+                     FROM public.produtos 
+                     WHERE secao = @SecaoId AND status = TRUE;";
+
+            var produtos = connection.Connection.Query<Produto>(sql: query, param: new { SecaoId = secaoId });
+
+            return produtos.ToList();
+        }
+
     }
 }

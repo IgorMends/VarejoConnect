@@ -40,6 +40,8 @@ namespace VarejoConnect.View
         public void ConfigureDataGrid()
         {
             dataGridView1.Columns["status"].Visible = false;
+            dataGridView1.Columns["funcionarioAlteracao"].Visible = false;
+            dataGridView1.Columns["secao"].Visible = false;
             dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns["id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -61,17 +63,17 @@ namespace VarejoConnect.View
             dataGridView1.Columns["nome"].HeaderText = "NOME";
             dataGridView1.Columns["marca"].HeaderText = "MARCA";
             dataGridView1.Columns["descricao"].HeaderText = "DESCRIÇÃO";
-            dataGridView1.Columns["secao"].HeaderText = "SEÇÃO";
+            dataGridView1.Columns["secaoNome"].HeaderText = "SEÇÃO";
             dataGridView1.Columns["preco"].HeaderText = "PREÇO";
             dataGridView1.Columns["quantidade"].HeaderText = "QUANTIDADE";
             dataGridView1.Columns["dataAlteracao"].HeaderText = "DATA DE ALTERAÇÃO";
             dataGridView1.Columns["dataCriacao"].HeaderText = "DATA DE CRIAÇÃO";
-            dataGridView1.Columns["funcionarioAlteracao"].HeaderText = "ALTERADO POR";
+            dataGridView1.Columns["funcionarioNome"].HeaderText = "ALTERADO POR";
         }
 
         public void ObterDados()
         {
-            produtos = new BindingList<Produto>(repository.GetAll());
+            produtos = new BindingList<Produto>(repository.getAllWithNames());
             id = repository.getHighestId() + 1;
         }
 
@@ -90,10 +92,15 @@ namespace VarejoConnect.View
             if (productRegisterPage.DialogResult == DialogResult.OK)
             {
                 produtos = productRegisterPage.produtosModal;
+                produtos = new BindingList<Produto>(repository.getAllWithNames());
+
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = produtos;
+
+                ConfigureDataGrid();
+                dataGridView1.Refresh();
                 id++;
             }
-
-            dataGridView1.Refresh();
         }
 
         private void BtnInativar_Click(object sender, EventArgs e)
@@ -145,6 +152,12 @@ namespace VarejoConnect.View
 
                     secaoRepositorio.DecrementarQuantidadeSecao(secaoAntiga);
                     secaoRepositorio.IncrementarQuantidadeSecao(produtos[index].secao);
+                    produtos = new BindingList<Produto>(repository.getAllWithNames());
+
+                    dataGridView1.DataSource = null;
+                    dataGridView1.DataSource = produtos;
+
+                    ConfigureDataGrid();
                     dataGridView1.Refresh();
                 }
 

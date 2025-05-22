@@ -88,6 +88,17 @@ namespace VarejoConnect.Model.Repositorios
             return nomeRetornado;
         }
 
+        public int GetIdByName(string nome)
+        {
+            using var connection = new ConnectionDb();
+
+            string query = @"SELECT id FROM secoes WHERE nome = @Nome AND status = TRUE;";
+
+            int idRetornado = connection.Connection.QuerySingleOrDefault<int>(query, new { Nome = nome });
+
+            return idRetornado;
+        }
+
         public Secao getById(int id)
         {
             using var connection = new ConnectionDb();

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VarejoConnect.Model;
 using VarejoConnect.Model.Repositorios;
 
 namespace VarejoConnect.View.ListPage
@@ -29,6 +30,10 @@ namespace VarejoConnect.View.ListPage
             dataGridView1.Columns["clienteVenda"].Visible = false;
             dataGridView1.Columns["funcionarioVenda"].Visible = false;
 
+            dataGridView1.Columns["id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["valorTotal"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["dataVenda"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["valorTotal"].DefaultCellStyle.Format = "N2";
             dataGridView1.EnableHeadersVisualStyles = false;
             dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.LightGray;
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 8, FontStyle.Bold);
@@ -65,6 +70,35 @@ namespace VarejoConnect.View.ListPage
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = repository.GetAllVendas();
             ConfigurarDataGrid();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Venda vendaSelecionada;
+            DataGridViewRow dataGridViewRow;
+
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                for (int i = dataGridView1.SelectedRows.Count - 1; i >= 0; i--)
+                {
+                    dataGridViewRow = dataGridView1.SelectedRows[i];
+                    vendaSelecionada = dataGridViewRow.DataBoundItem as Venda;
+
+
+                    if (vendaSelecionada != null)
+                    {
+                        ProdutoVendaRepositorio produtoVendaRepositorio = new ProdutoVendaRepositorio();
+                        ListProduct listProduct = new ListProduct(produtoVendaRepositorio.GetByVendaId(vendaSelecionada.id));
+                        listProduct.ShowDialog();
+                    }
+                }
+
+                dataGridView1.Refresh();
+            }
+            else
+            {
+                MessageBox.Show("Nenhuma venda selecionado", "Error", MessageBoxButtons.OK);
+            }
         }
     }
 }

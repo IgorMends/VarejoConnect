@@ -14,6 +14,7 @@ using VarejoConnect.View.RegisterPage;
 using VarejoConnect.View.EditPage;
 using QuestPDF.Fluent;
 using System.Globalization;
+using VarejoConnect.View.ListPage;
 
 namespace VarejoConnect.View.StandartPage
 {
@@ -327,6 +328,22 @@ namespace VarejoConnect.View.StandartPage
 
                 var relatorio = new RelatorioSecoes(secoesRelatorio, titulo);
                 relatorio.GeneratePdf(nomeArquivo);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 1)
+            {
+                DataGridViewRow dataGridViewRow = dataGridView1.SelectedRows[0];
+                Secao secaoSelecionada = dataGridViewRow.DataBoundItem as Secao;
+
+                ListProductSection listProductSection = new ListProductSection(secaoSelecionada.id);
+                listProductSection.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("É possivel consular apenas uma secao por vez!", "Error", MessageBoxButtons.OK);
             }
         }
     }
