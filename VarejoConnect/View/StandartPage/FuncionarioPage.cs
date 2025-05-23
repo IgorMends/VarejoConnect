@@ -40,6 +40,7 @@ namespace VarejoConnect.View
 
         public void ConfigureDataGrid()
         {
+            dataGridView1.Columns["funcionarioAlteracao"].Visible = false;
             dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns["senha"].Visible = false;
@@ -64,12 +65,12 @@ namespace VarejoConnect.View
             dataGridView1.Columns["salario"].HeaderText = "SALÁRIO";
             dataGridView1.Columns["dataAlteracao"].HeaderText = "DATA DE ALTERAÇÃO";
             dataGridView1.Columns["dataCriacao"].HeaderText = "DATA DE CRIAÇÃO";
-            dataGridView1.Columns["funcionarioAlteracao"].HeaderText = "ALTERADO POR";
+            dataGridView1.Columns["funcionarioNome"].HeaderText = "ALTERADO POR";
         }
 
         public void ObterDados()
         {
-            funcionarios = new BindingList<Funcionario>(repository.GetAll());
+            funcionarios = new BindingList<Funcionario>(repository.getAllWithNames());
             id = repository.getHighestId() + 1;
         }
 
@@ -91,6 +92,13 @@ namespace VarejoConnect.View
             if (employeeRegisterPage.DialogResult == DialogResult.OK)
             {
                 funcionarios = employeeRegisterPage.funcionariosModal;
+                funcionarios = new BindingList<Funcionario>(repository.getAllWithNames());
+
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = funcionarios;
+
+                ConfigureDataGrid();
+                dataGridView1.Refresh();
                 id++;
             }
 

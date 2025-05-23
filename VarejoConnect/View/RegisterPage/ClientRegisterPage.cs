@@ -131,6 +131,8 @@ namespace VarejoConnect.View.RegisterPage
             Cliente cliente = new Cliente(this.id, NomeTextBox.Text.Trim().ToUpper(), CpfTextBox.Text.Trim(), EmailTextBox.Text.Trim(), TelefoneTextBox.Text.Trim(), DateTime.Today, DateTime.Today, Global.funcionarioLogado, true);
             repository.Add(cliente);
             clientesModal.Add(cliente);
+
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 

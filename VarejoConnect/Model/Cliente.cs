@@ -15,6 +15,7 @@ namespace VarejoConnect.Model
         public string email { get; set; }  
         public string telefone { get; set; }
         public int funcionarioAlteracao { get; set; }
+        public string funcionarioNome { get; set; }
         public DateTime dataAlteracao { get; set; }
         public DateTime dataCriacao { get; set; }
         public bool status { get; set; }

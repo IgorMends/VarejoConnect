@@ -38,6 +38,8 @@ namespace VarejoConnect.View
         public void ConfigureDataGrid()
         {
             dataGridView1.Columns["status"].Visible = false;
+            dataGridView1.Columns["funcionarioNome"].Visible = false;
+            dataGridView1.Columns["secaoNome"].Visible = false;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.Columns["id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;

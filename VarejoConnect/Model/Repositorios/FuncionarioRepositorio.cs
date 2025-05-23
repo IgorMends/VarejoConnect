@@ -23,6 +23,31 @@ namespace VarejoConnect.Model.Repositorios
             return result == 1; 
         }
 
+        public List<Funcionario> getAllWithNames()
+        {
+            using var connection = new ConnectionDb();
+
+            string query = @"
+        SELECT 
+            fu.id,
+            fu.login,
+            fu.nome,
+            fu.senha,
+            fu.cargo,
+            fu.salario,
+            fu.funcionarioalteracao,
+            f.nome AS funcionarioNome,
+            fu.dataalteracao,
+            fu.datacriacao,
+            fu.status
+        FROM funcionarios fu
+        JOIN funcionarios f ON fu.funcionarioalteracao = f.id
+        WHERE fu.status = true
+        ORDER BY fu.id DESC;";
+
+            return connection.Connection.Query<Funcionario>(query).ToList();
+        }
+
         public List<Funcionario> GetAll()
         {
             using var connection = new ConnectionDb();

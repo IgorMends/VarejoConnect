@@ -41,6 +41,7 @@ namespace VarejoConnect.View
         public void ConfigureDataGrid()
         {
             dataGridView1.Columns["status"].Visible = false;
+            dataGridView1.Columns["funcionarioAlteracao"].Visible = false;
             dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns["id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -62,13 +63,13 @@ namespace VarejoConnect.View
             dataGridView1.Columns["email"].HeaderText = "EMAIL";
             dataGridView1.Columns["dataAlteracao"].HeaderText = "DATA DE ALTERAÇÃO";
             dataGridView1.Columns["dataCriacao"].HeaderText = "DATA DE CRIAÇÃO";
-            dataGridView1.Columns["funcionarioAlteracao"].HeaderText = "ALTERADO POR";
+            dataGridView1.Columns["funcionarioNome"].HeaderText = "ALTERADO POR";
 
         }
 
         public void ObterDados()
         {
-            clientes = new BindingList<Cliente>(repository.GetAll());
+            clientes = new BindingList<Cliente>(repository.getAllWithNames());
             id = repository.getHighestId() + 1;
         }
 
@@ -82,6 +83,13 @@ namespace VarejoConnect.View
             if (clientRegisterPage.DialogResult == DialogResult.OK)
             {
                 clientes = clientRegisterPage.clientesModal;
+                clientes = new BindingList<Cliente>(repository.getAllWithNames());
+
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = clientes;
+
+                ConfigureDataGrid();
+                dataGridView1.Refresh();
                 id++;
             }
 

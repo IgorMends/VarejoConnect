@@ -140,6 +140,8 @@ namespace VarejoConnect.View.RegisterPage
             Fornecedor fornecedor = new Fornecedor(this.id, FornecedorName.Text.Trim().ToUpper(), textBox1.Text.Trim().ToUpper(), FornecedorDoc.Text.Trim(), FornecedorNum.Text.Trim(), Global.funcionarioLogado, DateTime.Today, DateTime.Today, true);
             repository.Add(fornecedor);
             fornecedoresModal.Add(fornecedor);
+
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 

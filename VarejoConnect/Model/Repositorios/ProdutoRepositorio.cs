@@ -116,6 +116,32 @@ namespace VarejoConnect.Model.Repositorios
             return nomeRetornado;
         }
 
+        public Produto getByIdWithName(int id)
+        {
+            using var connection = new ConnectionDb();
+
+            string query = @"
+                            SELECT 
+                                p.id,
+                                p.nome,
+                                p.preco,
+                                p.quantidade,
+                                p.marca,
+                                p.descricao,
+                                p.secao,
+                                s.nome AS secaoNome,
+                                p.funcionarioalteracao,
+                                f.nome AS funcionarioNome,
+                                p.dataalteracao,
+                                p.datacriacao,
+                                p.status
+                            FROM produtos p
+                            JOIN secoes s ON p.secao = s.id
+                            JOIN funcionarios f ON p.funcionarioalteracao = f.id
+                            WHERE p.status = true AND p.id = @id;";
+
+            return connection.Connection.QueryFirstOrDefault<Produto>(query, new { id });
+        }
         public Produto getById(int id)
         {
             using var connection = new ConnectionDb();

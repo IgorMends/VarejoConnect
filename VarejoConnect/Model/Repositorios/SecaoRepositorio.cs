@@ -22,6 +22,29 @@ namespace VarejoConnect.Model.Repositorios
             return result == 1;
         }
 
+        public List<Secao> getAllWithNames()
+        {
+            using var connection = new ConnectionDb();
+
+            string query = @"
+        SELECT 
+            s.id,
+            s.nome,
+            s.descricao,
+            s.quantidade,
+            s.funcionarioalteracao,
+            f.nome AS funcionarioNome,
+            s.dataalteracao,
+            s.datacriacao,
+            s.status
+        FROM secoes s
+        JOIN funcionarios f ON s.funcionarioalteracao = f.id
+        WHERE s.status = true
+        ORDER BY s.id DESC;";
+
+            return connection.Connection.Query<Secao>(query).ToList();
+        }
+
         public List<Secao> GetAll()
         {
             using var connection = new ConnectionDb();
