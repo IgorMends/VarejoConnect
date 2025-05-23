@@ -56,6 +56,8 @@ namespace VarejoConnect.View.RegisterPage
             Secao secao = new Secao(this.id, NomeSectionTextBox.Text.Trim().ToUpper(), DescriptionSectionTextBox.Text.Trim(), 0, Global.funcionarioLogado, DateTime.Today, DateTime.Today, true);
             repository.Add(secao);
             secoesModal.Add(secao);
+
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 

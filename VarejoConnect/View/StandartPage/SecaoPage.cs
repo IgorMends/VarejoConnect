@@ -14,6 +14,7 @@ using VarejoConnect.View.RegisterPage;
 using VarejoConnect.View.EditPage;
 using QuestPDF.Fluent;
 using System.Globalization;
+using VarejoConnect.View.ListPage;
 
 namespace VarejoConnect.View.StandartPage
 {
@@ -39,6 +40,7 @@ namespace VarejoConnect.View.StandartPage
         public void ConfigureDataGrid()
         {
             dataGridView1.Columns["status"].Visible = false;
+            dataGridView1.Columns["funcionarioAlteracao"].Visible = false;
             dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns["id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -58,13 +60,13 @@ namespace VarejoConnect.View.StandartPage
             dataGridView1.Columns["quantidade"].HeaderText = "QUANTIDADE DE PRODUTOS";
             dataGridView1.Columns["dataAlteracao"].HeaderText = "DATA DE ALTERAÇÃO";
             dataGridView1.Columns["dataCriacao"].HeaderText = "DATA DE CRIAÇÃO";
-            dataGridView1.Columns["funcionarioAlteracao"].HeaderText = "ALTERADO POR";
+            dataGridView1.Columns["funcionarioNome"].HeaderText = "ALTERADO POR";
 
         }
 
         public void ObterDados()
         {
-            secoes = new BindingList<Secao>(repository.GetAll());
+            secoes = new BindingList<Secao>(repository.getAllWithNames());
             id = repository.getHighestId() + 1;
         }
 
@@ -77,6 +79,13 @@ namespace VarejoConnect.View.StandartPage
             if (sectionRegisterPage.DialogResult == DialogResult.OK)
             {
                 secoes = sectionRegisterPage.secoesModal;
+                secoes = new BindingList<Secao>(repository.getAllWithNames());
+
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = secoes;
+
+                ConfigureDataGrid();
+                dataGridView1.Refresh();
                 id++;
             }
 
@@ -327,6 +336,22 @@ namespace VarejoConnect.View.StandartPage
 
                 var relatorio = new RelatorioSecoes(secoesRelatorio, titulo);
                 relatorio.GeneratePdf(nomeArquivo);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 1)
+            {
+                DataGridViewRow dataGridViewRow = dataGridView1.SelectedRows[0];
+                Secao secaoSelecionada = dataGridViewRow.DataBoundItem as Secao;
+
+                ListProductSection listProductSection = new ListProductSection(secaoSelecionada.id);
+                listProductSection.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("É possivel consular apenas uma secao por vez!", "Error", MessageBoxButtons.OK);
             }
         }
     }

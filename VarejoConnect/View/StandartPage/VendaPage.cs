@@ -38,13 +38,18 @@ namespace VarejoConnect.View
         public void ConfigureDataGrid()
         {
             dataGridView1.Columns["status"].Visible = false;
+            dataGridView1.Columns["funcionarioNome"].Visible = false;
+            dataGridView1.Columns["secaoNome"].Visible = false;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.Columns["id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["preco"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["secao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridView1.Columns["quantidade"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridView1.Columns["funcionarioAlteracao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["preco"].DefaultCellStyle.Format = "N2";
             label11.Text = funcionarioRepositorio.getNameById(Global.funcionarioLogado).ToUpper();
 
             dataGridView1.EnableHeadersVisualStyles = false;
@@ -579,6 +584,13 @@ namespace VarejoConnect.View
         {
             ListProduct listProduct = new ListProduct();
             listProduct.ShowDialog();
+
+            if (listProduct.produto != null)
+            {
+                produtoTextBox.Text = listProduct.produto.nome;
+            }
+
+
         }
 
         private void BtnVenda_Click(object sender, EventArgs e)
@@ -620,6 +632,8 @@ namespace VarejoConnect.View
 
                 foreach (Produto produto in carrinho)
                 {
+                    ProdutoVendaRepositorio produtoVendaRepositorio = new ProdutoVendaRepositorio();
+                    produtoVendaRepositorio.Add(produto, idVenda);
                     produtoRepositorio.decreaseQuantity(produto, produto.quantidade);
                 }
 
@@ -628,8 +642,10 @@ namespace VarejoConnect.View
                 carrinho.Clear();
                 TotalLabel.Text = "";
                 subTotalLabel.Text = "";
+                clienteTextBox.Clear();
                 dataGridView1.DataSource = null;
                 dataGridView1.DataSource = carrinho;
+                ConfigureDataGrid();
             }
         }
 
@@ -642,6 +658,11 @@ namespace VarejoConnect.View
         {
             ListClient listClient = new ListClient();
             listClient.ShowDialog();
+
+            if (listClient.cliente != null)
+            {
+                clienteTextBox.Text = listClient.cliente.nome;
+            }
         }
 
         private void BtnLimpar_Click(object sender, EventArgs e)
@@ -695,6 +716,7 @@ namespace VarejoConnect.View
         {
             ListVendas listVendas = new ListVendas();
             listVendas.ShowDialog();
+
         }
     }
 }

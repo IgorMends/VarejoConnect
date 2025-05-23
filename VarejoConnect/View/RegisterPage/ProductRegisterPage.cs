@@ -82,6 +82,7 @@ namespace VarejoConnect.View.RegisterPage
             produtosModal.Add(produto);
             repository.Add(produto);
 
+            this.DialogResult = DialogResult.OK;    
             this.Close();
         }
 

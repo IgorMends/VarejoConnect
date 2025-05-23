@@ -13,38 +13,65 @@ using VarejoConnect.Model.Repositorios;
 
 namespace VarejoConnect.View.ListPage
 {
-	public partial class ListProduct : Form
-	{
-		ProdutoRepositorio produtoRepositorio = new ProdutoRepositorio();
-		List<Produto> lista = new List<Produto>();
-		
+    public partial class ListProduct : Form
+    {
+
+        SecaoRepositorio secaoRepo = new SecaoRepositorio();
+        ProdutoRepositorio produtoRepositorio = new ProdutoRepositorio();
+        List<Produto> lista = new List<Produto>();
+        public Produto produto = new Produto();
 
 
-		public ListProduct()
-		{
-			InitializeComponent();
-			dataGridView1.DataSource = null;
-			lista = produtoRepositorio.GetAll();
-			dataGridView1.DataSource = lista;
-			ConfigurarDatagrid();
 
-		}
+        public ListProduct(List<Produto> list)
+        {
+            InitializeComponent();
+            dataGridView1.DataSource = null;
+            lista = list;
+            dataGridView1.DataSource = lista;
 
-		private void ConfigurarDatagrid()
-		{
-			dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-			dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            List<string> nomes = secaoRepo.getAllNomes();
+            comboBox1.DataSource = null;
+            comboBox1.Items.Clear();
+            comboBox1.DataSource = nomes;
+            comboBox1.SelectedItem = secaoRepo.getNameById(produto.secao);
+
+            ConfigurarDatagrid();
+        }
+
+        public ListProduct()
+        {
+            InitializeComponent();
+            dataGridView1.DataSource = null;
+            lista = produtoRepositorio.GetAll();
+            dataGridView1.DataSource = lista;
+
+            List<string> nomes = secaoRepo.getAllNomes();
+            comboBox1.DataSource = null;
+            comboBox1.Items.Clear();
+            comboBox1.DataSource = nomes;
+            comboBox1.SelectedItem = secaoRepo.getNameById(produto.secao);
+
+            ConfigurarDatagrid();
+
+        }
+
+        private void ConfigurarDatagrid()
+        {
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.Columns["status"].Visible = false;
             dataGridView1.Columns["id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-			dataGridView1.Columns["quantidade"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-			dataGridView1.Columns["id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-			dataGridView1.Columns["quantidade"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-			dataGridView1.Columns["preco"].Visible = false;
-			dataGridView1.Columns["descricao"].Visible = false;
-			dataGridView1.Columns["marca"].Visible = false;
-			dataGridView1.Columns["funcionarioAlteracao"].Visible = false;
-			dataGridView1.Columns["dataAlteracao"].Visible = false;
-			dataGridView1.Columns["dataCriacao"].Visible = false;
+            dataGridView1.Columns["quantidade"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridView1.Columns["id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["secao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["quantidade"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["preco"].Visible = false;
+            dataGridView1.Columns["descricao"].Visible = false;
+            dataGridView1.Columns["marca"].Visible = false;
+            dataGridView1.Columns["funcionarioAlteracao"].Visible = false;
+            dataGridView1.Columns["dataAlteracao"].Visible = false;
+            dataGridView1.Columns["dataCriacao"].Visible = false;
 
             dataGridView1.EnableHeadersVisualStyles = false;
             dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.LightGray;
@@ -55,52 +82,114 @@ namespace VarejoConnect.View.ListPage
             dataGridView1.Columns["secao"].HeaderText = "SECAO";
             dataGridView1.Columns["quantidade"].HeaderText = "QUANTIDADE";
 
-		}
+        }
 
-		private void AtualizarDataGridView(List<Produto> produtos)
-		{
-			dataGridView1.DataSource = null; 
-			dataGridView1.DataSource = produtos; 
-		}
+        private void AtualizarDataGridView(List<Produto> produtos)
+        {
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = produtos;
+        }
 
-		private void OrdenarPorId(List<Produto> produtos)
-		{
-			var produtosOrdenados = produtos.OrderBy(p => p.id).ToList();
-			AtualizarDataGridView(produtosOrdenados);
-		}
+        private void OrdenarPorId(List<Produto> produtos)
+        {
+            var produtosOrdenados = produtos.OrderBy(p => p.id).ToList();
+            AtualizarDataGridView(produtosOrdenados);
+        }
 
-		private void OrdenarPorNome(List<Produto> produtos)
-		{
-			var produtosOrdenados = produtos.OrderBy(p => p.nome).ToList();
-			AtualizarDataGridView(produtosOrdenados);
-		}
+        private void OrdenarPorNome(List<Produto> produtos)
+        {
+            var produtosOrdenados = produtos.OrderBy(p => p.nome).ToList();
+            AtualizarDataGridView(produtosOrdenados);
+        }
 
-		private void pictureBox2_Click(object sender, EventArgs e)
-		{
-			this.Close();
-		}
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
-		private void ListProduct_Load(object sender, EventArgs e)
-		{
+        private void ListProduct_Load(object sender, EventArgs e)
+        {
 
-		}
+        }
 
-		private void BtnPesquisar_Click(object sender, EventArgs e)
-		{
-			if (NomeRadio.Checked)
-			{
-				OrdenarPorNome(lista);
-				ConfigurarDatagrid();
-			}
-			else if (IDRadio.Checked)
-			{
-				OrdenarPorId(lista);
-				ConfigurarDatagrid();
-			}
-			else
-			{
-				MessageBox.Show("Você precisa selecionar ao menos uma das opções de busca!", "Error", MessageBoxButtons.OK);
-			}
-		}
-	}
+        private void BtnPesquisar_Click(object sender, EventArgs e)
+        {
+
+            string secaoSelecionada = comboBox1.SelectedItem.ToString();
+            List<Produto> listaSecao = new List<Produto>();
+
+
+            if (secaoSelecionada != null)
+            {
+                listaSecao = produtoRepositorio.getAllBySecao(secaoRepo.getIdByName(secaoSelecionada));
+                if (NomeRadio.Checked)
+                {
+                    OrdenarPorNome(listaSecao);
+                    ConfigurarDatagrid();
+                }
+                else if (IDRadio.Checked)
+                {
+                    OrdenarPorId(listaSecao);
+                    ConfigurarDatagrid();
+                }
+                else
+                {
+                    MessageBox.Show("Você precisa selecionar ao menos uma das opções de busca!", "Error", MessageBoxButtons.OK);
+                }
+            }
+            else
+            {
+                if (NomeRadio.Checked)
+                {
+                    OrdenarPorNome(lista);
+                    ConfigurarDatagrid();
+                }
+                else if (IDRadio.Checked)
+                {
+                    OrdenarPorId(lista);
+                    ConfigurarDatagrid();
+                }
+                else
+                {
+                    MessageBox.Show("Você precisa selecionar ao menos uma das opções de busca!", "Error", MessageBoxButtons.OK);
+                }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Produto produtoSelecionado;
+            DataGridViewRow dataGridViewRow;
+
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                for (int i = dataGridView1.SelectedRows.Count - 1; i >= 0; i--)
+                {
+                    dataGridViewRow = dataGridView1.SelectedRows[i];
+                    produtoSelecionado = dataGridViewRow.DataBoundItem as Produto;
+
+
+                    if (produtoSelecionado != null)
+                    {
+                        this.produto = produtoSelecionado;
+                    }
+                }
+
+                dataGridView1.Refresh();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Nenhum produto selecionado", "Error", MessageBoxButtons.OK);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = lista;
+            comboBox1.SelectedText = "";
+            ConfigurarDatagrid();
+        }
+    }
 }

@@ -74,6 +74,7 @@ namespace VarejoConnect.View.RegisterPage
                 funcionariosModal.Add(funcionario);
                 repository.Add(funcionario);
 
+                this.DialogResult = DialogResult.OK;    
                 this.Close();
             }
             else

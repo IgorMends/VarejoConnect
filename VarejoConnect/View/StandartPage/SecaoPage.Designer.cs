@@ -77,6 +77,7 @@
             button2.TabIndex = 32;
             button2.Text = "Ver Produtos Na Seção";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // SearchOptions
             // 

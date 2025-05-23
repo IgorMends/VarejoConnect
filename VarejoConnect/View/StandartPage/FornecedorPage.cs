@@ -39,6 +39,7 @@ namespace VarejoConnect.View.StandartPage
         public void ConfigureDataGrid()
         {
             dataGridView1.Columns["status"].Visible = false;
+            dataGridView1.Columns["funcionarioAlteracao"].Visible = false;
             dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns["id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -60,13 +61,13 @@ namespace VarejoConnect.View.StandartPage
             dataGridView1.Columns["Empresa"].HeaderText = "EMPRESA";
             dataGridView1.Columns["dataAlteracao"].HeaderText = "DATA DE ALTERAÇÃO";
             dataGridView1.Columns["dataCriacao"].HeaderText = "DATA DE CRIAÇÃO";
-            dataGridView1.Columns["funcionarioAlteracao"].HeaderText = "ALTERADO POR";
+            dataGridView1.Columns["funcionarioNome"].HeaderText = "ALTERADO POR";
 
         }
 
         public void ObterDados()
         {
-            fornecedores = new BindingList<Fornecedor>(repository.GetAll());
+            fornecedores = new BindingList<Fornecedor>(repository.getAllWithNames());
             id = repository.getHighestId() + 1;
         }
 
@@ -79,6 +80,13 @@ namespace VarejoConnect.View.StandartPage
             if (supplierRegisterPage.DialogResult == DialogResult.OK)
             {
                 fornecedores = supplierRegisterPage.fornecedoresModal;
+                fornecedores = new BindingList<Fornecedor>(repository.getAllWithNames());
+
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = fornecedores;
+
+                ConfigureDataGrid();
+                dataGridView1.Refresh();
                 id++;
             }
 

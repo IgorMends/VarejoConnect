@@ -22,6 +22,29 @@ namespace VarejoConnect.Model.Repositorios
             return result == 1;
         }
 
+        public List<Secao> getAllWithNames()
+        {
+            using var connection = new ConnectionDb();
+
+            string query = @"
+        SELECT 
+            s.id,
+            s.nome,
+            s.descricao,
+            s.quantidade,
+            s.funcionarioalteracao,
+            f.nome AS funcionarioNome,
+            s.dataalteracao,
+            s.datacriacao,
+            s.status
+        FROM secoes s
+        JOIN funcionarios f ON s.funcionarioalteracao = f.id
+        WHERE s.status = true
+        ORDER BY s.id DESC;";
+
+            return connection.Connection.Query<Secao>(query).ToList();
+        }
+
         public List<Secao> GetAll()
         {
             using var connection = new ConnectionDb();
@@ -86,6 +109,17 @@ namespace VarejoConnect.Model.Repositorios
             string nomeRetornado = connection.Connection.QuerySingleOrDefault<string>(query, new { Id = id });
 
             return nomeRetornado;
+        }
+
+        public int GetIdByName(string nome)
+        {
+            using var connection = new ConnectionDb();
+
+            string query = @"SELECT id FROM secoes WHERE nome = @Nome AND status = TRUE;";
+
+            int idRetornado = connection.Connection.QuerySingleOrDefault<int>(query, new { Nome = nome });
+
+            return idRetornado;
         }
 
         public Secao getById(int id)
