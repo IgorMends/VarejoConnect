@@ -23,6 +23,10 @@ namespace VarejoConnect.View
         public HomePage()
         {
             InitializeComponent();
+            if (Global.funcionarioLogado != 0)
+            {
+                button4.Visible = false;
+            }
             DateTime dataAtual = DateTime.Today;
             string dataFormatada = dataAtual.ToString("dd/MM/yyyy");
 
@@ -119,6 +123,12 @@ namespace VarejoConnect.View
         {
             SecaoPage secaoPage = new SecaoPage();
             actions.ChangePage(panel2, secaoPage);
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            DevolucaoPage devolucaoPage = new DevolucaoPage();
+            actions.ChangePage(panel2, devolucaoPage);
         }
     }
 }

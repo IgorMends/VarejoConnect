@@ -106,6 +106,7 @@
             button7.Text = "Devolução";
             button7.TextImageRelation = TextImageRelation.ImageBeforeText;
             button7.UseVisualStyleBackColor = false;
+            button7.Click += button7_Click;
             // 
             // button6
             // 

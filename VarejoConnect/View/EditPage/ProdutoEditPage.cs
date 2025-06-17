@@ -46,7 +46,7 @@ namespace VarejoConnect.View.EditPage
         {
             string secaoSelecionada = comboBox1.SelectedItem.ToString();
 
-            this.produto.nome = textBox1.Text.Trim();
+            this.produto.nome = textBox1.Text.Trim().ToUpper();
             this.produto.preco = double.Parse(textBox2.Text.Trim());
             this.produto.marca = textBox3.Text.Trim().ToUpper();
             this.produto.secao = secaoRepo.getIdByName(secaoSelecionada);

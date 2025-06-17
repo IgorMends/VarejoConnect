@@ -35,7 +35,7 @@ namespace VarejoConnect.View.EditPage
         {
             if (textBox4.Text.Equals(funcionarioLogado.senha))
             {
-                this.funcionario.nome = textBox1.Text.Trim();
+                this.funcionario.nome = textBox1.Text.Trim().ToUpper();
                 this.funcionario.salario = double.Parse(textBox2.Text.Trim());
                 this.funcionario.cargo = textBox3.Text.Trim().ToUpper();
                 this.funcionario.dataAlteracao = DateTime.Today;

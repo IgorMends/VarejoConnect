@@ -28,6 +28,27 @@ namespace VarejoConnect.Model.Repositorios
             return result == 1;
         }
 
+        public List<Produto> GetByVendaIdWithNames(int vendaId)
+        {
+            using var connection = new ConnectionDb();
+
+            string query = @"
+                            SELECT 
+                                p.id,
+                                p.nome,
+                                p.secao,
+                                s.nome AS secaoNome,
+                                pv.quantidade
+                            FROM public.produto_venda pv
+                            INNER JOIN public.produtos p ON p.id = pv.produto_fk
+                            INNER JOIN public.secoes s ON p.secao = s.id
+                            WHERE pv.venda_fk = @vendaId;
+                        ";
+
+            var produtos = connection.Connection.Query<Produto>(query, new { vendaId }).ToList();
+
+            return produtos;
+        }
         public List<Produto> GetByVendaId(int vendaId)
         {
             using var connection = new ConnectionDb();

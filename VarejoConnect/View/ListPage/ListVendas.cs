@@ -88,7 +88,7 @@ namespace VarejoConnect.View.ListPage
                     if (vendaSelecionada != null)
                     {
                         ProdutoVendaRepositorio produtoVendaRepositorio = new ProdutoVendaRepositorio();
-                        ListProduct listProduct = new ListProduct(produtoVendaRepositorio.GetByVendaId(vendaSelecionada.id));
+                        ListProduct listProduct = new ListProduct(produtoVendaRepositorio.GetByVendaIdWithNames(vendaSelecionada.id), vendaSelecionada.id);
                         listProduct.ShowDialog();
                     }
                 }

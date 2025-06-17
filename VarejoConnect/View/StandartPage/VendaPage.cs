@@ -676,6 +676,13 @@ namespace VarejoConnect.View
             {
                 for (int i = dataGridView1.SelectedRows.Count - 1; i >= 0; i--)
                 {
+
+                    if (dataGridView1.SelectedRows.Count != 1)
+                    {
+                        MessageBox.Show("Selecione apenas um produto por vez para limpar.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
                     dataGridViewRow = dataGridView1.SelectedRows[i];
                     produtoSelecionado = dataGridViewRow.DataBoundItem as Produto;
 

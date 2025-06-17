@@ -32,7 +32,7 @@ namespace VarejoConnect.View.EditPage
         private void BtnSalvar_Click(object sender, EventArgs e)
         {
             this.fornecedor.nome = textBox1.Text.ToUpper().Trim();
-            this.fornecedor.empresa = textBox2.Text.Trim();
+            this.fornecedor.empresa = textBox2.Text.Trim().ToUpper();
             this.fornecedor.telefone = textBox3.Text.Trim();
             this.fornecedor.dataAlteracao = DateTime.Today;
             this.fornecedor.funcionarioAlteracao = Global.funcionarioLogado;
