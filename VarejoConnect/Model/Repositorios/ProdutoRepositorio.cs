@@ -219,5 +219,48 @@ namespace VarejoConnect.Model.Repositorios
             return produtos.ToList();
         }
 
+        public List<Produto> getAllBySecaoWithName(int secaoId)
+        {
+            using var connection = new ConnectionDb();
+
+            string query = @"
+                    SELECT 
+                        p.id,
+                        p.nome,
+                        p.preco,
+                        p.quantidade,
+                        p.marca,
+                        p.descricao,
+                        p.secao,
+                        s.nome AS secaoNome,
+                        p.funcionarioalteracao,
+                        f.nome AS funcionarioNome,
+                        p.dataalteracao,
+                        p.datacriacao,
+                        p.status
+                    FROM produtos p
+                    JOIN secoes s ON p.secao = s.id
+                    JOIN funcionarios f ON p.funcionarioalteracao = f.id
+                    WHERE p.status = true AND s.id = @secaoId;
+                    ";
+
+            var produtos = connection.Connection.Query<Produto>(sql: query, param: new { SecaoId = secaoId });
+
+            return produtos.ToList();
+        }
+
+
+        public List<Produto> getAllBySecaoInative(int secaoId)
+        {
+            using var connection = new ConnectionDb();
+
+            string query = @"SELECT * 
+                     FROM public.produtos 
+                     WHERE secao = @SecaoId;";
+
+            var produtos = connection.Connection.Query<Produto>(sql: query, param: new { SecaoId = secaoId });
+
+            return produtos.ToList();
+        }
     }
 }

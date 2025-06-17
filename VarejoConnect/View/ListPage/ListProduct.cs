@@ -18,14 +18,17 @@ namespace VarejoConnect.View.ListPage
 
         SecaoRepositorio secaoRepo = new SecaoRepositorio();
         ProdutoRepositorio produtoRepositorio = new ProdutoRepositorio();
+        ProdutoVendaRepositorio produtoVendaRepositorio = new ProdutoVendaRepositorio();
         List<Produto> lista = new List<Produto>();
         public Produto produto = new Produto();
+        int vendaId;
 
 
 
-        public ListProduct(List<Produto> list)
+        public ListProduct(List<Produto> list, int id)
         {
             InitializeComponent();
+            vendaId = id;
             dataGridView1.DataSource = null;
             lista = list;
             dataGridView1.DataSource = lista;
@@ -43,7 +46,7 @@ namespace VarejoConnect.View.ListPage
         {
             InitializeComponent();
             dataGridView1.DataSource = null;
-            lista = produtoRepositorio.GetAll();
+            lista = produtoRepositorio.getAllWithNames();
             dataGridView1.DataSource = lista;
 
             List<string> nomes = secaoRepo.getAllNomes();
@@ -60,6 +63,8 @@ namespace VarejoConnect.View.ListPage
         {
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.Columns["secao"].Visible = false;
+            dataGridView1.Columns["funcionarioNome"].Visible = false;
             dataGridView1.Columns["status"].Visible = false;
             dataGridView1.Columns["id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView1.Columns["quantidade"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
@@ -79,7 +84,7 @@ namespace VarejoConnect.View.ListPage
 
             dataGridView1.Columns["id"].HeaderText = "ID";
             dataGridView1.Columns["nome"].HeaderText = "NOME";
-            dataGridView1.Columns["secao"].HeaderText = "SECAO";
+            dataGridView1.Columns["secaoNome"].HeaderText = "SECAO";
             dataGridView1.Columns["quantidade"].HeaderText = "QUANTIDADE";
 
         }
@@ -114,22 +119,51 @@ namespace VarejoConnect.View.ListPage
 
         private void BtnPesquisar_Click(object sender, EventArgs e)
         {
+            
+            if (comboBox1.SelectedItem == null)
+            {
+                MessageBox.Show("Selecione uma seção!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             string secaoSelecionada = comboBox1.SelectedItem.ToString();
             List<Produto> listaSecao = new List<Produto>();
+            List<Produto> listaVenda = produtoVendaRepositorio.GetByVendaIdWithNames(vendaId);
+            List<Produto> listaSecaoVenda = new List<Produto>();
 
 
             if (secaoSelecionada != null)
             {
-                listaSecao = produtoRepositorio.getAllBySecao(secaoRepo.getIdByName(secaoSelecionada));
+
+
+                if (vendaId != 0) {
+                    listaSecao = produtoRepositorio.getAllBySecaoInative(secaoRepo.getIdByName(secaoSelecionada));
+
+                    foreach (var produto in listaVenda)
+                    {
+                        foreach (var produtoVenda in listaSecao)
+                        {
+                            if (produto.id == produtoVenda.id)
+                            {
+                                listaSecaoVenda.Add(produto);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    int secaoSelecionadaId = secaoRepo.GetIdByName(secaoSelecionada);
+                    listaSecaoVenda = produtoRepositorio.getAllBySecaoWithName(secaoSelecionadaId);
+                }
+
                 if (NomeRadio.Checked)
                 {
-                    OrdenarPorNome(listaSecao);
+                    OrdenarPorNome(listaSecaoVenda);
                     ConfigurarDatagrid();
                 }
                 else if (IDRadio.Checked)
                 {
-                    OrdenarPorId(listaSecao);
+                    OrdenarPorId(listaSecaoVenda);
                     ConfigurarDatagrid();
                 }
                 else
@@ -188,7 +222,9 @@ namespace VarejoConnect.View.ListPage
         {
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = lista;
-            comboBox1.SelectedText = "";
+            comboBox1.SelectedIndex = -1;
+            IDRadio.Checked = false;
+            NomeRadio.Checked = false;
             ConfigurarDatagrid();
         }
     }
