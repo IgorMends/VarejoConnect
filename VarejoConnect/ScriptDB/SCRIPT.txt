@@ -88,5 +88,23 @@ create table produto_venda(
 	FOREIGN KEY (produto_fk) REFERENCES produtos(id)
 );
 
+create table devolucoes(
+	id serial primary key,
+	venda_fk int,
+	motivo varchar(300) not null,
+	datadevolucao date not null,
+	funcionario int not null,
+	FOREIGN KEY (venda_fk) REFERENCES vendas(id)
+);
+
+create table produto_devolucao(
+	devolucao_fk int,
+	produto_fk int,
+	quantidade int not null,
+	PRIMARY KEY (devolucao_fk, produto_fk),
+	FOREIGN KEY (devolucao_fk) REFERENCES devolucoes(id),
+	FOREIGN KEY (produto_fk) REFERENCES produtos(id)
+);
+
 INSERT INTO public.funcionarios(id, login,nome, senha, cargo, salario, funcionarioalteracao, dataalteracao, datacriacao, status)
 	VALUES (0, 'admin','admin', 'admin', 'admin', 0, 0, CURRENT_DATE, CURRENT_DATE, TRUE);
