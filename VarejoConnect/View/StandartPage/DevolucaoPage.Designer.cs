@@ -35,20 +35,22 @@
             BtnVenda = new Button();
             pictureBox1 = new PictureBox();
             label4 = new Label();
-            clienteTextBox = new TextBox();
+            vendaTextbox = new TextBox();
             label1 = new Label();
             label2 = new Label();
-            dataGridView2 = new DataGridView();
+            dgvDevolver = new DataGridView();
             groupBox2 = new GroupBox();
             groupBox1 = new GroupBox();
-            dataGridView1 = new DataGridView();
-            button3 = new Button();
             button2 = new Button();
+            button3 = new Button();
+            dgvVenda = new DataGridView();
+            pictureBox4 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvDevolver).BeginInit();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvVenda).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             SuspendLayout();
             // 
             // button1
@@ -109,12 +111,13 @@
             // 
             pictureBox1.Cursor = Cursors.Hand;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(414, 81);
+            pictureBox1.Location = new Point(441, 82);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(25, 25);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 55;
             pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // label4
             // 
@@ -127,12 +130,13 @@
             label4.TabIndex = 54;
             label4.Text = "Devolução";
             // 
-            // clienteTextBox
+            // vendaTextbox
             // 
-            clienteTextBox.Location = new Point(136, 82);
-            clienteTextBox.Name = "clienteTextBox";
-            clienteTextBox.Size = new Size(268, 23);
-            clienteTextBox.TabIndex = 52;
+            vendaTextbox.Location = new Point(136, 82);
+            vendaTextbox.Name = "vendaTextbox";
+            vendaTextbox.Size = new Size(268, 23);
+            vendaTextbox.TabIndex = 52;
+            vendaTextbox.KeyDown += vendaTextbox_KeyDown;
             // 
             // label1
             // 
@@ -161,17 +165,17 @@
             label2.TabIndex = 49;
             label2.Text = "Funcionário:";
             // 
-            // dataGridView2
+            // dgvDevolver
             // 
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(22, 32);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(441, 386);
-            dataGridView2.TabIndex = 70;
+            dgvDevolver.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvDevolver.Location = new Point(22, 32);
+            dgvDevolver.Name = "dgvDevolver";
+            dgvDevolver.Size = new Size(441, 386);
+            dgvDevolver.TabIndex = 70;
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(dataGridView2);
+            groupBox2.Controls.Add(dgvDevolver);
             groupBox2.Controls.Add(BtnLimpar);
             groupBox2.Location = new Point(533, 123);
             groupBox2.Name = "groupBox2";
@@ -184,35 +188,13 @@
             // 
             groupBox1.Controls.Add(button2);
             groupBox1.Controls.Add(button3);
-            groupBox1.Controls.Add(dataGridView1);
+            groupBox1.Controls.Add(dgvVenda);
             groupBox1.Location = new Point(12, 123);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(487, 475);
             groupBox1.TabIndex = 74;
             groupBox1.TabStop = false;
             groupBox1.Text = "Produtos da Venda:";
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(22, 32);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(441, 386);
-            dataGridView1.TabIndex = 70;
-            // 
-            // button3
-            // 
-            button3.BackColor = Color.FromArgb(121, 182, 201);
-            button3.FlatAppearance.BorderSize = 0;
-            button3.FlatStyle = FlatStyle.Popup;
-            button3.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button3.ForeColor = Color.White;
-            button3.Location = new Point(43, 424);
-            button3.Name = "button3";
-            button3.Size = new Size(193, 35);
-            button3.TabIndex = 71;
-            button3.Text = "Devolver Produto";
-            button3.UseVisualStyleBackColor = false;
             // 
             // button2
             // 
@@ -228,11 +210,46 @@
             button2.Text = "Devolver Venda Inteira";
             button2.UseVisualStyleBackColor = false;
             // 
+            // button3
+            // 
+            button3.BackColor = Color.FromArgb(121, 182, 201);
+            button3.FlatAppearance.BorderSize = 0;
+            button3.FlatStyle = FlatStyle.Popup;
+            button3.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button3.ForeColor = Color.White;
+            button3.Location = new Point(43, 424);
+            button3.Name = "button3";
+            button3.Size = new Size(193, 35);
+            button3.TabIndex = 71;
+            button3.Text = "Devolver Produto";
+            button3.UseVisualStyleBackColor = false;
+            // 
+            // dgvVenda
+            // 
+            dgvVenda.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvVenda.Location = new Point(22, 32);
+            dgvVenda.Name = "dgvVenda";
+            dgvVenda.Size = new Size(441, 386);
+            dgvVenda.TabIndex = 70;
+            // 
+            // pictureBox4
+            // 
+            pictureBox4.Cursor = Cursors.Hand;
+            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
+            pictureBox4.Location = new Point(413, 84);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new Size(21, 21);
+            pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox4.TabIndex = 75;
+            pictureBox4.TabStop = false;
+            pictureBox4.Click += pictureBox4_Click;
+            // 
             // DevolucaoPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1032, 647);
+            Controls.Add(pictureBox4);
             Controls.Add(groupBox1);
             Controls.Add(groupBox2);
             Controls.Add(button1);
@@ -240,17 +257,19 @@
             Controls.Add(BtnVenda);
             Controls.Add(pictureBox1);
             Controls.Add(label4);
-            Controls.Add(clienteTextBox);
+            Controls.Add(vendaTextbox);
             Controls.Add(label1);
             Controls.Add(label2);
             FormBorderStyle = FormBorderStyle.None;
             Name = "DevolucaoPage";
             Text = "DevolucaoPage";
+            Load += DevolucaoPage_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvDevolver).EndInit();
             groupBox2.ResumeLayout(false);
             groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvVenda).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -263,14 +282,15 @@
         private Button BtnVenda;
         private PictureBox pictureBox1;
         private Label label4;
-        private TextBox clienteTextBox;
+        private TextBox vendaTextbox;
         private Label label1;
         private Label label2;
-        private DataGridView dataGridView2;
+        private DataGridView dgvDevolver;
         private GroupBox groupBox2;
         private GroupBox groupBox1;
         private Button button3;
-        private DataGridView dataGridView1;
+        private DataGridView dgvVenda;
         private Button button2;
+        private PictureBox pictureBox4;
     }
 }

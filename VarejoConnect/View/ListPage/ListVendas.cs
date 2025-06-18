@@ -16,6 +16,7 @@ namespace VarejoConnect.View.ListPage
     {
 
         VendaRepositorio repository = new VendaRepositorio();
+        public Venda venda = new Venda();
 
         public ListVendas()
         {
@@ -94,6 +95,34 @@ namespace VarejoConnect.View.ListPage
                 }
 
                 dataGridView1.Refresh();
+            }
+            else
+            {
+                MessageBox.Show("Nenhuma venda selecionado", "Error", MessageBoxButtons.OK);
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Venda vendaSelecionado;
+            DataGridViewRow dataGridViewRow;
+
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                for (int i = dataGridView1.SelectedRows.Count - 1; i >= 0; i--)
+                {
+                    dataGridViewRow = dataGridView1.SelectedRows[i];
+                    vendaSelecionado = dataGridViewRow.DataBoundItem as Venda;
+
+
+                    if (vendaSelecionado != null)
+                    {
+                        this.venda = vendaSelecionado;
+                    }
+                }
+
+                dataGridView1.Refresh();
+                this.Close();
             }
             else
             {
