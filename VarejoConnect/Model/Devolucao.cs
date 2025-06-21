@@ -14,7 +14,7 @@ namespace VarejoConnect.Model
         public string motivo { get; set; }
         public DateTime datadevolucao { get; set; }
         public int funcionario { get; set; }
-        public int funcionarioNome { get; set; }
+        public string funcionarioNome { get; set; }
 
         public Devolucao(){}
 

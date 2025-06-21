@@ -14,7 +14,7 @@ namespace VarejoConnect.Model.Repositorios
             using var connection = new ConnectionDb();
 
             string query = @"INSERT INTO public.produto_devolucao(devolucao_fk, produto_fk, quantidade)
-	                            VALUES (@devolucaoId, @produtoId, @quantidade);";
+                     VALUES (@devolucao_fk, @produto_fk, @quantidade);";
 
             var parametros = new
             {
@@ -26,6 +26,20 @@ namespace VarejoConnect.Model.Repositorios
             var result = connection.Connection.Execute(sql: query, param: parametros);
 
             return result == 1;
+        }
+
+        public int ObterQuantidadeDevolvida(int produtoId, int vendaId)
+        {
+            using var connection = new ConnectionDb();
+
+            string query = @"
+        SELECT COALESCE(SUM(pd.quantidade), 0)
+        FROM produto_devolucao pd
+        INNER JOIN devolucoes d ON d.id = pd.devolucao_fk
+        WHERE pd.produto_fk = @produtoId AND d.venda_fk = @vendaId;
+    ";
+
+            return connection.Connection.QuerySingle<int>(query, new { produtoId, vendaId });
         }
 
         public List<Produto> GetByDevolucaoIdWithNames(int devolucaoId)

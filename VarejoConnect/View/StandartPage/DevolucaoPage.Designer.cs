@@ -66,6 +66,7 @@
             button1.TabIndex = 69;
             button1.Text = "Listar Todas Devoluções";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // label11
             // 
@@ -92,6 +93,7 @@
             BtnLimpar.TabIndex = 67;
             BtnLimpar.Text = "Limpar ";
             BtnLimpar.UseVisualStyleBackColor = false;
+            BtnLimpar.Click += BtnLimpar_Click;
             // 
             // BtnVenda
             // 
@@ -106,6 +108,7 @@
             BtnVenda.TabIndex = 64;
             BtnVenda.Text = "Finalizar Devolução";
             BtnVenda.UseVisualStyleBackColor = false;
+            BtnVenda.Click += BtnVenda_Click;
             // 
             // pictureBox1
             // 
@@ -209,6 +212,7 @@
             button2.TabIndex = 72;
             button2.Text = "Devolver Venda Inteira";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // button3
             // 
@@ -223,6 +227,7 @@
             button3.TabIndex = 71;
             button3.Text = "Devolver Produto";
             button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // dgvVenda
             // 

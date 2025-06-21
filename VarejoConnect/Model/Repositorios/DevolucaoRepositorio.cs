@@ -22,6 +22,24 @@ namespace VarejoConnect.Model.Repositorios
             return result == 1;
         }
 
+        public List<Devolucao> GetAllDevolucoes()
+        {
+            using var connection = new ConnectionDb();
+
+            string query = @"
+                            SELECT d.id AS Id,
+                                   d.venda_fk AS VendaId,
+                                   d.motivo AS Motivo,
+                                   d.datadevolucao AS DataDevolucao,
+                                   d.funcionario AS Funcionario,
+                                   f.nome AS FuncionarioNome
+                            FROM devolucoes d
+                            JOIN funcionarios f ON d.funcionario = f.id
+                            ORDER BY d.datadevolucao DESC;
+                        ";
+
+            return connection.Connection.Query<Devolucao>(query).ToList();
+        }
         public int getHighestId()
         {
             using var connection = new ConnectionDb();
@@ -47,17 +65,17 @@ namespace VarejoConnect.Model.Repositorios
             using var connection = new ConnectionDb();
 
             string query = @"
-                        SELECT 
-                            d.id,
-                            d.venda_fk,
-                            d.motivo
-                            d.datadevolucao,
-                            d.funcionario,
-                            f.nome AS funcionarioNome,
-                        FROM devolucoes d
-                        JOIN funcionarios f ON d.funcionario = f.id
-                        WHERE d.datadevolucao BETWEEN @DataInicio AND @DataFim  
-                        ORDER BY v.data_venda DESC;";
+                            SELECT 
+                                d.id,
+                                d.venda_fk,
+                                d.motivo,
+                                d.datadevolucao,
+                                d.funcionario,
+                                f.nome AS funcionarioNome
+                            FROM devolucoes d
+                            JOIN funcionarios f ON d.funcionario = f.id
+                            WHERE d.datadevolucao BETWEEN @DataInicio AND @DataFim  
+                            ORDER BY d.datadevolucao DESC;";
 
             return connection.Connection.Query<Devolucao>(query, new { DataInicio = dataInicio, DataFim = dataFim }).ToList();
         }
