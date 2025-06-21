@@ -105,6 +105,27 @@ namespace VarejoConnect.Model.Repositorios
             return result == 1;
         }
 
+        public bool adicionarEstoqueProduto(int produtoId, int quantidadeDevolvida)
+        {
+            using var connection = new ConnectionDb();
+
+            string query = @"
+                            UPDATE public.produtos
+                            SET quantidade = quantidade + @quantidadeDevolvida
+                            WHERE id = @produtoId;
+                        ";
+
+            var parametros = new
+            {
+                produtoId,
+                quantidadeDevolvida
+            };
+
+            int result = connection.Connection.Execute(sql: query, param: parametros);
+
+            return result == 1;
+        }
+
         public string getNameById(int id)
         {
             using var connection = new ConnectionDb();
