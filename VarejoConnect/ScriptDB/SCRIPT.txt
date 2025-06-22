@@ -60,11 +60,12 @@ create table secoes(
 	funcionarioalteracao int not null,
 	dataalteracao date not null,
 	datacriacao date not null,
-	status BOOLEAN not null
+	status BOOLEAN not null,
+	FOREIGN KEY (funcionarioalteracao) REFERENCES funcionario(id)
 );
 
 create table produtos(
-	id serial primary key,
+	id serial primary key, 
 	nome varchar(200) not null,
 	preco double precision not null,
 	quantidade int not null,
@@ -95,6 +96,7 @@ create table devolucoes(
 	datadevolucao date not null,
 	funcionario int not null,
 	FOREIGN KEY (venda_fk) REFERENCES vendas(id)
+	FOREIGN KEY (funcionario) REFERENCES funcionario(id)
 );
 
 create table produto_devolucao(
