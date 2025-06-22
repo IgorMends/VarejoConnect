@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.Logging;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,6 +23,7 @@ namespace VarejoConnect.View.StandartPage
         VendaRepositorio vendaRepositorio = new VendaRepositorio();
         DevolucaoRepositorio devolucaoRepositorio = new DevolucaoRepositorio();
         ProdutoVendaRepositorio produtoVendaRepositorio = new ProdutoVendaRepositorio();
+        LogsRepositorio logs = new LogsRepositorio();
         ProdutoDevolucaoRepositorio produtoDevolucaoRepositorio = new ProdutoDevolucaoRepositorio();
         BindingList<Produto> produtosVenda;
         BindingList<Produto> produtosDevolver = new BindingList<Produto>();
@@ -178,6 +180,8 @@ namespace VarejoConnect.View.StandartPage
             ListVendas listVendas = new ListVendas();
 
             listVendas.ShowDialog();
+            Logs log = new Logs(DateTime.UtcNow, Global.funcionarioLogado, "DEVOLUCAO", null, "LISTAR VENDAS");
+            logs.Add(log);
 
             if (listVendas.venda != null)
             {
@@ -356,6 +360,8 @@ namespace VarejoConnect.View.StandartPage
         {
             ListDevolucao listDevolucao = new ListDevolucao(); 
             listDevolucao.ShowDialog();
+            Logs log = new Logs(DateTime.UtcNow, Global.funcionarioLogado, "DEVOLUCAO", null, "LISTAR TODAS DEVOLUCOES");
+            logs.Add(log);
         }
     }
 }

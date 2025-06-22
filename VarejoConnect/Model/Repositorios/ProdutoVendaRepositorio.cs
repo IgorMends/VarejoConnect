@@ -9,17 +9,17 @@ namespace VarejoConnect.Model.Repositorios
 {
     public class ProdutoVendaRepositorio
     {
-        public bool Add(Produto produto, int devolucaoId)
+        public bool Add(Produto produto, int vendaId)
         {
             using var connection = new ConnectionDb();
 
-            string query = @"INSERT INTO public.produto_devolucao(devolucao_fk, produto_fk, quantidade)
-                     VALUES (@devolucaoId, @produtoId, @quantidade);";
+            string query = @"INSERT INTO public.produto_venda(venda_fk, produto_fk, quantidade)
+                     VALUES (@venda_fk, @produto_fk, @quantidade);";
 
             var parametros = new
             {
-                devolucaoId = devolucaoId,
-                produtoId = produto.id,
+                venda_fk = vendaId,
+                produto_fk = produto.id,
                 quantidade = produto.quantidade
             };
 

@@ -15,6 +15,7 @@ using QuestPDF.Fluent;
 using System.Globalization;
 using VarejoConnect.View.RegisterPage;
 using System.Reflection;
+using Microsoft.VisualBasic.Logging;
 
 namespace VarejoConnect.View
 {
@@ -24,6 +25,7 @@ namespace VarejoConnect.View
         ClienteRepositorio repository = new ClienteRepositorio();
         Actions actions = new Actions();
         BindingList<Cliente> buscaClientes = new BindingList<Cliente>();
+        LogsRepositorio logs = new LogsRepositorio();
         BindingList<Cliente> clientes = new BindingList<Cliente>();
         List<string> textBoxes = new List<string>();
         DateTime dataAtual = DateTime.Today;
@@ -115,6 +117,8 @@ namespace VarejoConnect.View
                         clientes.Remove(clienteSelecionado);
                         buscaClientes.Remove(clienteSelecionado);
                         repository.RemoveCliente(clienteSelecionado);
+                        Logs log = new Logs(DateTime.UtcNow, Global.funcionarioLogado, "CLIENTE", clienteSelecionado.id, "CLIENTE EXCLUIDO");
+                        logs.Add(log);
                     }
                 }
 
@@ -328,6 +332,8 @@ namespace VarejoConnect.View
 
                 var relatorio = new RelatorioClientes(clientesRelatorio, titulo);
                 relatorio.GeneratePdf(nomeArquivo);
+                Logs log = new Logs(DateTime.UtcNow, Global.funcionarioLogado, "CLIENTE", null, "RELATORIO DE CLIENTE GERADO");
+                logs.Add(log);
             }
         }
 

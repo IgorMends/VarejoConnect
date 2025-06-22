@@ -18,6 +18,7 @@ namespace VarejoConnect.View.RegisterPage
         SecaoRepositorio secaoRepo = new SecaoRepositorio();
         ProdutoRepositorio repository = new ProdutoRepositorio();
         public BindingList<Produto> produtosModal = new BindingList<Produto>();
+        LogsRepositorio logs = new LogsRepositorio();
         List<string> textBoxes = new List<string>();
         Actions actions = new Actions();
         int id;
@@ -81,6 +82,8 @@ namespace VarejoConnect.View.RegisterPage
             secaoRepo.IncrementarQuantidadeSecao(secaoRepo.getIdByName(secaoSelecionada));
             produtosModal.Add(produto);
             repository.Add(produto);
+            Logs log = new Logs(DateTime.UtcNow, Global.funcionarioLogado, "PRODUTO", produto.id, "PRODUTO CADASTRADO");
+            logs.Add(log);
 
             this.DialogResult = DialogResult.OK;    
             this.Close();

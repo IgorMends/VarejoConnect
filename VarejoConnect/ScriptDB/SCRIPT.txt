@@ -60,7 +60,8 @@ create table secoes(
 	funcionarioalteracao int not null,
 	dataalteracao date not null,
 	datacriacao date not null,
-	status BOOLEAN not null
+	status BOOLEAN not null,
+	FOREIGN KEY (funcionarioalteracao) REFERENCES funcionarios(id)
 );
 
 create table produtos(
@@ -94,7 +95,8 @@ create table devolucoes(
 	motivo varchar(300) not null,
 	datadevolucao date not null,
 	funcionario int not null,
-	FOREIGN KEY (venda_fk) REFERENCES vendas(id)
+	FOREIGN KEY (venda_fk) REFERENCES vendas(id),
+	FOREIGN KEY (funcionario) REFERENCES funcionarios(id)
 );
 
 create table produto_devolucao(
@@ -104,6 +106,16 @@ create table produto_devolucao(
 	PRIMARY KEY (devolucao_fk, produto_fk),
 	FOREIGN KEY (devolucao_fk) REFERENCES devolucoes(id),
 	FOREIGN KEY (produto_fk) REFERENCES produtos(id)
+);
+
+create table logs(
+    id serial primary key,
+    data_hora TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    funcionario int not null, 
+    entidade varchar(100) NOT NULL,      -- Nome da entidade: "produto", "cliente", "venda", etc.
+    entidade_id int,                     -- ID do registro afetado
+    acao varchar(100) NOT NULL,          -- "inserir", "editar", "excluir", "devolver", etc.
+	FOREIGN KEY (funcionario) REFERENCES funcionarios(id)
 );
 
 INSERT INTO public.funcionarios(id, login,nome, senha, cargo, salario, funcionarioalteracao, dataalteracao, datacriacao, status)

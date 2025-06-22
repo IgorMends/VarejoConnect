@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using VarejoConnect.Controller;
 using VarejoConnect.Model.Repositorios;
 using VarejoConnect.Model;
+using Microsoft.VisualBasic.Logging;
 
 namespace VarejoConnect.View.RegisterPage
 {
@@ -18,6 +19,7 @@ namespace VarejoConnect.View.RegisterPage
 
         SecaoRepositorio repository = new SecaoRepositorio();
         public BindingList<Secao> secoesModal = new BindingList<Secao>();
+        LogsRepositorio logs = new LogsRepositorio();
         List<string> textBoxes = new List<string>();
         Actions actions = new Actions();
         int id;
@@ -56,6 +58,8 @@ namespace VarejoConnect.View.RegisterPage
             Secao secao = new Secao(this.id, NomeSectionTextBox.Text.Trim().ToUpper(), DescriptionSectionTextBox.Text.Trim(), 0, Global.funcionarioLogado, DateTime.Today, DateTime.Today, true);
             repository.Add(secao);
             secoesModal.Add(secao);
+            Logs log = new Logs(DateTime.UtcNow, Global.funcionarioLogado, "SECAO", secao.id, "CADASTRO DE SECAO");
+            logs.Add(log);
 
             this.DialogResult = DialogResult.OK;
             this.Close();

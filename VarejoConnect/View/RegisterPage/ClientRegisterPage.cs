@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.Logging;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,6 +18,7 @@ namespace VarejoConnect.View.RegisterPage
     {
         ClienteRepositorio repository = new ClienteRepositorio();
         public BindingList<Cliente> clientesModal = new BindingList<Cliente>();
+        LogsRepositorio logs = new LogsRepositorio();
         List<string> textBoxes = new List<string>();
         Actions actions = new Actions();
         int id;
@@ -131,6 +133,8 @@ namespace VarejoConnect.View.RegisterPage
             Cliente cliente = new Cliente(this.id, NomeTextBox.Text.Trim().ToUpper(), CpfTextBox.Text.Trim(), EmailTextBox.Text.Trim(), TelefoneTextBox.Text.Trim(), DateTime.Today, DateTime.Today, Global.funcionarioLogado, true);
             repository.Add(cliente);
             clientesModal.Add(cliente);
+            Logs log = new Logs(DateTime.UtcNow, Global.funcionarioLogado, "CLIENTE", cliente.id, "CLIENTE CADASTRADO");
+            logs.Add(log);
 
             this.DialogResult = DialogResult.OK;
             this.Close();

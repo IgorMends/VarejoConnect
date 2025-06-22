@@ -1,4 +1,5 @@
-﻿using QuestPDF.Fluent;
+﻿using Microsoft.VisualBasic.Logging;
+using QuestPDF.Fluent;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,6 +24,7 @@ namespace VarejoConnect.View
 
         FuncionarioRepositorio repository = new FuncionarioRepositorio();
         Actions actions = new Actions();
+        LogsRepositorio logs = new LogsRepositorio();
         BindingList<Funcionario> buscaFuncionarios = new BindingList<Funcionario>();
         BindingList<Funcionario> funcionarios;
         List<string> textBoxes = new List<string>();
@@ -125,6 +127,8 @@ namespace VarejoConnect.View
                         funcionarios.Remove(funcionarioSelecionado);
                         buscaFuncionarios.Remove(funcionarioSelecionado);
                         repository.RemoveFuncionario(funcionarioSelecionado);
+                        Logs log = new Logs(DateTime.UtcNow, Global.funcionarioLogado, "FUNCIONARIO", funcionarioSelecionado.id, "FUNCIONARIO EXCLUIDO");
+                        logs.Add(log);
                     }
                 }
 
@@ -348,6 +352,8 @@ namespace VarejoConnect.View
 
                 var relatorio = new RelatorioFuncionarios(funcionariosRelatorio, titulo);
                 relatorio.GeneratePdf(nomeArquivo);
+                Logs log = new Logs(DateTime.UtcNow, Global.funcionarioLogado, "FUNCIONARIO", null, "RELATORIO DE FUNCIONARIO GERADOS");
+                logs.Add(log);
             }
         }
     }

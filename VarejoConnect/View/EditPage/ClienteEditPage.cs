@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.Logging;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,6 +21,7 @@ namespace VarejoConnect.View.EditPage
         ClienteRepositorio repository = new ClienteRepositorio();
         public Cliente cliente { get; set; }
         Actions actions = new Actions();
+        LogsRepositorio logs = new LogsRepositorio();
 
         public ClienteEditPage(Cliente cliente)
         {
@@ -38,6 +40,8 @@ namespace VarejoConnect.View.EditPage
             this.cliente.dataAlteracao = DateTime.Today;
             this.cliente.funcionarioAlteracao = Global.funcionarioLogado;
             repository.UpdateCliente(cliente);
+            Logs log = new Logs(DateTime.UtcNow, Global.funcionarioLogado, "CLIENTE", cliente.id, "CLIENTE EDITADO");
+            logs.Add(log);
             this.Close();
         }
 

@@ -14,6 +14,7 @@ using VarejoConnect.Model;
 using VarejoConnect.View.EditPage;
 using VarejoConnect.View.RegisterPage;
 using QuestPDF.Fluent;
+using Microsoft.VisualBasic.Logging;
 
 namespace VarejoConnect.View.StandartPage
 {
@@ -23,6 +24,7 @@ namespace VarejoConnect.View.StandartPage
         Actions actions = new Actions();
         BindingList<Fornecedor> buscaFornecedores = new BindingList<Fornecedor>();
         BindingList<Fornecedor> fornecedores = new BindingList<Fornecedor>();
+        LogsRepositorio logs = new LogsRepositorio();
         List<string> textBoxes = new List<string>();
         DateTime dataAtual = DateTime.Today;
         int id;
@@ -112,6 +114,8 @@ namespace VarejoConnect.View.StandartPage
                         fornecedores.Remove(fornecedorSelecionado);
                         buscaFornecedores.Remove(fornecedorSelecionado);
                         repository.RemoveFornecedor(fornecedorSelecionado);
+                        Logs log = new Logs(DateTime.UtcNow, Global.funcionarioLogado, "FORNECEDOR", fornecedorSelecionado.id, "FORNECEDOR EXCLUIDO");
+                        logs.Add(log);
                     }
                 }
 
@@ -325,6 +329,8 @@ namespace VarejoConnect.View.StandartPage
 
                 var relatorio = new RelatorioFornecedores(fornecedoresRelatorio, titulo);
                 relatorio.GeneratePdf(nomeArquivo);
+                Logs log = new Logs(DateTime.UtcNow, Global.funcionarioLogado, "FORNECEDOR", null, "RELATORIO DE FORNECEDOR GERADO");
+                logs.Add(log);
             }
         }
     }

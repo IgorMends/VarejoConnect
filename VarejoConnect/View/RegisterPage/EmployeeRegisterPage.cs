@@ -18,6 +18,7 @@ namespace VarejoConnect.View.RegisterPage
 
         FuncionarioRepositorio repository = new FuncionarioRepositorio();
         public BindingList<Funcionario> funcionariosModal = new BindingList<Funcionario>();
+        LogsRepositorio logs = new LogsRepositorio();   
         List<string> textBoxes = new List<string>();
         Actions actions = new Actions();
         int id;
@@ -73,6 +74,8 @@ namespace VarejoConnect.View.RegisterPage
                 Funcionario funcionario = new Funcionario(id, LoginTextBox.Text.Trim(), NomeTextBox.Text.Trim().ToUpper(), PasswordTextBox.Text.Trim(), PositionTextBox.Text.Trim().ToUpper(), numSalario, DateTime.Today, DateTime.Today, Global.funcionarioLogado, true);
                 funcionariosModal.Add(funcionario);
                 repository.Add(funcionario);
+                Logs log = new Logs(DateTime.UtcNow, Global.funcionarioLogado, "FUNCIONARIO", funcionario.id, "FUNCIONARIO CADASTRADO");
+                logs.Add(log);
 
                 this.DialogResult = DialogResult.OK;    
                 this.Close();

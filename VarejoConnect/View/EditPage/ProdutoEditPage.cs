@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.Logging;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,6 +18,7 @@ namespace VarejoConnect.View.EditPage
     public partial class ProdutoEditPage : Form
     {
         SecaoRepositorio secaoRepo = new SecaoRepositorio();
+        LogsRepositorio logs =  new LogsRepositorio();
         ProdutoRepositorio repository = new ProdutoRepositorio();
         public Produto produto { get; set; }
         Actions actions = new Actions();
@@ -54,6 +56,8 @@ namespace VarejoConnect.View.EditPage
             this.produto.dataAlteracao = DateTime.Today;
             this.produto.funcionarioAlteracao = Global.funcionarioLogado;
             repository.UpdateProduto(produto);
+            Logs log = new Logs(DateTime.UtcNow, Global.funcionarioLogado, "PRODUTO", produto.id, "PRODUTO EDITADO");
+            logs.Add(log);
 
             this.DialogResult = DialogResult.OK;
             this.Close();
