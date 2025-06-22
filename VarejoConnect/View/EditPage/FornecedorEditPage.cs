@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using VarejoConnect.Controller;
 using VarejoConnect.Model.Repositorios;
 using VarejoConnect.Model;
+using Microsoft.VisualBasic.Logging;
 
 namespace VarejoConnect.View.EditPage
 {
@@ -18,6 +19,7 @@ namespace VarejoConnect.View.EditPage
 
         FornecedorRepositorio repository = new FornecedorRepositorio();
         public Fornecedor fornecedor { get; set; }
+        LogsRepositorio logs = new LogsRepositorio();
         Actions actions = new Actions();
 
         public FornecedorEditPage(Fornecedor fornecedor)
@@ -37,6 +39,8 @@ namespace VarejoConnect.View.EditPage
             this.fornecedor.dataAlteracao = DateTime.Today;
             this.fornecedor.funcionarioAlteracao = Global.funcionarioLogado;
             repository.UpdateFornecedor(fornecedor);
+            Logs log = new Logs(DateTime.UtcNow, Global.funcionarioLogado, "FORNECEDOR", fornecedor.id, "FORNECEDOR EDITADO");
+            logs.Add(log);
             this.Close();
         }
 

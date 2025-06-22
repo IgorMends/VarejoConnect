@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.Logging;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,6 +20,7 @@ namespace VarejoConnect.View.EditPage
         FuncionarioRepositorio repository = new FuncionarioRepositorio();
         public Funcionario funcionario { get; set; }
         Actions actions = new Actions();
+        LogsRepositorio logs = new LogsRepositorio();
         private Funcionario funcionarioLogado;
 
         public FuncionarioEditPage(Funcionario funcionario)
@@ -41,6 +43,8 @@ namespace VarejoConnect.View.EditPage
                 this.funcionario.dataAlteracao = DateTime.Today;
                 this.funcionario.funcionarioAlteracao = Global.funcionarioLogado;
                 repository.UpdateFuncionario(funcionario);
+                Logs log = new Logs(DateTime.UtcNow, Global.funcionarioLogado, "FUNCIONARIO", funcionario.id, "FUNCIONARIO EDITADO");
+                logs.Add(log);
                 this.Close();
             }
             else

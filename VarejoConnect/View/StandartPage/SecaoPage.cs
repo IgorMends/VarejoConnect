@@ -15,6 +15,7 @@ using VarejoConnect.View.EditPage;
 using QuestPDF.Fluent;
 using System.Globalization;
 using VarejoConnect.View.ListPage;
+using Microsoft.VisualBasic.Logging;
 
 namespace VarejoConnect.View.StandartPage
 {
@@ -24,6 +25,7 @@ namespace VarejoConnect.View.StandartPage
         Actions actions = new Actions();
         BindingList<Secao> buscaSecao = new BindingList<Secao>();
         BindingList<Secao> secoes = new BindingList<Secao>();
+        LogsRepositorio logs = new LogsRepositorio();
         List<string> textBoxes = new List<string>();
         DateTime dataAtual = DateTime.Today;
         int id;
@@ -111,6 +113,8 @@ namespace VarejoConnect.View.StandartPage
                         secoes.Remove(secaoSelecionada);
                         buscaSecao.Remove(secaoSelecionada);
                         repository.RemoveSecao(secaoSelecionada);
+                        Logs log = new Logs(DateTime.UtcNow, Global.funcionarioLogado, "SECAO", secaoSelecionada.id , "SECAO EXCLUIDA");
+                        logs.Add(log);
                     }
                 }
 
@@ -336,6 +340,9 @@ namespace VarejoConnect.View.StandartPage
 
                 var relatorio = new RelatorioSecoes(secoesRelatorio, titulo);
                 relatorio.GeneratePdf(nomeArquivo);
+
+                Logs log = new Logs(DateTime.UtcNow, Global.funcionarioLogado, "SECAO", null, "RELATORIO DE SECAO GERADO");
+                logs.Add(log);
             }
         }
 
@@ -348,6 +355,8 @@ namespace VarejoConnect.View.StandartPage
 
                 ListProductSection listProductSection = new ListProductSection(secaoSelecionada.id);
                 listProductSection.ShowDialog();
+                Logs log = new Logs(DateTime.UtcNow, Global.funcionarioLogado, "SECAO", secaoSelecionada.id, "VER PRODUTOS NA SECAO");
+                logs.Add(log);
             }
             else
             {

@@ -38,6 +38,7 @@ namespace VarejoConnect.View.ListPage
             dataGridView1.Columns["telefone"].Visible = false;
             dataGridView1.Columns["documento"].Visible = false;
             dataGridView1.Columns["funcionarioAlteracao"].Visible = false;
+            dataGridView1.Columns["funcionarioNome"].Visible = false;
             dataGridView1.Columns["dataAlteracao"].Visible = false;
             dataGridView1.Columns["dataCriacao"].Visible = false;
 

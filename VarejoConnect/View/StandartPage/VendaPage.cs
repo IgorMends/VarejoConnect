@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.Logging;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,6 +22,7 @@ namespace VarejoConnect.View
         ProdutoRepositorio produtoRepositorio = new ProdutoRepositorio();
         ClienteRepositorio clienteRepositorio = new ClienteRepositorio();
         BindingList<Produto> carrinho = new BindingList<Produto>();
+        LogsRepositorio logs = new LogsRepositorio();
         VendaRepositorio vendaRepositorio = new VendaRepositorio();
         DateTime dataAtual = DateTime.Today;
         int idVenda;
@@ -584,6 +586,9 @@ namespace VarejoConnect.View
         {
             ListProduct listProduct = new ListProduct();
             listProduct.ShowDialog();
+            Logs log = new Logs(DateTime.UtcNow, Global.funcionarioLogado, "VENDA", null, "LISTAR PRODUTOS");
+
+            logs.Add(log);
 
             if (listProduct.produto != null)
             {
@@ -603,6 +608,7 @@ namespace VarejoConnect.View
                 if (precoTotal == null || precoTotal == 0.0)
                 {
                     MessageBox.Show("Não há nenhum item na venda, não é possivel realizar a venda deste modo!", "Error", MessageBoxButtons.OK);
+                    return;                   
                 }
 
                 if (int.TryParse(clienteTextBox.Text, out int id))
@@ -637,6 +643,9 @@ namespace VarejoConnect.View
                     produtoRepositorio.decreaseQuantity(produto, produto.quantidade);
                 }
 
+                Logs log = new Logs(DateTime.UtcNow, Global.funcionarioLogado, "VENDA", idVenda , "FINALIZAÇÃO DE VENDA");
+                logs.Add(log);
+
                 idVenda++;
                 precoTotal = 0;
                 carrinho.Clear();
@@ -658,6 +667,10 @@ namespace VarejoConnect.View
         {
             ListClient listClient = new ListClient();
             listClient.ShowDialog();
+
+            Logs log = new Logs(DateTime.UtcNow, Global.funcionarioLogado, "VENDA", null, "LISTAR CLIENTES");
+
+            logs.Add(log);
 
             if (listClient.cliente != null)
             {
@@ -693,6 +706,7 @@ namespace VarejoConnect.View
                         if (resultado == DialogResult.Yes)
                         {
                             carrinho.Remove(produtoSelecionado);
+                            precoTotal = 0;
                             TotalLabel.Text = "";
                             subTotalLabel.Text = "";
                             dataGridView1.DataSource = null;
@@ -723,7 +737,9 @@ namespace VarejoConnect.View
         {
             ListVendas listVendas = new ListVendas();
             listVendas.ShowDialog();
+            Logs log = new Logs(DateTime.UtcNow, Global.funcionarioLogado, "VENDA", null, "LISTAR VENDAS");
 
+            logs.Add(log);
         }
     }
 }

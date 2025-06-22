@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using VarejoConnect.Controller;
 using VarejoConnect.Model.Repositorios;
 using VarejoConnect.Model;
+using Microsoft.VisualBasic.Logging;
 
 namespace VarejoConnect.View.RegisterPage
 {
@@ -18,6 +19,7 @@ namespace VarejoConnect.View.RegisterPage
 
         FornecedorRepositorio repository = new FornecedorRepositorio();
         public BindingList<Fornecedor> fornecedoresModal = new BindingList<Fornecedor>();
+        LogsRepositorio logs = new LogsRepositorio();
         List<string> textBoxes = new List<string>();
         Actions actions = new Actions();
         int id;
@@ -140,6 +142,8 @@ namespace VarejoConnect.View.RegisterPage
             Fornecedor fornecedor = new Fornecedor(this.id, FornecedorName.Text.Trim().ToUpper(), textBox1.Text.Trim().ToUpper(), FornecedorDoc.Text.Trim(), FornecedorNum.Text.Trim(), Global.funcionarioLogado, DateTime.Today, DateTime.Today, true);
             repository.Add(fornecedor);
             fornecedoresModal.Add(fornecedor);
+            Logs log = new Logs(DateTime.UtcNow, Global.funcionarioLogado, "FORNECEDOR", fornecedor.id, "FORNECEDOR CADASTRADO");
+            logs.Add(log);
 
             this.DialogResult = DialogResult.OK;
             this.Close();

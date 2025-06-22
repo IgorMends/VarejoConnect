@@ -1,4 +1,5 @@
-﻿using QuestPDF.Fluent;
+﻿using Microsoft.VisualBasic.Logging;
+using QuestPDF.Fluent;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,6 +23,7 @@ namespace VarejoConnect.View
         SecaoRepositorio secaoRepositorio = new SecaoRepositorio();
         ProdutoRepositorio repository = new ProdutoRepositorio();
         Actions actions = new Actions();
+        LogsRepositorio logs = new LogsRepositorio();
         BindingList<Produto> buscaProdutos = new BindingList<Produto>();
         BindingList<Produto> produtos = new BindingList<Produto>();
         List<string> textBoxes = new List<string>();
@@ -122,6 +124,8 @@ namespace VarejoConnect.View
                         buscaProdutos.Remove(produtoSelecionado);
                         repository.RemoveProduto(produtoSelecionado);
                         secaoRepositorio.DecrementarQuantidadeSecao(produtoSelecionado.secao);
+                        Logs log = new Logs(DateTime.UtcNow, Global.funcionarioLogado, "PRODUTO", produtoSelecionado.id, "PRODUTO EXCLUIDO");
+                        logs.Add(log);
                     }
                 }
 
@@ -311,6 +315,8 @@ namespace VarejoConnect.View
                 }
 
                 repository.updateQuantidade(produtoSelecionado);
+                Logs log = new Logs(DateTime.UtcNow, Global.funcionarioLogado, "PRODUTO", produtoSelecionado.id, "QUANTIDADE ALTERADA");
+                logs.Add(log);
                 quantidadeTextBox.Clear();
 
                 dataGridView1.Refresh();
@@ -378,6 +384,8 @@ namespace VarejoConnect.View
 
                 var relatorio = new RelatorioProdutos(produtosRelatorio, titulo);
                 relatorio.GeneratePdf(nomeArquivo);
+                Logs log = new Logs(DateTime.UtcNow, Global.funcionarioLogado, "PRODUTO", null, "RELATORIO DE PRODUTOS GERADO");
+                logs.Add(log);
             }
         }
     }

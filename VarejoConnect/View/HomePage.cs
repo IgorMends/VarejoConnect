@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.Logging;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,6 +20,7 @@ namespace VarejoConnect.View
 
         Actions actions = new Actions();
         FuncionarioRepositorio repositoryFuncionario = new FuncionarioRepositorio();
+        LogsRepositorio logs = new LogsRepositorio();
 
         public HomePage()
         {
@@ -62,6 +64,9 @@ namespace VarejoConnect.View
         private void button1_Click(object sender, EventArgs e)
         {
             ProdutoPage produtoPage = new ProdutoPage();
+
+            Logs log = new Logs(DateTime.UtcNow, Global.funcionarioLogado, "PRODUTO", null , "ACESSO A TELA DE PRODUTO");
+            logs.Add(log);
             actions.ChangePage(panel2, produtoPage);
         }
 
@@ -88,18 +93,27 @@ namespace VarejoConnect.View
         private void button4_Click(object sender, EventArgs e)
         {
             FuncionarioPage funcionarioPage = new FuncionarioPage();
+            Logs log = new Logs(DateTime.UtcNow, Global.funcionarioLogado, "FUNCIONARIO", null, "ACESSO A TELA DE FUNCIONARIO");
+
+            logs.Add(log);
             actions.ChangePage(panel2, funcionarioPage);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             VendaPage vendaPage = new VendaPage();
+            Logs log = new Logs(DateTime.UtcNow, Global.funcionarioLogado, "VENDA", null, "ACESSO A TELA DE VENDA");
+
+            logs.Add(log);
             actions.ChangePage(panel2, vendaPage);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             ClientePage clientePage = new ClientePage();
+            Logs log = new Logs(DateTime.UtcNow, Global.funcionarioLogado, "CLIENTE", null, "ACESSO A TELA DE CLIENTE");
+
+            logs.Add(log);
             actions.ChangePage(panel2, clientePage);
         }
 
@@ -116,18 +130,28 @@ namespace VarejoConnect.View
         private void button6_Click(object sender, EventArgs e)
         {
             FornecedorPage fornecedorPage = new FornecedorPage();
+            Logs log = new Logs(DateTime.UtcNow, Global.funcionarioLogado, "FORNECEDOR", null, "ACESSO A TELA DE FORNECEDOR");
+
+            logs.Add(log);
             actions.ChangePage(panel2, fornecedorPage);
         }
 
         private void button5_Click_1(object sender, EventArgs e)
         {
             SecaoPage secaoPage = new SecaoPage();
+            Logs log = new Logs(DateTime.UtcNow, Global.funcionarioLogado, "SECAO", null, "ACESSO A TELA DE SECAO");
+
+            logs.Add(log);
             actions.ChangePage(panel2, secaoPage);
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
             DevolucaoPage devolucaoPage = new DevolucaoPage();
+
+            Logs log = new Logs(DateTime.UtcNow, Global.funcionarioLogado, "DEVOLUCAO", null, "ACESSO A TELA DE DEVOLUCAO");
+
+            logs.Add(log);
             actions.ChangePage(panel2, devolucaoPage);
         }
     }
