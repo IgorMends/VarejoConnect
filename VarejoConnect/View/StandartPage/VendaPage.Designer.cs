@@ -42,8 +42,6 @@
             quantidadeTextBox = new TextBox();
             label5 = new Label();
             label6 = new Label();
-            label7 = new Label();
-            subTotalLabel = new Label();
             TotalLabel = new Label();
             BtnVenda = new Button();
             label10 = new Label();
@@ -148,7 +146,7 @@
             // 
             pictureBox3.Cursor = Cursors.Hand;
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(637, 136);
+            pictureBox3.Location = new Point(611, 136);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(25, 25);
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -160,7 +158,7 @@
             // 
             pictureBox4.Cursor = Cursors.Hand;
             pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(610, 138);
+            pictureBox4.Location = new Point(643, 138);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(21, 21);
             pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -196,44 +194,19 @@
             label6.BackColor = Color.FromArgb(121, 182, 201);
             label6.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.White;
-            label6.Location = new Point(158, 498);
+            label6.Location = new Point(33, 498);
             label6.Name = "label6";
             label6.Padding = new Padding(35, 2, 36, 2);
             label6.Size = new Size(120, 24);
             label6.TabIndex = 37;
             label6.Text = "Total";
             // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.BackColor = Color.FromArgb(121, 182, 201);
-            label7.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.ForeColor = Color.White;
-            label7.Location = new Point(33, 498);
-            label7.Name = "label7";
-            label7.Padding = new Padding(19, 2, 19, 2);
-            label7.Size = new Size(120, 24);
-            label7.TabIndex = 38;
-            label7.Text = "Subtotal:";
-            // 
-            // subTotalLabel
-            // 
-            subTotalLabel.BackColor = Color.White;
-            subTotalLabel.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            subTotalLabel.ForeColor = Color.Black;
-            subTotalLabel.Location = new Point(33, 531);
-            subTotalLabel.Name = "subTotalLabel";
-            subTotalLabel.Padding = new Padding(19, 2, 19, 2);
-            subTotalLabel.Size = new Size(120, 24);
-            subTotalLabel.TabIndex = 39;
-            subTotalLabel.TextAlign = ContentAlignment.MiddleCenter;
-            // 
             // TotalLabel
             // 
             TotalLabel.BackColor = Color.White;
             TotalLabel.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             TotalLabel.ForeColor = Color.Black;
-            TotalLabel.Location = new Point(158, 531);
+            TotalLabel.Location = new Point(33, 531);
             TotalLabel.Name = "TotalLabel";
             TotalLabel.Padding = new Padding(19, 2, 19, 2);
             TotalLabel.Size = new Size(120, 24);
@@ -333,8 +306,6 @@
             Controls.Add(label10);
             Controls.Add(BtnVenda);
             Controls.Add(TotalLabel);
-            Controls.Add(subTotalLabel);
-            Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(quantidadeTextBox);
             Controls.Add(label5);
@@ -374,8 +345,6 @@
         private TextBox quantidadeTextBox;
         private Label label5;
         private Label label6;
-        private Label label7;
-        private Label subTotalLabel;
         private Label TotalLabel;
         private Button BtnVenda;
         private Label label10;

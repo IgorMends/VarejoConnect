@@ -25,7 +25,7 @@ namespace VarejoConnect.View
         public HomePage()
         {
             InitializeComponent();
-            if (Global.funcionarioLogado != 0)
+            if (Global.cargo != "ADMIN")
             {
                 button4.Visible = false;
             }
