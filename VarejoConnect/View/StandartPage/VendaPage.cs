@@ -133,7 +133,6 @@ namespace VarejoConnect.View
 
                                 precoTotal += produtoSelecionado.preco * quantidadeBox;
                                 TotalLabel.Text = "R$: " + precoTotal.ToString();
-                                subTotalLabel.Text = "R$: " + precoTotal.ToString();
 
                                 produtoTextBox.Clear();
                                 quantidadeTextBox.Clear();
@@ -155,7 +154,6 @@ namespace VarejoConnect.View
                                 produtoNoCarrinho.quantidade = novaQuantidade;
                                 precoTotal += produtoSelecionado.preco * quantidadeBox;
                                 TotalLabel.Text = "R$: " + precoTotal.ToString();
-                                subTotalLabel.Text = "R$: " + precoTotal.ToString();
 
                                 produtoTextBox.Clear();
                                 quantidadeTextBox.Clear();
@@ -209,7 +207,6 @@ namespace VarejoConnect.View
                                 carrinho.Add(produtoSelecionado);
                                 precoTotal += produtoSelecionado.preco * quantidadeBox;
                                 TotalLabel.Text = "R$: " + precoTotal.ToString();
-                                subTotalLabel.Text = "R$: " + precoTotal.ToString();
 
                                 produtoTextBox.Clear();
                                 quantidadeTextBox.Clear();
@@ -231,7 +228,6 @@ namespace VarejoConnect.View
                                 produtoNoCarrinho.quantidade = novaQuantidade;
                                 precoTotal += produtoSelecionado.preco * quantidadeBox;
                                 TotalLabel.Text = "R$: " + precoTotal.ToString();
-                                subTotalLabel.Text = "R$: " + precoTotal.ToString();
 
                                 produtoTextBox.Clear();
                                 quantidadeTextBox.Clear();
@@ -301,7 +297,6 @@ namespace VarejoConnect.View
                             carrinho.Add(produtoSelecionado);
                             precoTotal += produtoSelecionado.preco * quantidadeBox;
                             TotalLabel.Text = "R$: " + precoTotal.ToString();
-                            subTotalLabel.Text = "R$: " + precoTotal.ToString();
 
                             produtoTextBox.Clear();
                             quantidadeTextBox.Clear();
@@ -323,7 +318,6 @@ namespace VarejoConnect.View
                             produtoNoCarrinho.quantidade = novaQuantidade;
                             precoTotal += produtoSelecionado.preco * quantidadeBox;
                             TotalLabel.Text = "R$: " + precoTotal.ToString();
-                            subTotalLabel.Text = "R$: " + precoTotal.ToString();
 
                             produtoTextBox.Clear();
                             quantidadeTextBox.Clear();
@@ -377,7 +371,6 @@ namespace VarejoConnect.View
                             carrinho.Add(produtoSelecionado);
                             precoTotal += produtoSelecionado.preco * quantidadeBox;
                             TotalLabel.Text = "R$: " + precoTotal.ToString();
-                            subTotalLabel.Text = "R$: " + precoTotal.ToString();
 
                             produtoTextBox.Clear();
                             quantidadeTextBox.Clear();
@@ -399,7 +392,6 @@ namespace VarejoConnect.View
                             produtoNoCarrinho.quantidade = novaQuantidade;
                             precoTotal += produtoSelecionado.preco * quantidadeBox;
                             TotalLabel.Text = "R$: " + precoTotal.ToString();
-                            subTotalLabel.Text = "R$: " + precoTotal.ToString();
 
                             produtoTextBox.Clear();
                             quantidadeTextBox.Clear();
@@ -467,7 +459,6 @@ namespace VarejoConnect.View
                                 carrinho.Add(produtoSelecionado);
                                 precoTotal += produtoSelecionado.preco * quantidadeBox;
                                 TotalLabel.Text = "R$: " + precoTotal.ToString();
-                                subTotalLabel.Text = "R$: " + precoTotal.ToString();
 
                                 produtoTextBox.Clear();
                                 quantidadeTextBox.Clear();
@@ -489,7 +480,6 @@ namespace VarejoConnect.View
                                 produtoNoCarrinho.quantidade = novaQuantidade;
                                 precoTotal += produtoSelecionado.preco * quantidadeBox;
                                 TotalLabel.Text = "R$: " + precoTotal.ToString();
-                                subTotalLabel.Text = "R$: " + precoTotal.ToString();
 
                                 produtoTextBox.Clear();
                                 quantidadeTextBox.Clear();
@@ -543,7 +533,6 @@ namespace VarejoConnect.View
                                 carrinho.Add(produtoSelecionado);
                                 precoTotal += produtoSelecionado.preco * quantidadeBox;
                                 TotalLabel.Text = "R$: " + precoTotal.ToString();
-                                subTotalLabel.Text = "R$: " + precoTotal.ToString();
 
                                 produtoTextBox.Clear();
                                 quantidadeTextBox.Clear();
@@ -565,7 +554,6 @@ namespace VarejoConnect.View
                                 produtoNoCarrinho.quantidade = novaQuantidade;
                                 precoTotal += produtoSelecionado.preco * quantidadeBox;
                                 TotalLabel.Text = "R$: " + precoTotal.ToString();
-                                subTotalLabel.Text = "R$: " + precoTotal.ToString();
 
                                 produtoTextBox.Clear();
                                 quantidadeTextBox.Clear();
@@ -650,7 +638,6 @@ namespace VarejoConnect.View
                 precoTotal = 0;
                 carrinho.Clear();
                 TotalLabel.Text = "";
-                subTotalLabel.Text = "";
                 clienteTextBox.Clear();
                 dataGridView1.DataSource = null;
                 dataGridView1.DataSource = carrinho;
@@ -708,7 +695,6 @@ namespace VarejoConnect.View
                             carrinho.Remove(produtoSelecionado);
                             precoTotal = 0;
                             TotalLabel.Text = "";
-                            subTotalLabel.Text = "";
                             dataGridView1.DataSource = null;
                             dataGridView1.DataSource = carrinho;
                             ConfigureDataGrid();
@@ -725,7 +711,6 @@ namespace VarejoConnect.View
                 {
                     carrinho.Clear();
                     TotalLabel.Text = "";
-                    subTotalLabel.Text = "";
                     dataGridView1.DataSource = null;
                     dataGridView1.DataSource = carrinho;
                     ConfigureDataGrid();

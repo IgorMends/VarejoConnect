@@ -337,6 +337,12 @@ namespace VarejoConnect.View.StandartPage
 
         private void BtnVenda_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(vendaTextbox.Text))
+            {
+                MessageBox.Show("Nenhuma venda selecionada.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             int vendaId = int.Parse(vendaTextbox.Text.Trim());
             Devolucao devolucao = new Devolucao(idDevolucao, vendaId, "", dataAtual, Global.funcionarioLogado);
 

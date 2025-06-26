@@ -46,6 +46,7 @@ namespace VarejoConnect
                 {
                     funcExiste = true;
                     Global.funcionarioLogado = funcionario.id;
+                    Global.cargo = funcionario.cargo.ToUpper();
                     this.Hide();
                     HomePage adminHomePage = new HomePage();
                     adminHomePage.Show();

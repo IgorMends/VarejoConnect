@@ -10,5 +10,6 @@ namespace VarejoConnect
     public class Global
     {
         public static int funcionarioLogado;
+        public static string cargo;
     }
 }

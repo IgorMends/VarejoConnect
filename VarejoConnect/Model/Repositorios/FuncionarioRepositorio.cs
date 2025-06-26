@@ -23,6 +23,8 @@ namespace VarejoConnect.Model.Repositorios
             return result == 1; 
         }
 
+        
+
         public List<Funcionario> getAllWithNames()
         {
             using var connection = new ConnectionDb();
