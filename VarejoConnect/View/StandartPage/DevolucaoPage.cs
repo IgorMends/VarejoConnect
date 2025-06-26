@@ -247,6 +247,12 @@ namespace VarejoConnect.View.StandartPage
             DialogResult resultado = MessageBox.Show("Você deseja Devolver a venda inteira?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resultado == DialogResult.Yes)
             {
+                if (!produtosVenda.Any(p => p.quantidade > 0))
+                {
+                    MessageBox.Show("Nenhum produto disponível para devolução.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 foreach (var produto in produtosVenda.ToList())
                 {
                     if (produto.quantidade <= 0)
